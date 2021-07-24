@@ -1,0 +1,98 @@
+﻿@model SazeNegar.Core.Models.ContactForm
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content -->
+<div class="page-content bg-white">
+    <!-- Page Heading Box ==== -->
+    <div class="page-banner ovbl-dark overlay-dotted ovdt1 parallax"
+         style="background-image:url(assets/images/banner/banner1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry">
+                <h1 class="text-white">تماس با ما</h1>
+                <div class="breadcrumb-row">
+                    <ul class="list-inline">
+                        <li><a href="index.html"><i class="fa fa-home"></i> خانه </a></li>
+                        <li>تماس با ما</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Heading Box END ==== -->
+    <!-- Main Slider -->
+    <div class="content-block" id="content-area">
+        <div class="section-area bg-gray">
+            <div class="container">
+                <div class="row contact-bx-area2">
+                    <div class="col-lg-8 col-md-12 wow fadeIn section-sp2" data-wow-delay="0.4s">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-area-box ajax-form p-lr30 p-sm-lr5" }))
+                        {
+                            <div class="ajax-message"></div>
+                            <div class="heading-bx">
+                                <h6 class="title-ext m-b0">با ما در تماس باشید</h6>
+                                <h2 class="title-head m-b0">تماس با ما</h2>
+                            </div>
+
+
+                            <div class="row placeani">
+                                <div class="col-lg-6 ">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "نام و نام خانوادگی" } })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "ایمیل" } })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control", placeholder = "پیام" } })
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button name="submit" type="submit" value="Submit" class="btn button-md"> ارسال پیام</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    @Html.Action("Contact", "Home")
+                </div>
+            </div>
+        </div>
+        <!-- Your Faq End -->
+        @Html.Action("PartnersSection", "Home")
+    </div>
+    <!-- contact area END -->
+</div>
+
+<!-- External JavaScripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/vendors/wow/wow.js"></script>
+<script src="assets/vendors/bootstrap/js/popper.min.js"></script>
+<script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="assets/vendors/magnific-popup/magnific-popup.js"></script>
+<script src="assets/vendors/counter/waypoints-min.js"></script>
+<script src="assets/vendors/counter/counterup.min.js"></script>
+<script src="assets/vendors/imagesloaded/imagesloaded.js"></script>
+<script src="assets/vendors/masonry/masonry.js"></script>
+<script src="assets/vendors/masonry/filter.js"></script>
+<script src="assets/vendors/owl-carousel/owl.carousel.js"></script>
+<script src="assets/js/jquery.scroller.js"></script>
+<script src="assets/vendors/progress-bar/jquery.appear.js"></script>
+<script src="assets/js/functions.js"></script>
+<script src="assets/js/contact.js"></script>

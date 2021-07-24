@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-content bg-white">
+    <!-- Main Slider -->
+    @Html.Action("HomeSlider", "Home")
+    <!-- Main Slider -->
+    <div class="content-block" id="content-area">
+        <!-- Popular Courses -->
+        @Html.Action("CompanyHistory", "Home")
+        <!-- Popular Courses END -->
+        <!-- portfolio -->
+        @Html.Action("RecentProjects", "Home")
+        <!-- portfolio End -->
+        <!-- Our Services -->
+        @Html.Action("OurServices", "Home")
+        <!-- Our Services End -->
+        <!-- Company history -->
+        @Html.Action("AboutOurHistory", "Home")
+        <!-- Company history End -->
+        <!-- Team -->
+        @Html.Action("OurTeamPage", "Home")
+        <!-- team End -->
+        @*@Html.Action("Appointment", "Home")*@
+        <!-- Testimonials -->
+        @*@Html.Action("Testimonials", "Home")*@
+        <!-- Testimonials End -->
+        <!-- Blog -->
+        @Html.Action("Blog", "Home")
+        <!-- Blog End -->
+    </div>
+    <!-- contact area END -->
+</div>

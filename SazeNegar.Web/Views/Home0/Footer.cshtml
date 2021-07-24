@@ -1,0 +1,104 @@
+﻿@model SazeNegar.Web.ViewModels.ContactUsViewModel
+<footer class="footer-style2">
+    <div class="footer-top bt0">
+        <div class="container">
+            <div class="row align-items-center footer-info">
+                <div class="col-lg-3 col-md-6 col-sm-6 m-md-b30">
+                    <div class="feature-container left footer-info-bx">
+                        <div class="feature-lg text-white">
+                            <span class="icon-cell"><img src="~/Content/client/images/icon/contact/icon3.png" alt="" /></span>
+                        </div>
+                        <div class="icon-content">
+                            <h5 class="ttr-tilte">آدرس</h5>
+                            <p>@Model.Address.ShortDescription</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 m-md-b30">
+                    <div class="feature-container left footer-info-bx">
+                        <div class="feature-lg text-white">
+                            <span class="icon-cell"><img src="~/Content/client/images/icon/contact/icon1.png" alt="" /></span>
+                        </div>
+                        <div class="icon-content">
+                            <h5 class="ttr-tilte">شماره تماس</h5>
+                            <p>@Model.Phone.ShortDescription</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 m-sm-b30">
+                    <div class="feature-container left footer-info-bx">
+                        <div class="feature-lg text-white">
+                            <span class="icon-cell"><img src="~/Content/client/images/icon/contact/icon2.png" alt="" /></span>
+                        </div>
+                        <div class="icon-content">
+                            <h5 class="ttr-tilte">آدرس ایمیل</h5>
+                            <p>@Model.Email.ShortDescription</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 text-left text-lg-right">
+                    <a href="/Home/ContactUsForm" class="btn btn-long d-sm-inline-block">با ما در تماس باشید</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-lg-7 col-md-12 col-sm-12">
+                    <div class="widget list-2">
+                        <h5 class="footer-title">صفحات</h5>
+                        <ul>
+                            <li><a href="index.html">خانه</a></li>
+
+                            <li><a href="/Project/Index">پروژه‌ها</a></li>
+                            <li><a href="/Blog/Index">بلاگ</a></li>
+                            <li><a href="#">سوالات متداول</a></li>
+                            <li><a href="#">جوایز</a></li>
+                            <li><a href="#">خدمات</a></li>
+                            <li><a href="#">تاریخچه ما</a></li>
+                            <li><a href="#">تیم ما</a></li>
+                            <li><a href="/Home/About">درباره ما</a></li>
+                            <li><a href="/Home/Contact">تماس با ما</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-5 col-md-12 col-sm-12">
+                    <div class="widget widget_info">
+                        @*<h5 class="footer-title">در خبر نامه ما عضو شوید</h5>
+                        <form class="subscribe-form m-b20"
+                              action="http://factro.themetrades.com/html/demo-rtl/~/Content/client/script/mailchamp.php" method="post">
+                            <div class="ajax-message"></div>
+                            <div class="input-group">
+                                <input name="ایمیل" required="required" class="form-control" placeholder="آدرس ایمیل"
+                                       type="ایمیل">
+                                <div class="input-group-append">
+                                    <button name="submit" value="Submit" type="submit"
+                                            class="btn btn-block radius-sm">
+                                        اشتراک
+                                    </button>
+                                </div>
+                            </div>
+                        </form>*@
+                        <ul class="list-inline ft-social-bx">
+                            <li><a href="@Model.Facebook.ShortDescription" class="btn button-sm"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="@Model.Twitter.ShortDescription" class="btn button-sm"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="@Model.Youtube.ShortDescription" class="btn button-sm"><i class="fa fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center text-md-left">
+                    <p class="m-b0">
+                        © طراحی شده توسط <a href="https://www.spad.co/">اسپاد</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- META ============================================= -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="canonical" href=" " />
+    <!-- OG -->
+    <meta name="robots" content="index, follow">
+
+    <meta name="keywords"
+          content="Web Design, Agency, Startup, Corporate, Creative, Studio, Marketing, Portfolio, Seo, Blogging, Development, Design" />
+    <meta name="author" content="ThemeTrades" />
+    <meta name="description"
+          content="Factro is a Fully Creative Mobile Responsive HTML Template. It is designed specifically for Agency, Startup, Corporate, Creative, Studio, Marketing, Portfolio, Seo, Blogging, Development, Design or other Agencys." />
+
+    <meta property="og:url" content=" " />
+    <meta property="og:site_name" content="Factro : Construction Multipurpose HTML Template" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_us" />
+    <meta property="og:title" content="Factro : Construction Multipurpose HTML Template" />
+    <meta property="og:description"
+          content="Factro is a Fully Creative Mobile Responsive HTML Template. It is designed specifically for Agency, Startup, Corporate, Creative, Studio, Marketing, Portfolio, Seo, Blogging, Development, Design or other Agencys" />
+    <meta property="og:image" content="../../demo/preview.html" />
+
+
+
+    <!-- FAVICONS ICON ============================================= -->
+    <link rel="icon" href="~/Content/client/images/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/client/images/favicon.png" />
+
+    <!-- PAGE TITLE HERE ============================================= -->
+    <title> سازه نگار </title>
+
+    <!-- MOBILE SPECIFIC ============================================= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--[if lt IE 9]>
+    <script src="~/Content/client/js/html5shiv.min.js"></script>
+    <script src="~/Content/client/js/respond.min.js"></script>
+    <![endif]-->
+    <!-- All PLUGINS CSS ============================================= -->
+    <link rel="stylesheet" type="text/css" href="~/Content/client/css/assets.css">
+    <link href="~/Content/client/css/assets.css" rel="stylesheet" />
+    <!-- TYPOGRAPHY ============================================= -->
+    <link rel="stylesheet" type="text/css" href="~/Content/client/css/typography.css">
+
+    <!-- SHORTCODES ============================================= -->
+    <link rel="stylesheet" type="text/css" href="~/Content/client/css/shortcodes/shortcodes.css">
+
+    <!-- STYLESHEETS ============================================= -->
+    <link rel="stylesheet" type="text/css" href="~/Content/client/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/client/css/rtl.css">
+    <link class="skin" rel="stylesheet" type="text/css" href="~/Content/client/css/color/color-2.css">
+    <link class="skin" rel="stylesheet" type="text/css" href="~/Content/client/vendors/scroll/scrollbar.css">
+
+    <!-- REVOLUTION SLIDER CSS ============================================= -->
+    <link rel="stylesheet" type="text/css" href="~/Content/client/vendors/revolution/css/layers.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/client/vendors/revolution/css/settings.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/client/vendors/revolution/css/navigation.css">
+    <!-- REVOLUTION SLIDER END -->
+</head>
+
+<body id="bg">
+    <div class="page-wraper">
+        <div id="loading-icon-bx"></div>
+        <!-- Header Top ==== -->
+        @Html.Action("Navbar", "Home")
+        <!-- Header Top END ==== -->
+        @Html.Action("HeaderTop", "Home")
+        <!-- Content -->
+        @RenderBody()
+        <!-- Content END-->
+        <!-- Footer ==== -->
+        @Html.Action("Footer", "Home")
+        <!-- Footer END ==== -->
+        <button class="back-to-top fa fa-chevron-up"></button>
+    </div>
+
+    <!-- External JavaScripts -->
+    <script src="~/Content/client/js/jquery.min.js"></script>
+    <script src="~/Content/client/js/jquery-migrate.min.js"></script>
+    <script src="~/Content/client/vendors/wow/wow.js"></script>
+    <script src="~/Content/client/vendors/bootstrap/js/popper.min.js"></script>
+    <script src="~/Content/client/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/client/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="~/Content/client/vendors/magnific-popup/magnific-popup.js"></script>
+    <script src="~/Content/client/vendors/counter/waypoints-min.js"></script>
+    <script src="~/Content/client/vendors/counter/counterup.min.js"></script>
+    <script src="~/Content/client/vendors/imagesloaded/imagesloaded.js"></script>
+    <script src="~/Content/client/vendors/masonry/masonry.js"></script>
+    <script src="~/Content/client/vendors/masonry/filter.js"></script>
+    <script src="~/Content/client/vendors/owl-carousel/owl.carousel.js"></script>
+    <script src="~/Content/client/js/jquery.scroller.js"></script>
+    <script src="~/Content/client/vendors/progress-bar/jquery.appear.js"></script>
+    <script src="~/Content/client/vendors/progress-bar/jquery.skillbar.js"></script>
+    <script src="~/Content/client/vendors/scroll/scrollbar.min.js"></script>
+    <script src="~/Content/client/js/functions.js"></script>
+    @*<script src="~/Content/client/js/contact.js"></script>*@
+
+    <!-- Revolution JavaScripts Files -->
+    <script src="~/Content/client/vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/Content/client/vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+    <script src="~/Content/client/vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="~/Content/client/vendors/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="~/Content/client/vendors/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="~/Content/client/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="~/Content/client/vendors/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="~/Content/client/vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="~/Content/client/vendors/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="~/Content/client/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="~/Content/client/vendors/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+
+            jQuery('.get-member-info').on('click', function () {
+                jQuery('.team-members-section .team-section').removeClass('active');
+                jQuery('[data-info=' + $(this).attr('data-id') + ']').addClass('active');
+
+            });
+            jQuery('.close-team').on('click', function () {
+                jQuery('.team-members-section .team-section').removeClass('active');
+            });
+
+            var ttrevapi;
+            var tpj = jQuery;
+            if (tpj("#rev_slider_1061_1").revolution == undefined) {
+                revslider_showDoubleJqueryError("#rev_slider_1061_1");
+            } else {
+                ttrevapi = tpj("#rev_slider_1061_1").show().revolution({
+                    sliderType: "standard",
+                    jsFileLocation: "revolution/js/",
+                    sliderLayout: "fullscreen",
+                    dottedOverlay: "none",
+                    delay: 9000,
+                    navigation: {
+                        keyboardNavigation: "off",
+                        keyboard_direction: "horizontal",
+                        mouseScrollNavigation: "off",
+                        mouseScrollReverse: "default",
+                        onHoverStop: "off",
+                        touch: {
+                            touchenabled: "on",
+                            swipe_threshold: 75,
+                            swipe_min_touches: 50,
+                            swipe_direction: "horizontal",
+                            drag_block_vertical: false
+                        }
+                        ,
+                        bullets: {
+                            enable: true,
+                            hide_onmobile: true,
+                            hide_under: 1024,
+                            style: "uranus",
+                            hide_onleave: false,
+                            direction: "vertical",
+                            h_align: "right",
+                            v_align: "center",
+                            h_offset: 30,
+                            v_offset: 0,
+                            space: 5,
+                            tmp: '<span class="tp-bullet-inner"></span>'
+                        }
+                    },
+                    responsiveLevels: [1240, 1024, 778, 480],
+                    visibilityLevels: [1240, 1024, 778, 480],
+                    gridwidth: [1240, 1024, 778, 480],
+                    gridheight: [868, 768, 960, 720],
+                    lazyType: "none",
+                    parallax: {
+                        type: "3D",
+                        origo: "slidercenter",
+                        speed: 1000,
+                        levels: [2, 4, 6, 8, 10, 12, 14, 16, 45, 50, 47, 48, 49, 50, 0, 50],
+                        type: "3D",
+                        ddd_shadow: "off",
+                        ddd_bgfreeze: "on",
+                        ddd_overflow: "hidden",
+                        ddd_layer_overflow: "visible",
+                        ddd_z_correction: 100,
+                    },
+                    spinner: "off",
+                    stopLoop: "on",
+                    stopAfterLoops: 0,
+                    stopAtSlide: 1,
+                    shuffle: "off",
+                    autoHeight: "off",
+                    fullScreenAutoWidth: "off",
+                    fullScreenAlignForce: "off",
+                    fullScreenOffsetContainer: "",
+                    fullScreenOffset: "0",
+                    disableProgressBar: "on",
+                    hideThumbsOnMobile: "off",
+                    hideSliderAtLimit: 0,
+                    hideCaptionAtLimit: 0,
+                    hideAllCaptionAtLilmit: 0,
+                    debugMode: false,
+                    fallbacks: {
+                        simplifyAll: "off",
+                        nextSlideOnWindowFocus: "off",
+                        disableFocusListener: false,
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

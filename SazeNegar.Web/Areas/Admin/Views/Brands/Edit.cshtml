@@ -1,0 +1,65 @@
+﻿@model SazeNegar.Core.Models.Brands
+
+
+@using SazeNegar.Core.Utility;
+@using System.Web.UI.WebControls;
+@using SazeNegar.Infrastructure;
+@{
+    ViewBag.Title = "ویرایش برند";
+}
+<input type="hidden" id="nav_active" value="static_content">
+<input type="hidden" id="nav_item_active" value="content">
+@{
+    if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger">
+            <strong>خطا!</strong> @ViewBag.Message
+        </div>
+    }
+}
+<div class="col-lg-12">
+    <div class="card card-custom gutter-b">
+        <div class="card-header">
+            <h3 class="card-title">
+                ویرایش برند
+            </h3>
+        </div>
+        @using (Html.BeginForm("Edit", "Brands", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="card-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Brand, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "form-text text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="@Url.Action("Index")" class="btn btn-secondary">انصراف</a>
+                <input type="submit" value="ثبت" class="btn btn-primary mr-2" />
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .image-input .image-input-wrapper {
+        width: 200px;
+    }
+</style>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/ckeditor/adapters/jquery.js"></script>
+    <script>
+        $(function () {
+            $('#Description').ckeditor();
+
+        });
+        new KTImageInput('car-image');
+    </script>
+}
+
+

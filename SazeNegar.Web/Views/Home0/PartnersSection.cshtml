@@ -1,0 +1,20 @@
+﻿@model List<SazeNegar.Core.Models.Partner>
+<div class="section-area section-sp2 bg-gray">
+    <div class="container wow fadeIn" data-wow-delay="0.8s">
+        <div class="heading-bx text-center">
+            <h6 class="title-ext m-b0">شرکای ما</h6>
+            <h2 class="title-head m-b0">شرکا و مشتریان</h2>
+            <div class="ttr-separator sepimg"></div>
+        </div>
+        <div class="client-logo-carousel owl-carousel owl-none">
+            @foreach (var item in Model)
+            {
+                <div class="item">
+                    <div class="client-logo">
+                        <a href="javascript:;"><img src="/Files/PartnersImages/@item.Image" alt="@item.Title" /></a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

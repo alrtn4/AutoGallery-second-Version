@@ -1,0 +1,62 @@
+﻿@model List<SazeNegar.Core.Models.Service>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Content -->
+<div class="page-content bg-white">
+    <!-- Page Heading Box ==== -->
+    <div class="page-banner page-banner-sm">
+        <div class="container">
+            <div class="page-banner-entry">
+                <h1 class="text-black">خدمات</h1>
+                <div class="breadcrumb-row text-black">
+                    <ul class="list-inline">
+                        <li><a href="index.html"><i class="fa fa-home"></i> خانه </a></li>
+                        <li>خدمات</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Heading Box END ==== -->
+    <!-- Main Slider -->
+    <div class="content-block" id="content-area">
+        <!-- Form -->
+        <div class="section-area section-sp1">
+            <div class="container">
+                <div>
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="service-img-bx wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="service-media">
+                                <div class="video-media-bx split-box">
+                                    <div>
+                                        <img src="~/Files/ServiceImages/Image/@item.Image" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-info">
+                                <div class="title">
+                                    <h3>@item.Title</h3>
+                                    <p>
+                                       @item.Description
+                                    </p>
+                                </div>
+                                @*<a href="" class="btn radius-xl"> مشاهده خدمات </a>*@
+                            </div>
+                        </div>
+                    }
+
+
+
+                </div>
+            </div>
+        </div>
+        @Html.Action("PartnersSection", "Home")
+
+    </div>
+    <!-- contact area END -->
+</div>
+<!-- Content END-->

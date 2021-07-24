@@ -1,0 +1,36 @@
+﻿@model List<SazeNegar.Core.Models.OurTeam>
+
+<div class="section-area section-sp1 team-page bg-white"
+     style="background-image:url(~/Content/client/images/background/bg2.png); background-position:bottom; background-size:100%;">
+    <div class="container">
+        <div class="heading-bx text-center">
+            <h6 class="title-ext m-b0"> عضو تیم ما </h6>
+            <h2 class="title-head m-b0">آشنایی با <br />اعضای تیم</h2>
+            <div class="ttr-separator sepimg"></div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-6 col-xl-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-member m-b20 style-1">
+                        <div class="team-media">
+                            <img src="/Files/OurTeamImages/@item.Image" alt="">
+                            @*<ul class="team-social">
+                                <li><a href="team.html"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="team.html"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="team.html"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="team.html"><i class="fa fa-twitter"></i></a></li>
+                            </ul>*@
+                        </div>
+                        <div class="team-info">
+                            <h4 class="title"><a href="javascript:void(0)">@item.Title</a></h4>
+                            <span>@item.Role </span>
+                        </div>
+                    </div>
+                </div>
+            } 
+            
+
+        </div>
+    </div>
+</div>

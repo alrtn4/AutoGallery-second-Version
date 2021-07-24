@@ -1,0 +1,162 @@
+﻿@model SazeNegar.Web.ViewModels.ArticleDetailsViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Content -->
+<div class="page-content bg-white">
+    <!-- Page Heading Box ==== -->
+    <div class="page-banner page-banner-sm">
+        <div class="container">
+            <div class="page-banner-entry">
+                <h1 class="text-black">جزییات بلاگ</h1>
+                <div class="breadcrumb-row text-black">
+                    <ul class="list-inline">
+                        <li><a href="/Home/Index"><i class="fa fa-home"></i> خانه </a></li>
+                        <li>جزییات بلاگ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Heading Box END ==== -->
+    <!-- Main Slider -->
+    <div class="content-block" id="content-area">
+        <!-- Popular Courses -->
+        <div class="section-area section-sp2 bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8 col-xl-8 m-md-b50 wow fadeInUp" data-wow-delay="0.2s">
+                        <!-- blog start -->
+                        <div class="blog-lg blog-single">
+                            <div class="action-box blog-lg">
+                                <img src="/Files/ArticleImages/Image/@Model.Image" alt="">
+                            </div>
+                            <div class="info-bx">
+                                <ul class="media-post">
+                                    <li class="date"><a href="javascript:;"><i class="fa fa-calendar-o"></i>@Model.PersianDate</a></li>
+                                </ul>
+                                <div class="ttr-post-title">
+                                    <h4 class="post-title">@Model.Title</h4>
+                                </div>
+                                <div class="ttr-post-text">
+                                    <p>
+                                        @Html.Raw(Model.Description)
+                                    </p>
+                                </div>
+                                <div class="ttr-divider bg-gray"><i class="icon-dot c-square"></i></div>
+                            </div>
+                        </div>
+                        <div class="clear" id="comment-list">
+                            <div class="comments-area" id="comments">
+                                <h2 class="comments-title">(@Model.ArticleComments.Count) نظر</h2>
+                                <div class="clearfix">
+                                    <!-- comment list END -->
+                                    <ol class="comment-list">
+                                        <li class="comment">
+                                            @{
+
+                                                foreach (var item in Model.ArticleComments.Where(c => c.ParentId == null))
+                                                {
+                                                    <div class="comment-body">
+                                                        <div class="comment-author vcard">
+                                                            <img class="avatar photo"
+                                                                 src="~/Files/UserAvatars/user-avatar.png" alt=""> <cite class="fn">@item.Name</cite> <span class="says">says:</span>
+                                                            </div>
+                                                            <div class="comment-meta"> <a href="#">@Model.PersianDate</a> </div>
+                                                            <p>
+                                                                @item.Message
+                                                            </p>
+                                                            @*<div class="reply"><a onclick="AnswerComment(@item.Id,'@item.Name')" class="comment-reply-link">پاسخ</a></div>*@
+                                                        </div>
+
+                                                        foreach (var child in Model.ArticleComments.Where(c => c.ParentId == item.Id))
+                                                        {
+                                                            <ol class="children">
+                                                                <li class="comment odd parent">
+                                                                    <div class="comment-body">
+                                                                        <div class="comment-author vcard">
+                                                                            <img class="avatar photo"
+                                                                                 src="~/Files/UserAvatars/user-avatar.png" alt="@child.Name"> <cite class="fn">@child.Name</cite>
+                                                                                <span class="says">says:</span>
+                                                                            </div>
+                                                                            <div class="comment-meta"> <a href="#">@Model.PersianDate</a> </div>
+                                                                            <p>
+                                                                                @child.Message
+                                                                            </p>
+                                                                            @*<a onclick="AnswerComment(@item.Id,'@item.Name')" class="comment-reply-link">پاسخ</a>*@
+                                                                        </div>
+
+                                                                        <!-- list END -->
+                                                                    </li>
+
+                                                                </ol>
+
+                                                            }
+
+                                                        }
+                                            }
+                                            <!-- list END -->
+                                        </li>
+                                    </ol>
+                                    <!-- comment list END -->
+                                    <!-- Form -->
+                                    <div class="comment-respond" id="respond">
+                                        <h4 class="comment-reply-title" id="reply-title">
+                                            نظر بدهید<small>
+                                                <a style="display:none;"
+                                                   href="#" id="cancel-comment-reply-link" rel="nofollow">Cancel reply</a>
+                                            </small>
+                                        </h4>
+                                        @using (Html.BeginForm("PostComment", "Blog", FormMethod.Post, new { id = "commentform", @class = "comment-form" }))
+                                        {
+                                            <input type="hidden" id="ArticleId" name="ArticleId" value="@Model.Id">
+                                            <input type="hidden" id="ParentId" name="ParentId" value="">
+                                            <p class="comment-form-comment">
+                                                <label for="author">نام<span class="required">*</span></label>
+                                                <input type="text" value="" name="name" placeholder="نام و نام خانوادگی" id="author">
+                                            </p>
+                                            <p class="comment-form-comment">
+                                                <label for="email">ایمیل<span class="required">*</span></label>
+                                                <input type="text" value="" placeholder="ایمیل" name="email" id="email">
+                                            </p>
+                                            <p class="comment-form-comment">
+                                                <label for="message">پیام</label>
+                                                <textarea rows="8" name="message" placeholder="پیام" id="comment"></textarea>
+                                            </p>
+                                            <p class="form-submit">
+                                                <input type="submit" value="ارسال نظر" class="submit" id="submit" name="submit">
+                                            </p>
+                                        }
+                                    </div>
+                                    <!-- Form -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- blog END -->
+                    </div>
+                    <div class="col-md-12 col-lg-4 col-xl-4  sticky-top wow fadeInUp" data-wow-delay="0.4s">
+                        <aside class="side-bar sticky-top aside-bx">
+                            @*<div class="widget">
+                                <div class="search-bx style-1">
+                                    <form role="search" method="post">
+                                        <div class="input-group">
+                                            <input name="text" class="form-control" placeholder="اینجا جستجو کنید" type="text">
+                                            <span class="input-group-btn">
+                                                <button type="submit" class="fa fa-search text-primary"></button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>*@
+                            @Html.Action("TopArticlesSection", "Blog")
+
+                            @Html.Action("ArticleTag", "Blog")
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact area END -->
+</div>
+<!-- Content END-->

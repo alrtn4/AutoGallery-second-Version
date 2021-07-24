@@ -1,0 +1,57 @@
+﻿
+@model SazeNegar.Core.Models.ContactForm
+
+<div class="section-area section-sp1 bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 m-md-b30">
+                <div class="video-bx appoint-video">
+                    <img src="~/Content/client/images/about/pic4.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "form" }))
+                {
+                    <div class="ajax-message"></div>
+                    <div class="heading-bx text-white">
+                        <h6 class="title-ext m-b0">قرار ملاقات</h6>
+                        <h2 class="title-head m-b0">یک قرار ملاقات رایگان با ما</h2>
+                        <div class="ttr-separator sepimg2"></div>
+                    </div>
+                    <div class="row placeani appoint-bx1">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "input-group input-bx" })*@
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "نام و نام خانوادگی" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "input-group input-bx" })*@
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "ایمیل" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                @*@Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "input-group input-bx" })*@
+                                @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control", placeholder = "پیام", rows = "4" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-12">
+                            <button name="submit" type="submit" value="Submit" class="btn-secondry button-md">
+                                ارسال
+                                پیام
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $.validator.unobtrusive.parse("#form");
+</script>

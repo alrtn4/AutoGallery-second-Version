@@ -1,0 +1,19 @@
+﻿@model SazeNegar.Web.ViewModels.ContactUsViewModel
+
+<div class="col-lg-4 col-md-12 wow fadeIn right-info bg-primary p-sm-lr15" data-wow-delay="0.4s">
+    <div class="contact-icon-box">
+        <h5 class="title"><i class="icon la la-map-marker-alt"></i>آدرس</h5>
+        <p>@Model.Address.ShortDescription</p>
+        <i class="la la-map-marker-alt bg-icon"></i>
+    </div>
+    <div class="contact-icon-box">
+        <h5 class="title"><i class="icon la la-phone-volume"></i>شماره تماس</h5>
+        <a href="tel:@Model.Phone.ShortDescription"><p>@Model.Phone.ShortDescription</p></a>
+        <i class="la la-phone-volume bg-icon"></i>
+    </div>
+    <div class="contact-icon-box">
+        <h5 class="title"><i class="icon la la-envelope-open"></i>آدرس ایمیل</h5>
+        <a href="mailto: @Model.Email.ShortDescription">@Model.Email.ShortDescription</a>
+        <i class="la la-envelope-open bg-icon"></i>
+    </div>
+</div>

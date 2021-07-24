@@ -1,0 +1,71 @@
+﻿@*﻿@model List<SazeNegar.Core.Models.Cart>*@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="headline margin-bottom-25 margin-top-65">تازه ها</h3>
+        </div>
+
+        <!-- Carousel -->
+        <div class="col-md-12">
+            <div class="carousel">
+                @{
+                    foreach (var item in Model)
+                    {
+
+                        <!-- Listing Item -->
+                        <div class="carousel-item">
+                            <div class="listing-item">
+
+                                <a href="@item.Link" class="listing-img-container">
+
+                                    <div class="listing-badges">
+                                        <span class="featured">@item.Special</span>
+                                        <span>@item.Tag</span>
+                                    </div>
+
+                                    <div class="listing-img-content">
+                                        <span class="listing-price">@item.Price تومان </span>
+
+                                    </div>
+
+                                    @*<div class="listing-carousel">*@
+                                    <div><img src="/Files/SliderCart/image/@item.Image" alt=""></div>
+                                    @*</div>*@
+
+                                </a>
+
+                                <div class="listing-content">
+
+                                    <div class="listing-title">
+                                        <h4><a href="@item.Link">@item.Brand</a></h4>
+
+                                    </div>
+
+                                    <ul class="listing-features">
+                                        <li>دنده <span>@item.Gear</span></li>
+                                        <li>سانروف <span>@item.Sunroof</span></li>
+                                        <li>نویگیشن <span>@item.Navigation</span></li>
+                                    </ul>
+
+                                    <div class="listing-footer">
+
+                                        <span><i class="fa fa-calendar-o"></i> @item.Date</span>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Listing Item / End -->
+                    }
+                }
+
+            </div>
+        </div>
+        <!-- Carousel / End -->
+
+    </div>
+</div>

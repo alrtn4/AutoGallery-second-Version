@@ -1,0 +1,41 @@
+﻿@model SazeNegar.Core.Models.StaticContentDetail
+<div class="section-area section-sp2 bg-white"
+     style="background-image:url(~/Content/client/images/background/bg2.png); background-position:bottom; background-size:100%;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12 wow fadeIn m-md-b40" data-wow-delay="0.3s">
+                <div class="heading-bx m-b30">
+                    <h6 class="title-ext m-b0">خوش آمدید به سازه نگار</h6>
+                    <h2 class="title-head m-b0">@Model.Title</h2>
+                    <div class="ttr-separator sepimg"></div>
+                    <p class="head-px2">
+                        @Html.Raw(Model.Description)
+                    </p>
+                </div>
+                <a href="/Home/ContactUsForm" class="btn m-r10">ارتباط با ما</a>
+                <a href="/Home/About" class="btn-secondry">درباره ما</a>
+            </div>
+            <div class="col-lg-6 col-md-12 wow fadeIn" data-wow-delay="0.6s">
+                <div class="about-img-box4 row sp10">
+                    <div class="col-lg-12">
+                        <div class="about-img1">
+                            <img src="~/Files/StaticContentImages/Image/@Model.Image" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 m-b10 m-t10">
+                        <div class="about-img2">
+                            <img src="~/Files/StaticContentImages/Image/@Model.Image" alt="">
+                        </div>
+                    </div>
+                    <div class="about-img-inner">
+                        <div>
+                            <h2 class="title"><span class="counter">12</span>+</h2>
+                            <span>پیشرو سال در صنعت </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,378 @@
+﻿@model SazeNegar.Web.ViewModels.AboutUsViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Content -->
+<div class="page-content bg-white">
+    <!-- Page Heading Box ==== -->
+    <div class="page-banner page-banner-sm">
+        <div class="container">
+            <div class="page-banner-entry">
+                <h1 class="text-black">درباره ما</h1>
+                <div class="breadcrumb-row text-black">
+                    <ul class="list-inline">
+                        <li><a href="index.html"><i class="fa fa-home"></i> خانه </a></li>
+                        <li>درباره ما</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Heading Box END ==== -->
+    <!-- Main Slider -->
+    <div class="content-block" id="content-area">
+        <div class="section-area section-sp2">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12 wow fadeIn m-md-b40" data-wow-delay="0.3s"
+                         style="visibility: visible; animation-delay: 0.3s; animation-name: fadeIn;">
+                        <div class="heading-bx m-b20">
+                            <h6 class="title-ext m-b0">خوش آمدید به سازه نگار</h6>
+                            <h2 class="title-head m-b0">@Model.Title</h2>
+                            <div class="ttr-separator sepimg"></div>
+                            <p class="head-px2">
+                                @Model.ShortDescription
+                            </p>
+                        </div>
+                        <!-- start progress bar item -->
+                        <a href="/Home/ContactUsForm" class="btn">با ما در تماس باشید</a>
+                    </div>
+                    <div class="col-lg-6 col-md-12 wow fadeIn" data-wow-delay="0.6s"
+                         style="visibility: visible; animation-delay: 0.6s; animation-name: fadeIn;">
+                        <div class="skillbar-box">
+                            <h6 class="title">تکنولوژی پیشرفته</h6>
+                            <div class="skillbar appear" data-percent="96%">
+                                <p class="skillbar-bar"></p>
+                                <span class="skill-bar-percent">96%</span>
+                            </div>
+                        </div>
+                        <div class="skillbar-box">
+                            <h6 class="title">تحویل به موقع</h6>
+                            <div class="skillbar appear" data-percent="92%">
+                                <p class="skillbar-bar"></p>
+                                <span class="skill-bar-percent">92%</span>
+                            </div>
+                        </div>
+                        <div class="skillbar-box">
+                            <h6 class="title">مهندسان معتبر</h6>
+                            <div class="skillbar appear" data-percent="79%">
+                                <p class="skillbar-bar"></p>
+                                <span class="skill-bar-percent">79%</span>
+                            </div>
+                        </div>
+                        <div class="skillbar-box m-sm-b0">
+                            <h6 class="title">6 سال تجربه</h6>
+                            <div class="skillbar appear" data-percent="75%">
+                                <p class="skillbar-bar"></p>
+                                <span class="skill-bar-percent">75%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent News -->
+        @Html.Action("Portfolio", "Home")
+        @*<div class="section-area section-sp2">
+            <div class="container">
+                <div class="heading-bx text-center">
+                    <h6 class="title-ext m-b0">پروسه کاری ما</h6>
+                    <h2 class="title-head m-b0">ما که هستیم</h2>
+                    <div class="ttr-separator sepimg"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 m-sm-b40">
+                        <div class="feature-container center feature-bx3 right-img">
+                            <div class="feature-box-xl text-black bg-white m-b20 radius ">
+                                <a href="javascript:;" class="icon-cell"><i class="flaticon-helmet"></i></a>
+                                <span class="icon-no">01</span>
+                            </div>
+                            <div class="icon-content">
+                                <h4 class="ttr-tilte">ما که هستیم</h4>
+                                <p>
+                                    در اینجا تعداد زیادی از متغیرهای لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                </p>
+                            </div>
+                            <i class="ti-panel bg-icon"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-4 m-sm-b40">
+                        <div class="feature-container center feature-bx3 right-img2">
+                            <div class="feature-box-xl text-black bg-white m-b20 radius ">
+                                <a href="javascript:;" class="icon-cell"><i class="flaticon-engineer"></i></a>
+                                <span class="icon-no">02</span>
+                            </div>
+                            <div class="icon-content">
+                                <h4 class="ttr-tilte">امنیت ما</h4>
+                                <p>
+                                    در اینجا تعداد زیادی از متغیرهای لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                </p>
+                            </div>
+                            <i class="ti-panel bg-icon"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-container center feature-bx3">
+                            <div class="feature-box-xl text-black bg-white m-b20 radius ">
+                                <a href="javascript:;" class="icon-cell"><i class="flaticon-factory-1"></i></a>
+                                <span class="icon-no">03</span>
+                            </div>
+                            <div class="icon-content">
+                                <h4 class="ttr-tilte">پروسه ما</h4>
+                                <p>
+                                    در اینجا تعداد زیادی از متغیرهای لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                    استفاده از طراحان گرافیک است.
+                                </p>
+                            </div>
+                            <i class="ti-panel bg-icon"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center m-t50">
+                        <a href="contact.html" class="btn">با ما در تماس باشید</a>
+                    </div>
+                </div>
+                <div class="ttr-divider bg-black op2 tb50"></div>
+                <div class="client-logo-carousel owl-carousel owl-none">
+                    <div class="item">
+                        <div class="client-logo">
+                            <a href="javascript:;"><img src="~/Content/client/images/partner/logo1.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="client-logo">
+                            <a href="javascript:;"><img src="~/Content/client/images/partner/logo2.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="client-logo">
+                            <a href="javascript:;"><img src="~/Content/client/images/partner/logo3.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="client-logo">
+                            <a href="javascript:;"><img src="~/Content/client/images/partner/logo4.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="client-logo">
+                            <a href="javascript:;"><img src="~/Content/client/images/partner/logo5.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="client-logo">
+                            <a href="javascript:;"><img src="~/Content/client/images/partner/logo6.png" alt="" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        <!-- Form END -->
+        @*<div class="section-area section-sp2 bg-primary parallax ovbl-dark"
+             style="background-image:url(~/Content/client/images/background/bg1.jpg);">
+            <div class="container">
+                <div class="heading-bx text-center text-white">
+                    <h6 class="title-ext m-b0">اعضای تیم</h6>
+                    <h2 class="title-head m-b0">متخصصان ما </h2>
+                    <div class="ttr-separator sepimg2"></div>
+                </div>
+                <div class="team-members">
+                    <div class="team-members-area">
+                        <div class="item">
+                            <div class="team-media get-member-info" data-id="TeamMember_1">
+                                <a href="javascript:;">
+                                    <img src="~/Content/client/images/testimonials/pic1.jpg" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="team-media get-member-info" data-id="TeamMember_2">
+                                <a href="javascript:;">
+                                    <img src="~/Content/client/images/testimonials/pic2.jpg" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="team-media get-member-info" data-id="TeamMember_3">
+                                <a href="javascript:;">
+                                    <img src="~/Content/client/images/testimonials/pic3.jpg" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="team-media get-member-info" data-id="TeamMember_4">
+                                <a href="javascript:;">
+                                    <img src="~/Content/client/images/testimonials/pic4.jpg" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="team-media get-member-info" data-id="TeamMember_5">
+                                <a href="javascript:;">
+                                    <img src="~/Content/client/images/testimonials/pic5.jpg" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="team-media get-member-info" data-id="TeamMember_6">
+                                <a href="javascript:;">
+                                    <img src="~/Content/client/images/testimonials/pic6.jpg" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-members-section">
+                        <div class="team-section" data-info="TeamMember_1">
+                            <div class="team-box">
+                                <div class="team-media">
+                                    <img src="~/Content/client/images/team/pic1.jpg" alt="" />
+                                </div>
+                                <div class="team-info">
+                                    <h4 class="team-title"><a href="javascript:;">حسین رضایی</a></h4>
+                                    <span>مهندس</span>
+                                    <p>
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی
+                                        مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                    </p>
+                                    <ul class="list-inline team-social">
+                                        <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="javascript:void(0);" class="close-team">&times;</a>
+                        </div>
+                        <div class="team-section" data-info="TeamMember_2">
+                            <div class="team-box">
+                                <div class="team-media">
+                                    <img src="~/Content/client/images/team/pic2.jpg" alt="" />
+                                </div>
+                                <div class="team-info">
+                                    <h4 class="team-title"><a href="javascript:;">حسین رضایی</a></h4>
+                                    <span>مهندس</span>
+                                    <p>
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی
+                                        مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                    </p>
+                                    <ul class="list-inline team-social">
+                                        <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="javascript:void(0);" class="close-team">&times;</a>
+                        </div>
+                        <div class="team-section" data-info="TeamMember_3">
+                            <div class="team-box">
+                                <div class="team-media">
+                                    <img src="~/Content/client/images/team/pic3.jpg" alt="" />
+                                </div>
+                                <div class="team-info">
+                                    <h4 class="team-title"><a href="javascript:;">حسین رضایی</a></h4>
+                                    <span>مهندس</span>
+                                    <p>
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی
+                                        مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                    </p>
+                                    <ul class="list-inline team-social">
+                                        <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="javascript:void(0);" class="close-team">&times;</a>
+                        </div>
+                        <div class="team-section" data-info="TeamMember_4">
+                            <div class="team-box">
+                                <div class="team-media">
+                                    <img src="~/Content/client/images/team/pic4.jpg" alt="" />
+                                </div>
+                                <div class="team-info">
+                                    <h4 class="team-title"><a href="javascript:;">حسین رضایی</a></h4>
+                                    <span>مهندس</span>
+                                    <p>
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی
+                                        مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                    </p>
+                                    <ul class="list-inline team-social">
+                                        <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="javascript:void(0);" class="close-team">&times;</a>
+                        </div>
+                        <div class="team-section" data-info="TeamMember_5">
+                            <div class="team-box">
+                                <div class="team-media">
+                                    <img src="~/Content/client/images/team/pic5.jpg" alt="" />
+                                </div>
+                                <div class="team-info">
+                                    <h4 class="team-title"><a href="javascript:;">حسین رضایی</a></h4>
+                                    <span>مهندس</span>
+                                    <p>
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی
+                                        مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                    </p>
+                                    <ul class="list-inline team-social">
+                                        <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="javascript:void(0);" class="close-team">&times;</a>
+                        </div>
+                        <div class="team-section" data-info="TeamMember_6">
+                            <div class="team-box">
+                                <div class="team-media">
+                                    <img src="~/Content/client/images/team/pic6.jpg" alt="" />
+                                </div>
+                                <div class="team-info">
+                                    <h4 class="team-title"><a href="javascript:;">حسین رضایی</a></h4>
+                                    <span>مهندس</span>
+                                    <p>
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی
+                                        مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                    </p>
+                                    <ul class="list-inline team-social">
+                                        <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="javascript:void(0);" class="close-team">&times;</a>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a href="get-in-touch.html" class="btn">ارسال</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>*@
+
+
+    </div>
+    <!-- Content END-->
+</div>

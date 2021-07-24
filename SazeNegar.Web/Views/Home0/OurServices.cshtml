@@ -1,0 +1,61 @@
+﻿@model List<SazeNegar.Core.Models.OurService>
+<div class="section-area section-sp1 bg-white">
+    <div class="container">
+        <div class="row">
+            @if (Model.ElementAtOrDefault(2) != null)
+            {
+                <div class="col-lg-4 col-md-6 wow fadeInUp m-md-b30" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <div class="feature-container feature-bx2">
+                        <div class="feature-lg text-white m-b20">
+                            <span class="icon-cell"><i class="ti-world"></i></span>
+                        </div>
+                        <div class="icon-content">
+                            <h4 class="ttr-tilte">@Model[2].Title</h4>
+                            <p>
+                                @Model[2].Description
+                            </p>
+                            <a href="javascript:void(0)" class="feature-btn"><i class="la"></i></a>
+                        </div>
+                        <i class="ti-world bg-icon"></i>
+                    </div>
+                </div>
+            }
+            @if (Model.ElementAtOrDefault(1) != null)
+            {
+                <div class="col-lg-4 col-md-6 wow fadeInUp m-md-b30" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                    <div class="feature-container feature-bx2">
+                        <div class="feature-lg text-white m-b20">
+                            <span class="icon-cell"><i class="ti-shield"></i></span>
+                        </div>
+                        <div class="icon-content">
+                            <h4 class="ttr-tilte">@Model[1].Title</h4>
+                            <p>
+                                @Model[1].Description
+                            </p>
+                            <a href="javascript:void(0)" class="feature-btn"><i class="la"></i></a>
+                        </div>
+                        <i class="ti-shield bg-icon"></i>
+                    </div>
+                </div>
+            }
+            @if (Model.ElementAtOrDefault(0) != null)
+            {
+                <div class="col-lg-4 col-md-12 wow fadeInUp m-md-b30" data-wow-delay="0.9s" style="visibility: visible; animation-delay: 0.9s; animation-name: fadeInUp;">
+                    <div class="feature-container feature-bx2">
+                        <div class="feature-lg text-white m-b20">
+                            <span class="icon-cell"><i class="ti-panel"></i></span>
+                        </div>
+                        <div class="icon-content">
+                            <h4 class="ttr-tilte">@Model[0].Title</h4>
+                            <p>
+                                @Model[0].Description
+                            </p>
+                            <a href="javascript:void(0)" class="feature-btn"><i class="la"></i></a>
+                        </div>
+                        <i class="ti-panel bg-icon"></i>
+                    </div>
+                </div>
+            }
+            </div>
+    </div>
+</div>

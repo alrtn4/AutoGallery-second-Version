@@ -1,0 +1,46 @@
+﻿@using SazeNegar.Core.Models
+@model List<SazeNegar.Core.Models.Project>
+
+<div class="section-area bg-primary section-sp2 ovbl-dark"
+     style="background-image:url(~/Content/client/images/background/bg1.jpg);">
+    <div class="container">
+        <div class="d-lg-flex align-items-end justify-content-between">
+            <div class="heading-bx text-white text-lg-left text-center">
+                <h2 class="title-head m-b0"> نمونه کارها </h2>
+                <div class="ttr-separator sepimg2"></div>
+            </div>
+            <div class="feature-filters clearfix text-white center right m-b50 style1">
+                <ul class="filters" data-toggle="buttons">
+                    <li data-filter="" class="btn active">
+                        <input type="radio">
+                        <a href="#"><span> همه موارد </span></a>
+                    </li>
+                @foreach (var item in ViewBag.Categories as List<ProjectCategory>)
+                {
+                    <li data-filter="@(item.Id)" class="btn">
+                        <input type="radio">
+                        <a href="javascript:;"><span>@item.Name</span></a>
+                    </li>
+                }
+                </ul>
+            </div>
+        </div>
+        <div class="row sp4 magnific-image" id="masonry">
+        @foreach (var item in Model)
+        {
+            <div class="action-card col-lg-4 col-md-6 col-sm-6 col-12 @(item.ProjectCategoryId) wow fadeInUp" data-wow-delay="0.2s">
+                <div class="portfolio-box style-2">
+                    <div class="portfolio-media">
+                        <img src="~/Files/ProjectImages/Image/@item.Image" alt="">
+                    </div>
+                    <div class="portfolio-info">
+                        <h4 class="title"><a href="/Project/Details/@item.Id">@item.Title</a></h4>
+                        <span class="exe-title">@item.ShortDescription</span>
+                    </div>
+                    <a href="~/Files/ProjectImages/Image/@item.Image" class="magnific-anchor"> مشاهده تصویر </a>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
+</div>

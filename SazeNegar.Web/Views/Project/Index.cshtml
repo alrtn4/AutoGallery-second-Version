@@ -1,0 +1,69 @@
+﻿@using SazeNegar.Core.Models
+@model List<SazeNegar.Core.Models.Project>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content -->
+<div class="page-content bg-white">
+    <!-- Page Heading Box ==== -->
+    <div class="page-banner ovbl-dark parallax" style="background-image:url(~/Content/client/images/banner/banner1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry">
+                <h1 class="text-white">پروژه ها</h1>
+                <div class="breadcrumb-row">
+                    <ul class="list-inline">
+                        <li><a href="index.html"><i class="fa fa-home"></i> خانه </a></li>
+                        <li>
+                            پروژه ها
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Heading Box END ==== -->
+    <!-- Main Slider -->
+    <div class="content-block" id="content-area">
+        <div class="section-area section-sp2 bg-white">
+            <div class="container">
+                <div class="feature-filters clearfix center m-b40 style1">
+                    <ul class="filters" data-toggle="buttons">
+                        <li data-filter="" class="btn active">
+                            <input type="radio">
+                            <a href="javascript:;"><span> همه </span></a>
+                        </li>
+                        @foreach (var item in ViewBag.Categories as List<ProjectCategory>)
+                        {
+                            <li data-filter="@(item.Id)" class="btn">
+                                <input type="radio">
+                                <a href="javascript:;"><span>@item.Name</span></a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="row sp4 magnific-image" id="masonry">
+                @foreach (var item in Model)
+                {
+                    <div class="action-card col-lg-4 col-md-6 col-sm-6 col-12 @(item.ProjectCategoryId) wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="portfolio-box style-2">
+                            <div class="portfolio-media">
+                                <img src="~/Files/ProjectImages/Image/@item.Image" alt="">
+                            </div>
+                            <div class="portfolio-info">
+                                <h4 class="title"><a href="/Project/Details/@item.Id">@item.Title</a></h4>
+                                <span class="exe-title">@item.ShortDescription</span>
+                            </div>
+                            <a href="~/Files/ProjectImages/Image/@item.Image" class="magnific-anchor"> مشاهده تصویر </a>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact area END -->
+</div>
+<!-- Content END-->
