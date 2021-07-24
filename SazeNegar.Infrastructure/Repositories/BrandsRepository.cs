@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,11 @@ namespace SazeNegar.Infrastructure.Repositories
         public List<CarModel> GetModelsList()
         {
             return _context.CarModels.Where(i => i.IsDeleted == false).ToList();
+        }
+
+        public UpdateModel(Brands brands)
+        {
+            
         }
     }
 }

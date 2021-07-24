@@ -54,24 +54,30 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Brands brands = _repo.Get(id.Value);
-            if (brands == null)
+
+            BrandModelViewModel brandModelViewModel = new BrandModelViewModel();
+               brandModelViewModel.Brands = _repo.Get(id.Value);
+               brandModelViewModel.ModelsList = _repo.GetModelsList();
+               ViewBag.ModelId = _repo.Get(id.Value).CarModelId;
+            if (brandModelViewModel.Brands == null)
             {
                 return HttpNotFound();
             }
-            return View(brands);
+            return View(brandModelViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Brands brands)
+        public ActionResult Edit(BrandModelViewModel brandModelViewModel, int selectedModel)
         {
             if (ModelState.IsValid)
             {
-                _repo.Update(brands);
+                brandModelViewModel.Brands.CarModelId = selectedModel;
+                _repo.UpdateModel(brandModelViewModel.Brands);
+                _repo.Update(brandModelViewModel.Brands);
                 return RedirectToAction("Index");
             }
-            return View(brands);
+            return View(brandModelViewModel);
         }
 
         // GET: Admin/ArticleCategories/Delete/5
