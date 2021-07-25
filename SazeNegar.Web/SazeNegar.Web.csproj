@@ -3018,7 +3018,7 @@
     <Content Include="Content\AutoGallery\images\23.webp" />
     <Content Include="Content\AutoGallery\images\24.webp" />
     <Content Include="Areas\Admin\Views\StaticContentDetails\CreateBanner.cshtml" />
-    <Content Include="Areas\Admin\Views\SliderCart\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SliderCart\Create0.cshtml" />
     <Content Include="Areas\Admin\Views\SliderCart\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\SliderCart\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SliderCart\Edit.cshtml" />
@@ -3032,13 +3032,14 @@
     <Content Include="Areas\Admin\Views\Brands\Index.cshtml" />
     <Content Include="Areas\Admin\Views\CarModel\Create.cshtml" />
     <Content Include="Areas\Admin\Views\CarModel\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\CarModel\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CarModel\Index.cshtml" />
     <Content Include="Areas\Admin\Views\CarClass\Create.cshtml" />
     <Content Include="Areas\Admin\Views\CarClass\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\CarClass\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CarClass\Index.cshtml" />
     <Content Include="Areas\Admin\Views\CarModel\CarModelCarClass.cshtml" />
+    <Content Include="Areas\Admin\Views\CarModel\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SliderCart\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

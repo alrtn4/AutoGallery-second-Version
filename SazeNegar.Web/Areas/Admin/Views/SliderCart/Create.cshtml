@@ -27,89 +27,14 @@
         @using (Html.BeginForm("Create", "SliderCart", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
-            @*<input type="hidden" id="StaticContentTypeId" name="StaticContentTypeId" value="@ViewBag.StaticContentTypeId">*@
 
             <div class="card-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
+                    @Html.LabelFor(model => model.CarsId, "دسته بندی", new { })
                     <div class="col-md-5">
-                        @*@Html.ValidationMessageFor(model => model., "", new { @class = "form-text text-danger" })*@
-
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Title, new { })
-                    <div class="col-md-5">
-                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control " } })
-                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "form-text text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Special, new { })
-                    <div class="col-md-5">
-                        @Html.EditorFor(model => model.Special, new { htmlAttributes = new { @class = "form-control " } })
-                        @*@Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })*@
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Tag, new { })
-                    <div class="col-md-5">
-                        @Html.EditorFor(model => model.Tag, new { htmlAttributes = new { @class = "form-control " } })
-                        @*@Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })*@
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Price, new { })
-                    <div class="col-md-5">
-                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control " } })
-                        @*@Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })*@
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Brand, new { })
-                    <div class="col-md-5">
-                        @Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control " } })
-                        @*@Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })*@
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Gear, new { })
-                    <div class="col-md-5">
-                        @Html.EditorFor(model => model.Gear, new { htmlAttributes = new { @class = "form-control " } })
-                        @*@Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })*@
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Sunroof, new { })
-                    <div class="col-md-5">
-                        @Html.EditorFor(model => model.Sunroof, new { htmlAttributes = new { @class = "form-control " } })
-                        @*@Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })*@
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Navigation, new { })
-                    <div class="col-md-5">
-                        @Html.EditorFor(model => model.Navigation, new { htmlAttributes = new { @class = "form-control " } })
-                        @*@Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })*@
-
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-label">تصویر</label>
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="image-input image-input-outline" id="slider-cart-image">
-                            <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_1.jpg)"></div>
-
-                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="آپلود تصویر">
-                                <i class="fa fa-pen icon-sm text-muted"></i>
-                                <input type="file" name="sliderCartImage" accept=".png, .jpg, .jpeg" />
-                                <input type="hidden" name="static-content_image_remove" />
-                            </label>
-
-                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="حذف تصویر">
-                                <i class="ki ki-bold-close icon-xs text-muted"></i>
-                            </span>
-                        </div>
+                        @Html.DropDownList("CarsId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CarsId, "", new { @class = "form-text text-danger" })
                     </div>
                 </div>
                 <div class="form-group">

@@ -90,6 +90,7 @@
     <Compile Include="Models\CarModelCarClass.cs" />
     <Compile Include="Models\Cars.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\Cart0.cs" />
     <Compile Include="Models\Certificate.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\ContactForm.cs" />

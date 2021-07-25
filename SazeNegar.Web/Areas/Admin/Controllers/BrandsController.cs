@@ -14,6 +14,8 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
     public class BrandsController : Controller
     {
         private readonly BrandsRepository _repo;
+        private readonly CarModelRepository _modelRepo;
+
         public BrandsController(BrandsRepository repo)
         {
             _repo = repo;
@@ -35,11 +37,11 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(BrandModelViewModel brandModelViewModel, int selectedModel)
+        public ActionResult Create(BrandModelViewModel brandModelViewModel, int CarModelId)
         {
             if (ModelState.IsValid)
             {
-                brandModelViewModel.Brands.CarModelId = selectedModel;
+                brandModelViewModel.Brands.CarModelId = CarModelId;
                 _repo.Add(brandModelViewModel.Brands);
                 return RedirectToAction("Index");
             }
@@ -68,12 +70,11 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(BrandModelViewModel brandModelViewModel, int selectedModel)
+        public ActionResult Edit(BrandModelViewModel brandModelViewModel, int CarModelId)
         {
             if (ModelState.IsValid)
             {
-                brandModelViewModel.Brands.CarModelId = selectedModel;
-                _repo.UpdateModel(brandModelViewModel.Brands);
+                brandModelViewModel.Brands.CarModelId = CarModelId;
                 _repo.Update(brandModelViewModel.Brands);
                 return RedirectToAction("Index");
             }

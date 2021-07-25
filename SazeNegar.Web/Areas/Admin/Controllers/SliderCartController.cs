@@ -34,7 +34,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
         // GET: Admin/StaticContentDetails/Create
         public ActionResult Create()
         {
-            //ViewBag.StaticContentTypeId = (int)StaticContentTypes.Slider;
+            ViewBag.CarsId = new SelectList(_repo.GetCars(), "Id", "Title");
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                     // Deleting Temp Image
                     System.IO.File.Delete(Server.MapPath("~/Files/SliderCart/Temp/" + newFileName));
 
-                    cart.Image = newFileName;
+                    //cart.Image = newFileName;
                 }
                 #endregion
                 _repo.Add(cart);
@@ -96,8 +96,8 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                 #region Upload Image
                 if (sliderCartImage != null)
                 {
-                    if (System.IO.File.Exists(Server.MapPath("/Files/SliderCart/Image/" + cart.Image)))
-                        System.IO.File.Delete(Server.MapPath("/Files/SliderCart/Image/" + cart.Image));
+                    //if (System.IO.File.Exists(Server.MapPath("/Files/SliderCart/Image/" + cart.Image)))
+                    //    System.IO.File.Delete(Server.MapPath("/Files/SliderCart/Image/" + cart.Image));
 
                     // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(sliderCartImage.FileName);
@@ -113,7 +113,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                     // Deleting Temp Image
                     System.IO.File.Delete(Server.MapPath("/Files/SliderCart/Temp/" + newFileName));
 
-                    cart.Image = newFileName;
+                    //cart.Image = newFileName;
                 }
                 #endregion
 
@@ -146,10 +146,10 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
             var cart = _repo.GetCart(id);
 
             #region delete cart image
-            if (cart.Image != null)
+            //if (cart.Image != null)
             {
-                if (System.IO.File.Exists(Server.MapPath("/Files/SliderCart/Image/" + cart.Image)))
-                    System.IO.File.Delete(Server.MapPath("/Files/SliderCart/Image/" + cart.Image));
+                //if (System.IO.File.Exists(Server.MapPath("/Files/SliderCart/Image/" + cart.Image)))
+                //    System.IO.File.Delete(Server.MapPath("/Files/SliderCart/Image/" + cart.Image));
             }
             #endregion
 

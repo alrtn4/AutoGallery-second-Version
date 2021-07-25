@@ -109,7 +109,7 @@
     </script>
     <script>
         $("#btnNew").click(function () {
-            $.get("/Admin/CarModel/Create", function (result) {
+            $.get("/Admin/CarModel/Create/", function (result) {
                 $("#myModal").modal();
                 $("#myModalLabel").html("افزودن مدل");
                 $("#myModalHeader");

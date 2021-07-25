@@ -29,9 +29,5 @@ namespace SazeNegar.Infrastructure.Repositories
             return _context.CarModels.Where(i => i.IsDeleted == false).ToList();
         }
 
-        public UpdateModel(Brands brands)
-        {
-            
-        }
     }
 }

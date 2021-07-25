@@ -29,5 +29,9 @@ namespace SazeNegar.Infrastructure.Repositories
         {
             return _context.Carts.Where(e => e.IsDeleted == false).ToList();
         }
+        public List<Cars> GetCars()
+        {
+            return _context.Cars.ToList();
+        }
     }
 }
