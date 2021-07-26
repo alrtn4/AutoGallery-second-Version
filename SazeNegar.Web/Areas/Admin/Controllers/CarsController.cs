@@ -40,7 +40,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Cars cars, HttpPostedFileBase carImage, int selectedBrand)
+        public ActionResult Create(CarBrandsViewModel carBrandsViewModel, HttpPostedFileBase carImage, int selectedBrand)
         {
             if (ModelState.IsValid)
             {
@@ -50,16 +50,16 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                     var newFileName = Guid.NewGuid() + Path.GetExtension(carImage.FileName);
                     carImage.SaveAs(Server.MapPath("~/Files/CarsImages/Image/" + newFileName));
 
-                    cars.Image = newFileName;
+                    carBrandsViewModel.Cars.Image = newFileName;
                 }
                 #endregion
 
-                cars.BrandId = selectedBrand;
-                _repo.Add(cars);
+                carBrandsViewModel.Cars.BrandId = selectedBrand;
+                _repo.Add(carBrandsViewModel.Cars);
                 return RedirectToAction("Index");
             }
 
-            return View(cars);
+            return View(carBrandsViewModel);
         }
 
         // GET: Admin/ArticleCategories/Edit/5

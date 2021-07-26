@@ -75,7 +75,8 @@ namespace SazeNegar.Web.Controllers
         }
         public ActionResult Carousel()
         {
-            var carouselContent = _cartRepository.GetCarts().OrderByDescending(e => e.Id).ToList();
+            var carouselContent = _cartRepository.GetCarts().OrderByDescending(e => e.Id);
+            ViewBag.cars = _cartRepository.GetCars();
             return PartialView(carouselContent);
         }
         public ActionResult Gallery()

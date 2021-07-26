@@ -40,34 +40,15 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Cart cart, HttpPostedFileBase sliderCartImage)
+        public ActionResult Create(Cart cart)
         {
             if (ModelState.IsValid)
             {
-                #region Upload Image
-                if (sliderCartImage != null)
-                {
-                    // Saving Temp Image
-                    var newFileName = Guid.NewGuid() + Path.GetExtension(sliderCartImage.FileName);
-                    sliderCartImage.SaveAs(Server.MapPath("~/Files/SliderCart/Temp/" + newFileName));
-
-                    // Resizing Image
-                    ImageResizer image = new ImageResizer();
-                    image = new ImageResizer(1000, 1000, true);
-
-                    image.Resize(Server.MapPath("~/Files/SliderCart/Temp/" + newFileName),
-                        Server.MapPath("~/Files/SliderCart/Image/" + newFileName));
-
-                    // Deleting Temp Image
-                    System.IO.File.Delete(Server.MapPath("~/Files/SliderCart/Temp/" + newFileName));
-
-                    //cart.Image = newFileName;
-                }
-                #endregion
                 _repo.Add(cart);
 
                 return RedirectToAction("Index");
             }
+            ViewBag.CarsId = new SelectList(_repo.GetCars(), "Id", "Title", cart.CarsId);
             return View(cart);
         }
 

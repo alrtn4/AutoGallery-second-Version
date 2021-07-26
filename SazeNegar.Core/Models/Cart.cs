@@ -18,9 +18,11 @@ namespace SazeNegar.Core.Models
         public int Date { get; set; }
         [Display(Name = "لینک")]
         public string Link { get; set; }
+        public string Special { get; set; }
+        public string Tag { get; set; }
 
         public int? CarsId { get; set; }
-        public Cars Cars { get; set; }
+        public virtual Cars Cars { get; set; }
 
         public string InsertUser { get; set; }
         public DateTime? InsertDate { get; set; }

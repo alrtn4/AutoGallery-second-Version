@@ -85,6 +85,38 @@
     <Compile Include="Migrations\202107251236082_init4.designer.cs">
       <DependentUpon>202107251236082_init4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107260551289_init5.cs" />
+    <Compile Include="Migrations\202107260551289_init5.designer.cs">
+      <DependentUpon>202107260551289_init5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107260751123_init6.cs" />
+    <Compile Include="Migrations\202107260751123_init6.designer.cs">
+      <DependentUpon>202107260751123_init6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107260801162_init7.cs" />
+    <Compile Include="Migrations\202107260801162_init7.designer.cs">
+      <DependentUpon>202107260801162_init7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107260805281_init8.cs" />
+    <Compile Include="Migrations\202107260805281_init8.designer.cs">
+      <DependentUpon>202107260805281_init8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107260935222_init9.cs" />
+    <Compile Include="Migrations\202107260935222_init9.designer.cs">
+      <DependentUpon>202107260935222_init9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107261106376_init10.cs" />
+    <Compile Include="Migrations\202107261106376_init10.designer.cs">
+      <DependentUpon>202107261106376_init10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107261221132_init11.cs" />
+    <Compile Include="Migrations\202107261221132_init11.designer.cs">
+      <DependentUpon>202107261221132_init11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107261331251_init12.cs" />
+    <Compile Include="Migrations\202107261331251_init12.designer.cs">
+      <DependentUpon>202107261331251_init12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,6 +174,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107251236082_init4.resx">
       <DependentUpon>202107251236082_init4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107260551289_init5.resx">
+      <DependentUpon>202107260551289_init5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107260751123_init6.resx">
+      <DependentUpon>202107260751123_init6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107260801162_init7.resx">
+      <DependentUpon>202107260801162_init7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107260805281_init8.resx">
+      <DependentUpon>202107260805281_init8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107260935222_init9.resx">
+      <DependentUpon>202107260935222_init9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107261106376_init10.resx">
+      <DependentUpon>202107261106376_init10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107261221132_init11.resx">
+      <DependentUpon>202107261221132_init11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107261331251_init12.resx">
+      <DependentUpon>202107261331251_init12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

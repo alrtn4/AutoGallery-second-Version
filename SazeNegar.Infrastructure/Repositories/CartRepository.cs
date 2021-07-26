@@ -31,7 +31,7 @@ namespace SazeNegar.Infrastructure.Repositories
         }
         public List<Cars> GetCars()
         {
-            return _context.Cars.ToList();
+            return _context.Cars.Where(e => e.IsDeleted == false).ToList();
         }
     }
 }

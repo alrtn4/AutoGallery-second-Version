@@ -26,9 +26,12 @@ namespace SazeNegar.Core.Models
         [Display(Name = "تصویر")]
         public string Image { get; set; }
         public int temp { get; set; }
+        [Display(Name = "ویژه")]
+        public string Special { get; set; }
 
-        public int BrandId { get; set; }
+        public int? BrandId { get; set; }
         public virtual Brands Brand { get; set; }
+        public virtual ICollection<Cart> Cart { get; set; }
 
         public string InsertUser { get; set; }
         public DateTime? InsertDate { get; set; }
