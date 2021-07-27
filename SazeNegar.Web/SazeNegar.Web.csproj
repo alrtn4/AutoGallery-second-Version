@@ -2730,7 +2730,6 @@
     <Content Include="Areas\Admin\Views\Roles\RolePermission.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\ErrorMessageView.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\StaticContentDetails\Create.cshtml" />
     <Content Include="Areas\Admin\Views\StaticContentDetails\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\StaticContentDetails\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\StaticContentDetails\Index.cshtml" />
@@ -3040,6 +3039,7 @@
     <Content Include="Areas\Admin\Views\CarModel\CarModelCarClass.cshtml" />
     <Content Include="Areas\Admin\Views\CarModel\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SliderCart\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\StaticContentDetails\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -5243,6 +5243,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Home\Carousel.cshtml" />
+    <Content Include="Views\Home\Looking_For.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

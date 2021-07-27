@@ -44,7 +44,7 @@ namespace SazeNegar.Infrastructure
             var ent = entity.GetType().Name;
 
             context.Set<TEntity>().Add(entity);
-             context.SaveChanges();
+            context.SaveChanges();
             logger.LogEvent(entity.GetType().Name, entity.Id,"Add");
             return entity;
         }

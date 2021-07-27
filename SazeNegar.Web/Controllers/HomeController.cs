@@ -79,6 +79,12 @@ namespace SazeNegar.Web.Controllers
             ViewBag.cars = _cartRepository.GetCars();
             return PartialView(carouselContent);
         }
+
+        public ActionResult Looking_For()
+        {
+            var Looking_For_Content = _contentRepo.GetSomeStaticContentDetail((int) StaticContentTypes.Looking_For);
+            return PartialView(Looking_For_Content);
+        }
         public ActionResult Gallery()
         {
             var galleryContent = _galleryRepo.GetAll();

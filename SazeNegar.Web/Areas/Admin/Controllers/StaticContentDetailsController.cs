@@ -32,9 +32,52 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
             return View(content);
         }
         // GET: Admin/StaticContentDetails/Create
+        //public ActionResult Create()
+        //{
+        //    ViewBag.StaticContentTypeId = (int)StaticContentTypes.Slider;
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(StaticContentDetail staticContentDetail, HttpPostedFileBase StaticContentDetailImage)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        #region Upload Image
+        //        if (StaticContentDetailImage != null)
+        //        {
+        //            // Saving Temp Image
+        //            var newFileName = Guid.NewGuid() + Path.GetExtension(StaticContentDetailImage.FileName);
+        //            StaticContentDetailImage.SaveAs(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName));
+
+        //            // Resizing Image
+        //            ImageResizer image = new ImageResizer();
+        //            if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.Slider || staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.BlogImage)
+        //                image = new ImageResizer(1020, 700, true);
+        //            if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.CompanyHistory)
+        //                image = new ImageResizer(1000, 1000, true);
+
+        //            image.Resize(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName),
+        //                Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
+
+        //            // Deleting Temp Image
+        //            System.IO.File.Delete(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName));
+
+        //            staticContentDetail.Image = newFileName;
+        //        }
+        //        #endregion
+        //        _repo.Add(staticContentDetail);
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.StaticContentTypeId = (int)StaticContentTypes.Slider;
+        //    return View(staticContentDetail);
+        //}
+
         public ActionResult Create()
         {
-            //ViewBag.StaticContentTypeId = (int)StaticContentTypes.Slider;
+            ViewBag.StaticContentTypeId = new SelectList(_repo.GetStaticContentTypes(), "Id", "Name");
             return View();
         }
 
