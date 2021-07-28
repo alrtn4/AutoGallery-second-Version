@@ -1,0 +1,90 @@
+﻿@model List<SazeNegar.Core.Models.StaticContentDetail>
+
+<!-- Fullwidth Section -->
+<section class="fullwidth margin-top-95 margin-bottom-0">
+
+    <!-- Box Headline -->
+    <h3 class="headline-box">مقالات و نکته ها</h3>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <!-- Blog Post -->
+                <div class="blog-post">
+
+                    <!-- Img -->
+                    <a href="blog-post.html" class="post-img">
+                        <img src="~/Files/StaticContentImages/Image/@Model[0].Image" alt="">
+                    </a>
+
+                    <!-- Content -->
+                    <div class="post-content">
+                        <h3><a href="blog-post.html">@Model[0].Title</a></h3>
+                        <p>
+                            @Model[0].Description
+                        </p>
+
+                        <a href="@Model[0].Link" class="read-more">ادامه <i class="fa fa-angle-left"></i></a>
+                    </div>
+
+                </div>
+                <!-- Blog Post / End -->
+
+            </div>
+
+            <div class="col-md-4">
+
+                <!-- Blog Post -->
+                <div class="blog-post">
+
+                    <!-- Img -->
+                    <a href="blog-post.html" class="post-img">
+                        <img src="~/Files/StaticContentImages/Image/@Model[1].Image" alt="">
+                    </a>
+
+                    <!-- Content -->
+                    <div class="post-content">
+                        <h3><a href="blog-post.html">@Model[1].Title</a></h3>
+                        <p>
+                            @Model[1].Description
+                        </p>
+
+                        <a href="@Model[1].Link" class="read-more">ادامه <i class="fa fa-angle-left"></i></a>
+                    </div>
+
+                </div>
+                <!-- Blog Post / End -->
+
+            </div>
+
+            <div class="col-md-4">
+
+                <!-- Blog Post -->
+                <div class="blog-post">
+
+                    <!-- Img -->
+                    <a href="blog-post.html" class="post-img">
+                        <img src="~/Files/StaticContentImages/Image/@Model[2].Image" alt="">
+                    </a>
+
+                    <!-- Content -->
+                    <div class="post-content">
+                        <h3><a href="blog-post.html">@Model[2].Title</a></h3>
+                        <p>
+                            @Model[2].Description
+                        </p>
+
+                        <a href="@Model[2].Link" class="read-more">ادامه <i class="fa fa-angle-left"></i></a>
+                    </div>
+
+                </div>
+                <!-- Blog Post / End -->
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Fullwidth Section / End -->

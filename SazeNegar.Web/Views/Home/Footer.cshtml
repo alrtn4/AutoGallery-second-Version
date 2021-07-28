@@ -1,0 +1,68 @@
+﻿@model SazeNegar.Web.ViewModels.ContactUsViewModel
+
+<!-- Footer
+        ================================================== -->
+<div id="footer">
+    <!-- Main -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-6">
+                <img class="footer-logo" src="~/Content/AutoGallery/images/logo.png" alt="">
+                <br><br>
+                <p>
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                    چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                    تکنولوژی
+                    مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+                </p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 ">
+                <h4>پیوندهای مفید</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="cars.html">خودرو ها</a></li>
+                    <li><a href="blog.html">مقالات</a></li>
+                    <li><a href="About-us.html">درباره ما</a></li>
+                    <li><a href="contact.html">تماس با ما</a></li>
+                </ul>
+
+                <ul class="footer-links">
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="cars.html">خودرو ها</a></li>
+                    <li><a href="blog.html">مقالات</a></li>
+                    <li><a href="About-us.html">درباره ما</a></li>
+                    <li><a href="contact.html">تماس با ما</a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-3  col-sm-12">
+                <h4>تماس با ما</h4>
+                <div class="text-widget">
+                    <span>@Model.Address.ShortDescription</span> <br>
+                    تلفن: <span>@Model.Phone.ShortDescription </span><br>
+                    ایمیل:<span> <a href="#">@Model.Email.ShortDescription</a> </span><br>
+                </div>
+
+                <ul class="social-icons margin-top-20">
+                    <li><a class="facebook" href="@Model.Facebook.ShortDescription"><i class="icon-facebook"></i></a></li>
+                    <li><a class="instagram" href="@Model.Instagram.ShortDescription"><i class="icon-instagram"></i></a></li>
+                    <li><a class="twitter" href="@Model.Twitter.ShortDescription"><i class="icon-twitter"></i></a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- Copyright -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyrights">کپی رایت 1399 © تمامی حقوق برای Spad محفوظ است.</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- Footer / End -->

@@ -21,10 +21,14 @@ namespace SazeNegar.Web.Controllers
             _contentRepo = contentRepo;
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
         // GET: Blog
         //[Route("Blog")]
         //[Route("Blog/{id}/{title}")]
-        public ActionResult Index(int pageNumber = 1, string searchString = null)
+        public ActionResult BlogList(int pageNumber = 1, string searchString = null)
         {
             var articles = _articlesRepo.GetAll();
             var vm = new List<ArticleListViewModel>();

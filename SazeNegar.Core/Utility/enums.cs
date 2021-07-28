@@ -14,6 +14,9 @@ namespace SazeNegar.Core.Utility
         BlogImage = 1004,
         Banner = 2008,
         Looking_For = 2009,
+        Popular = 2010,
+        Blog = 2011,
+        FlipBanner = 2012,
     }
     public enum StaticContents
     {

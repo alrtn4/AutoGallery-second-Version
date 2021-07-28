@@ -1,120 +1,123 @@
-﻿@*@model List<SazeNegar.Web.ViewModels.ArticleListViewModel>*@
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<!-- Content -->
-<div class="page-content bg-white">
-    <!-- Page Heading Box ==== -->
-    <div class="page-banner page-banner-sm">
+﻿        <!-- Content
+        ================================================== -->
         <div class="container">
-            <div class="page-banner-entry">
-                <h1 class="text-black">بلاگ</h1>
-                <div class="breadcrumb-row text-black">
-                    <ul class="list-inline">
-                        <li><a href="/Home/Index"><i class="fa fa-home"></i> خانه </a></li>
-                        <li>بلاگ</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Page Heading Box END ==== -->
-    <!-- Main Slider -->
-    <div class="content-block" id="content-area">
-        <!-- Popular Courses -->
-        <div class="section-area section-sp2 bg-white">
-            <div class="container">
+            <!-- Blog Posts -->
+            <div class="blog-page">
                 <div class="row">
-                    <div class="col-md-12 col-lg-8 col-xl-8 m-md-b50">
-                        @foreach (var item in Model)
-                        {
-                            <div class="recent-news wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="action-box">
-                                    <img src="/Files/ArticleImages/Image/@item.Image" alt="">
-                                </div>
-                                <div class="info-bx">
-                                    <ul class="media-post">
-                                        <li class="date"><a href="javascript:;"><i class="fa fa-calendar-o"></i>@item.PersianDate</a></li>
-                                    </ul>
-                                    <h4 class="post-title"><a href="/Blog/Details">@item.Title</a></h4>
-                                    <p>
-                                        @item.ShortDescription
-                                    </p>
-                                    <div class="post-extra">
-                                        <a href="/Blog/Details/@item.Id" class="btn-link black radius-xl">بیشتر بخوانید</a>
+
+                    @Html.Action("BlogList", "Blog")
+
+                    <!-- Blog Posts / End -->
+                    <!-- Widgets -->
+                    <div class="col-md-4">
+                        <div class="sidebar right">
+
+                            <!-- Widget -->
+                            <div class="widget">
+                                <h3 class="margin-top-0 margin-bottom-25">جست و جو در وبلاگ</h3>
+                                <div class="search-blog-input">
+                                    <div class="input">
+                                        <input class="search-field" type="text"
+                                               placeholder="کلمه ی مورد نظر + دکمه ی اینتر :)" value="" />
                                     </div>
                                 </div>
+                                <div class="clearfix"></div>
                             </div>
-                        }
-                        <div class="pagination-bx gray clearfix">
-                            <ul class="pagination">
-                                @{
-                                    if (ViewBag.CurrentPage > 1)
-                                    {
-                                        <li class="previous">
-                                            <a href="/Blog?pageNumber=@(ViewBag.CurrentPage - 1)@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">
-                                                قبلی
-                                            </a>
-                                        </li>
-                                    }
-                                    for (int i = 1; i <= ViewBag.PageCount; i++)
-                                    {
-                                        <li class="@(i == ViewBag.CurrentPage ? "active" : null)"><a href="/Blog?pageNumber=@i@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">@i</a></li>
-                                    }
-                                    if (ViewBag.CurrentPage < ViewBag.PageCount)
-                                    {
-                                        <li class="next"><a href="/Blog?pageNumber=@(ViewBag.CurrentPage+1)@(ViewBag.CategoryId != null? $"&category={ViewBag.CategoryId}":null)@(ViewBag.SearchString != null? $"&searchString={ViewBag.SearchString}":null)">بعدی</a></li>
-                                    }
-                                }
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-4 col-xl-4  sticky-top wow fadeInUp" data-wow-delay="0.4s">
-                        <aside class="side-bar sticky-top aside-bx">
+                            <!-- Widget / End -->
+                            <!-- Widget -->
                             <div class="widget">
-                                <div class="search-bx style-1">
-                                    <form role="search" method="post">
-                                        <div class="input-group">
-                                            <input name="text" class="form-control" placeholder="اینجا جستجو کنید" type="text">
-                                            <span class="input-group-btn">
-                                                <button type="submit" class="fa fa-search text-primary"></button>
-                                            </span>
-                                        </div>
-                                    </form>
+                                <h3>سوالی دارید؟</h3>
+                                <div class="info-box margin-bottom-10">
+                                    <p>اگر سوالی دارید از ما بپرسید :)</p>
+                                    <a href="contact.html" class="button fullwidth margin-top-20">
+                                        <i class="fa fa-envelope-o"></i> تماس با ما
+                                    </a>
                                 </div>
                             </div>
-                            @Html.Action("TopArticlesSection", "Blog")
-                            @*<div class="widget widget_gallery gallery-grid-3">
-                                    <h6 class="widget-title">گالری ما</h6>
-                                    <ul>
-                                        <li>
-                                            <div><a href="javascript:;"><img src="~/Content/client/images/gallery/pic1.jpg" alt=""></a></div>
-                                        </li>
-                                        <li>
-                                            <div><a href="javascript:;"><img src="~/Content/client/images/gallery/pic2.jpg" alt=""></a></div>
-                                        </li>
-                                        <li>
-                                            <div><a href="javascript:;"><img src="~/Content/client/images/gallery/pic3.jpg" alt=""></a></div>
-                                        </li>
-                                        <li>
-                                            <div><a href="javascript:;"><img src="~/Content/client/images/gallery/pic4.jpg" alt=""></a></div>
-                                        </li>
-                                        <li>
-                                            <div><a href="javascript:;"><img src="~/Content/client/images/gallery/pic5.jpg" alt=""></a></div>
-                                        </li>
-                                        <li>
-                                            <div><a href="javascript:;"><img src="~/Content/client/images/gallery/pic6.jpg" alt=""></a></div>
-                                        </li>
-                                    </ul>
-                                </div>*@
-                            @Html.Action("ArticleTags", "Blog")
-                        </aside>
+                            <!-- Widget / End -->
+                            <!-- Widget -->
+                            <div class="widget">
+
+                                <h3>مقاله های محبوب</h3>
+                                <ul class="widget-tabs">
+
+                                    <!-- Post #1 -->
+                                    <li>
+                                        <div class="widget-content">
+                                            <div class="widget-thumb">
+                                                <a href="blog-post.html"><img src="images/32.jpeg" alt=""></a>
+                                            </div>
+
+                                            <div class="widget-text">
+                                                <h5><a href="blog-post.html">مقاله شماره 3 </a></h5>
+                                                <span>5 آبان 1399</span>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </li>
+
+                                    <!-- Post #2 -->
+                                    <li>
+                                        <div class="widget-content">
+                                            <div class="widget-thumb">
+                                                <a href="blog-post.html"><img src="images/38.jpg" alt=""></a>
+                                            </div>
+
+                                            <div class="widget-text">
+                                                <h5><a href="blog-post.html">مقاله شماره 2</a></h5>
+                                                <span>19 آبان 1399</span>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </li>
+
+                                    <!-- Post #3 -->
+                                    <li>
+                                        <div class="widget-content">
+                                            <div class="widget-thumb">
+                                                <a href="blog-post.html">
+                                                    <img src="images/39.jpg"
+                                                         alt="">
+                                                </a>
+                                            </div>
+
+                                            <div class="widget-text">
+                                                <h5><a href="blog-post.html">مقاله شماره 1</a></h5>
+                                                <span>22 آبان 1399</span>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                            <!-- Widget / End-->
+                            <!-- Widget -->
+                            <div class="widget">
+                                <h3 class="margin-top-0 margin-bottom-25">شبکه اجتماعی</h3>
+                                <ul class="social-icons rounded">
+                                    <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+                                    <li><a class="instagram" href="#"><i class="icon-instagram"></i></a></li>
+                                    <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+                                </ul>
+
+                            </div>
+                            <!-- Widget / End-->
+
+                            <div class="clearfix"></div>
+                            <div class="margin-bottom-40"></div>
+                        </div>
                     </div>
                 </div>
+                <!-- Sidebar / End -->
+
+
             </div>
         </div>
-    </div>
-    <!-- contact area END -->
-</div>
-<!-- Content END-->
+
+
+        <!-- Footer
+        ================================================== -->
+        <div class="margin-top-55"></div>

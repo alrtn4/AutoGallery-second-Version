@@ -41,9 +41,9 @@ namespace SazeNegar.Infrastructure.Repositories
         {
             return _context.StaticContentTypes.FirstOrDefault(e => e.IsDeleted == false && e.Id == contentTypeId);
         }
-        public List<StaticContentDetail> GetSomeStaticContentDetail(int id)
+        public List<StaticContentDetail> GetSomeStaticContentDetail(int id, int count)
         {
-            var entity = _context.Set<StaticContentDetail>().Where(i => i.StaticContentTypeId == id).OrderByDescending(i => i.Id).Take(4).ToList();
+            var entity = _context.Set<StaticContentDetail>().Where(i => i.StaticContentTypeId == id).OrderByDescending(i => i.Id).Take(count).ToList();
 
             return entity;
         }

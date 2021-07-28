@@ -96,6 +96,7 @@ namespace SazeNegar.Web.ViewModels
 
         public ArticleListViewModel(Article article)
         {
+            this.Article = article;
             this.Id = article.Id;
             this.Title = article.Title;
             this.ShortDescription = article.ShortDescription;
@@ -112,6 +113,7 @@ namespace SazeNegar.Web.ViewModels
         public string Author { get; set; }
         //public string AuthorAvatar { get; set; }
         public string Role { get; set; }
+        public Article Article { get; set; }
     }
 
     public class ArticleCategoriesViewModel

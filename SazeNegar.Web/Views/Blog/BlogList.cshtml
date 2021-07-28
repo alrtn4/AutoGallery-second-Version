@@ -1,0 +1,71 @@
+﻿@model List<SazeNegar.Web.ViewModels.ArticleListViewModel>
+
+<div class="col-md-8">
+
+    @foreach (var item in Model)
+    {
+
+        <!-- Blog Post -->
+        <div class="blog-post">
+
+            <!-- Img -->
+            <a href="/Blog/Details/@item.Id" class="post-img">
+                <img src="@item.Image" alt="">
+            </a>
+
+            <!-- Content -->
+            <div class="post-content">
+                <h3><a href="/Blog/Details/@item.Id">@item.Title</a></h3>
+
+                <ul class="post-meta">
+                    <li>@item.PersianDate</li>
+                    <li>@item.Article.ArticleComments.Count دیدگاه</li>
+                </ul>
+
+                <p>
+                    @item.ShortDescription
+                </p>
+
+                <a href="/Blog/Details/@item.Id" class="read-more">ادامه <i class="fa fa-angle-left"></i></a>
+            </div>
+
+        </div>
+        <!-- Blog Post / End -->
+    }
+
+    <!-- Pagination -->
+    <div class="clearfix"></div>
+    <div class="pagination-container">
+        <nav class="pagination">
+            <ul>
+                @*<li><a href="#" class="next">بعدی</a></li>
+                <li><a href="#" class="current-page">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#" class="prev">قبلی</a></li>*@
+                @{
+                    if (ViewBag.CurrentPage < ViewBag.PageCount)
+                    {
+                        <li class="next"><a href="/Blog?pageNumber=@(ViewBag.CurrentPage+1)@(ViewBag.CategoryId != null? $"&category={ViewBag.CategoryId}":null)@(ViewBag.SearchString != null? $"&searchString={ViewBag.SearchString}":null)">بعدی</a></li>
+                    }
+                    for (int i = 1; i <= ViewBag.PageCount; i++)
+                    {
+                        <li class="@(i == ViewBag.CurrentPage ? "active" : null)"><a href="/Blog?pageNumber=@i@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">@i</a></li>
+                    }
+                    if (ViewBag.CurrentPage > 1)
+                    {
+                        <li class="previous">
+                            <a href="/Blog?pageNumber=@(ViewBag.CurrentPage - 1)@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">
+                                قبلی
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </nav>
+
+
+    </div>
+    <div class="clearfix"></div>
+
+</div>

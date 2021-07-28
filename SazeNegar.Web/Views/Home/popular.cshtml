@@ -1,0 +1,144 @@
+﻿@model List<SazeNegar.Core.Models.StaticContentDetail>
+
+<!-- Container -->
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="headline centered margin-bottom-35 margin-top-10">
+                محبوب ترین برند ها <span>
+                    خودرو از
+                    بهترین مدل ها
+                </span>
+            </h3>
+        </div>
+
+        <div class="col-md-4">
+
+            <!-- Image Box -->
+            <a href="cars.html" class="img-box" data-background-image="../../Files/StaticContentImages/Image/@Model[0].Image">
+
+                <!-- Badge -->
+                <div class="listing-badges">
+                    @if (Model[0].ShortDescription != null)
+                    {
+                        <span class="featured">@Model[0].ShortDescription</span>
+                    }
+                </div>
+
+                <div class="img-box-content visible">
+                    <h4>@Model[0].Title</h4>
+                    <span>@Model[0].Description</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="col-md-8">
+
+            <!-- Image Box -->
+            <a href="cars.html" class="img-box" data-background-image="../../Files/StaticContentImages/Image/@Model[1].Image">
+
+                <!-- Badge -->
+                <div class="listing-badges">
+                    @if (Model[1].ShortDescription != null)
+                    {
+                        <span class="featured">@Model[1].ShortDescription</span>
+                    }
+                </div>
+
+                <div class="img-box-content visible">
+                    <h4>@Model[1].Title</h4>
+                    <span>@Model[1].Description</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="col-md-8">
+
+            <!-- Image Box -->
+            <a href="cars.html" class="img-box" data-background-image="../../Files/StaticContentImages/Image/@Model[2].Image">
+
+                <!-- Badge -->
+                <div class="listing-badges">
+                    @if (Model[2].ShortDescription != null)
+                    {
+                        <span class="featured">@Model[2].ShortDescription</span>
+                    }
+                </div>
+
+                <div class="img-box-content visible">
+                    <h4>@Model[2].Title</h4>
+                    <span>@Model[2].Description</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <!-- Image Box -->
+            <a href="cars.html" class="img-box" data-background-image="../../Files/StaticContentImages/Image/@Model[3].Image">
+
+                <!-- Badge -->
+                <div class="listing-badges">
+                    @if (Model[3].ShortDescription != null)
+                    {
+                        <span class="featured">@Model[3].ShortDescription</span>
+                    }
+                </div>
+
+                <div class="img-box-content visible">
+                    <h4>@Model[3].Title</h4>
+                    <span>@Model[3].Description</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <!-- Image Box -->
+            <a href="cars.html" class="img-box" data-background-image="../../Files/StaticContentImages/Image/@Model[4].Image">
+
+                <!-- Badge -->
+                <div class="listing-badges">
+                    @if (Model[4].ShortDescription != null)
+                    {
+                        <span class="featured">@Model[4].ShortDescription</span>
+                    }
+                </div>
+
+                <div class="img-box-content visible">
+                    <h4>@Model[4].Title</h4>
+                    <span>@Model[4].Description</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="col-md-8">
+
+            <!-- Image Box -->
+            <a href="cars.html" class="img-box" data-background-image="../../Files/StaticContentImages/Image/@Model[5].Image">
+
+                <!-- Badge -->
+                <div class="listing-badges">
+                    @if (Model[5].ShortDescription != null)
+                    {
+                        <span class="featured">@Model[5].ShortDescription</span>
+                    }
+                </div>
+
+                <div class="img-box-content visible">
+                    <h4>@Model[5].Title</h4>
+                    <span>@Model[5].Description</span>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+<!-- Container / End -->
