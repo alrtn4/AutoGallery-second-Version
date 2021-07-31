@@ -1,0 +1,119 @@
+﻿@model SazeNegar.Core.Models.ContactForm
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content
+================================================== -->
+<!-- Map Container -->
+<div class="contact-map margin-bottom-55">
+
+    <!-- Google Maps -->
+    <div class="google-map-container">
+        <!-- <div id="propertyMap" data-latitude="40.7427837" data-longitude="-73.11445617675781"></div> -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6473.356023463897!2d51.380716!3d35.783285!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQ2JzU5LjgiTiA1McKwMjInNTAuNiJF!5e0!3m2!1sen!2sae!4v1578145029886!5m2!1sen!2sae"
+                width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+        <!-- <a href="#" id="streetView">نمای خیابان</a> -->
+    </div>
+    <!-- Google Maps / End -->
+    <!-- Office -->
+    <div class="address-box-container">
+        <div class="address-container" data-background-image="@ViewBag.Image">
+            <div class="office-address">
+                <h3>دفتر ما</h3>
+                <ul>
+                    <li>@ViewBag.Address</li>
+                    <li>@*اصفهان*@</li>
+                    <li>تلفن: @ViewBag.Phone </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Office / End -->
+
+</div>
+<div class="clearfix"></div>
+<!-- Map Container / End -->
+<!-- Container / Start -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Contact Details -->
+        <div class="col-md-4">
+
+            <h4 class="headline margin-bottom-30">ما را اینجا پیدا کنید</h4>
+
+            <!-- Contact Details -->
+            <div class="sidebar-textbox">
+                <p>
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                </p>
+
+                <ul class="contact-details">
+                    <li><i class="im im-icon-Phone-2"></i> <strong>تلفن:</strong> <span>@ViewBag.Phone </span></li>
+                    <li><i class="im im-icon-Fax"></i> <strong>فکس:</strong> <span>@ViewBag.Fax </span></li>
+                    <li>
+                        <i class="im im-icon-Globe"></i> <strong>سایت:</strong> <span>
+                            <a href="https://@ViewBag.Web">@ViewBag.Web</a>
+                        </span>
+                    </li>
+                    <li>
+                        <i class="im im-icon-Envelope"></i> <strong>ایمیل:</strong> <span>
+                            <a href="mailTo: @ViewBag.Email">@ViewBag.Email</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-md-8">
+
+            <section id="contact">
+                <h4 class="headline margin-bottom-35">فرم تماس</h4>
+
+                <div id="contact-message"></div>
+
+                <form method="post" action="contact.php" name="contactform" id="contactform" autocomplete="on">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>
+                                <input name="Name" type="text" id="name" placeholder="نام"
+                                       required="required" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div>
+                                <input name="Email" type="email" style="text-align:left;" id="email"
+                                       placeholder="ایمیل"
+                                       required="required" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input name="Subject" type="text" id="subject" placeholder="موضوع"
+                               required="required" />
+                    </div>
+
+                    <div>
+                        <textarea name="Message" cols="40" rows="3" id="comments" placeholder="پیام"
+                                  spellcheck="true" required="required"></textarea>
+                    </div>
+
+                    <input type="submit" class="submit button c-btn" id="submit" value="ارسال" />
+
+                </form>
+            </section>
+        </div>
+        <!-- Contact Form / End -->
+
+    </div>
+
+</div>
+<!-- Container / End -->

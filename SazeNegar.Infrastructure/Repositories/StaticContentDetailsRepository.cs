@@ -47,5 +47,13 @@ namespace SazeNegar.Infrastructure.Repositories
 
             return entity;
         }
+
+        public List<StaticContentDetail> GetAboutUs(int id, int number)
+        {
+            var entity = _context.StaticContentDetails.Where(i => i.StaticContentTypeId == id).OrderByDescending(i => i.Id)
+                .Take(number).ToList();
+
+            return entity;
+        }
     }
 }

@@ -20,7 +20,10 @@ namespace SazeNegar.Core.Models
         [Display(Name = "ایمیل")]
         [Required(ErrorMessage = "لطفا {0} خود را وارد کنید")]
         [EmailAddress(ErrorMessage = "{0} وارد شده معتبر نیست")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [Display(Name = "موضوع")]
+        public string Subject { get; set; }
         [Display(Name = "پیام")]
         [Required(ErrorMessage = "لطفا {0} خود را وارد کنید")]
         [DataType(DataType.MultilineText)]

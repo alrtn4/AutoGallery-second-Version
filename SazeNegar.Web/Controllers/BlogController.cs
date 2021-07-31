@@ -21,14 +21,10 @@ namespace SazeNegar.Web.Controllers
             _contentRepo = contentRepo;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
         // GET: Blog
         //[Route("Blog")]
         //[Route("Blog/{id}/{title}")]
-        public ActionResult BlogList(int pageNumber = 1, string searchString = null)
+        public ActionResult Index(int pageNumber = 1, string searchString = null)
         {
             var articles = _articlesRepo.GetAll();
             var vm = new List<ArticleListViewModel>();
@@ -50,6 +46,9 @@ namespace SazeNegar.Web.Controllers
             var pageCount = (int)Math.Ceiling((double)count / take);
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = pageNumber;
+            ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int) StaticContents.Facebook).Link;
+            ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
+            ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
             return View(vm);
         }
 

@@ -17,6 +17,9 @@ namespace SazeNegar.Core.Utility
         Popular = 2010,
         Blog = 2011,
         FlipBanner = 2012,
+        About_us = 2013,
+        About_usPic = 2014,
+        ContactImage = 2015,
     }
     public enum StaticContents
     {
@@ -24,6 +27,8 @@ namespace SazeNegar.Core.Utility
         Map = 1007,
         Address = 1001,
         Email = 1003,
+        Fax = 3001,
+        Web = 3002,
         Youtube = 1008,
         Instagram = 1009,
         Twitter = 1011,

@@ -56,4 +56,12 @@ namespace SazeNegar.Web.ViewModels
         public string Title { get; set; }
         public string ShortDescription { get; set; }
     }
+
+    public class ContactFormViewModel
+    {
+        public string Name { get; set; }
+        public string Subject { get; set; }
+        public string Message { get; set; }
+        public string Email { get; set; }
+    }
 }

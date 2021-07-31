@@ -1,123 +1,163 @@
-﻿        <!-- Content
-        ================================================== -->
-        <div class="container">
+﻿@model List<SazeNegar.Web.ViewModels.ArticleListViewModel>
 
-            <!-- Blog Posts -->
-            <div class="blog-page">
-                <div class="row">
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-                    @Html.Action("BlogList", "Blog")
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
-                    <!-- Blog Posts / End -->
-                    <!-- Widgets -->
-                    <div class="col-md-4">
-                        <div class="sidebar right">
+                <h2>وبلاگ</h2>
+                <span>همیشه به روز باشید</span>
 
-                            <!-- Widget -->
-                            <div class="widget">
-                                <h3 class="margin-top-0 margin-bottom-25">جست و جو در وبلاگ</h3>
-                                <div class="search-blog-input">
-                                    <div class="input">
-                                        <input class="search-field" type="text"
-                                               placeholder="کلمه ی مورد نظر + دکمه ی اینتر :)" value="" />
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <!-- Widget / End -->
-                            <!-- Widget -->
-                            <div class="widget">
-                                <h3>سوالی دارید؟</h3>
-                                <div class="info-box margin-bottom-10">
-                                    <p>اگر سوالی دارید از ما بپرسید :)</p>
-                                    <a href="contact.html" class="button fullwidth margin-top-20">
-                                        <i class="fa fa-envelope-o"></i> تماس با ما
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- Widget / End -->
-                            <!-- Widget -->
-                            <div class="widget">
-
-                                <h3>مقاله های محبوب</h3>
-                                <ul class="widget-tabs">
-
-                                    <!-- Post #1 -->
-                                    <li>
-                                        <div class="widget-content">
-                                            <div class="widget-thumb">
-                                                <a href="blog-post.html"><img src="images/32.jpeg" alt=""></a>
-                                            </div>
-
-                                            <div class="widget-text">
-                                                <h5><a href="blog-post.html">مقاله شماره 3 </a></h5>
-                                                <span>5 آبان 1399</span>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </li>
-
-                                    <!-- Post #2 -->
-                                    <li>
-                                        <div class="widget-content">
-                                            <div class="widget-thumb">
-                                                <a href="blog-post.html"><img src="images/38.jpg" alt=""></a>
-                                            </div>
-
-                                            <div class="widget-text">
-                                                <h5><a href="blog-post.html">مقاله شماره 2</a></h5>
-                                                <span>19 آبان 1399</span>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </li>
-
-                                    <!-- Post #3 -->
-                                    <li>
-                                        <div class="widget-content">
-                                            <div class="widget-thumb">
-                                                <a href="blog-post.html">
-                                                    <img src="images/39.jpg"
-                                                         alt="">
-                                                </a>
-                                            </div>
-
-                                            <div class="widget-text">
-                                                <h5><a href="blog-post.html">مقاله شماره 1</a></h5>
-                                                <span>22 آبان 1399</span>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </li>
-
-                                </ul>
-
-                            </div>
-                            <!-- Widget / End-->
-                            <!-- Widget -->
-                            <div class="widget">
-                                <h3 class="margin-top-0 margin-bottom-25">شبکه اجتماعی</h3>
-                                <ul class="social-icons rounded">
-                                    <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-                                    <li><a class="instagram" href="#"><i class="icon-instagram"></i></a></li>
-                                    <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-                                </ul>
-
-                            </div>
-                            <!-- Widget / End-->
-
-                            <div class="clearfix"></div>
-                            <div class="margin-bottom-40"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sidebar / End -->
-
+                <!-- Breadcrumbs -->
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="index.html">خانه</a></li>
+                        <li>وبلاگ</li>
+                    </ul>
+                </nav>
 
             </div>
         </div>
+    </div>
+</div>
 
-
-        <!-- Footer
+<!-- Content
         ================================================== -->
-        <div class="margin-top-55"></div>
+<div class="container">
+
+    <!-- Blog Posts -->
+    <div class="blog-page">
+        <div class="row">
+
+            <div class="col-md-8">
+
+                @foreach (var item in Model)
+                {
+
+                    <!-- Blog Post -->
+                    <div class="blog-post">
+
+                        <!-- Img -->
+                        <a href="/Blog/Details/@item.Id" class="post-img">
+                            <img src="~/Files/ArticleImages/Image/@item.Image" alt="">
+                        </a>
+
+                        <!-- Content -->
+                        <div class="post-content">
+                            <h3><a href="/Blog/Details/@item.Id">@item.Title</a></h3>
+
+                            <ul class="post-meta">
+                                <li>@item.PersianDate</li>
+                                <li>
+                                    @{ var x = (item.Article.ArticleComments != null) ? item.Article.ArticleComments.Count : 0;}
+                                    دیدگاه
+                                </li>
+                            </ul>
+
+                            <p>
+                                @item.ShortDescription
+                            </p>
+
+                            <a href="/Blog/Details/@item.Id" class="read-more">ادامه <i class="fa fa-angle-left"></i></a>
+                        </div>
+
+                    </div>
+                    <!-- Blog Post / End -->
+                }
+
+                <!-- Pagination -->
+                <div class="clearfix"></div>
+                <div class="pagination-container">
+                    <nav class="pagination">
+                        <ul>
+                            @{
+                                if (ViewBag.CurrentPage < ViewBag.PageCount)
+                                {
+                                    <li><a href="/Blog?pageNumber=@(ViewBag.CurrentPage + 1)@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)" class="next">بعدی</a></li>
+                                }
+                                for (int i = 1; i <= ViewBag.PageCount; i++)
+                                {
+                                    <li class="@(i == ViewBag.CurrentPage ? "active" : null)"><a href="/Blog?pageNumber=@i@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">@i</a></li>
+                                }
+                                if (ViewBag.CurrentPage > 1)
+                                {
+                                    <li>
+                                        <a href="/Blog?pageNumber=@(ViewBag.CurrentPage - 1)@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)" class="prev">
+                                            قبلی
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </nav>
+
+
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+
+            <!-- Blog Posts / End -->
+            <!-- Widgets -->
+            <div class="col-md-4">
+                <div class="sidebar right">
+
+                    <!-- Widget -->
+                    <div class="widget">
+                        <h3 class="margin-top-0 margin-bottom-25">جست و جو در وبلاگ</h3>
+                        <div class="search-blog-input">
+                            <div class="input">
+                                <input class="search-field" type="text"
+                                       placeholder="کلمه ی مورد نظر + دکمه ی اینتر :)" value="" />
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- Widget / End -->
+                    <!-- Widget -->
+                    <div class="widget">
+                        <h3>سوالی دارید؟</h3>
+                        <div class="info-box margin-bottom-10">
+                            <p>اگر سوالی دارید از ما بپرسید :)</p>
+                            <a href="contact.html" class="button fullwidth margin-top-20">
+                                <i class="fa fa-envelope-o"></i> تماس با ما
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Widget / End -->
+
+                    @Html.Action("TopArticlesSection", "Blog")
+
+                    <!-- Widget -->
+                    <div class="widget">
+                        <h3 class="margin-top-0 margin-bottom-25">شبکه اجتماعی</h3>
+                        <ul class="social-icons rounded">
+                            <li><a class="facebook" href="https://@ViewBag.Facebook"><i class="icon-facebook"></i></a></li>
+                            <li><a class="instagram" href="https://@ViewBag.Instagram"><i class="icon-instagram"></i></a></li>
+                            <li><a class="twitter" href="https://@ViewBag.Twitter"><i class="icon-twitter"></i></a></li>
+                        </ul>
+
+                    </div>
+                    <!-- Widget / End-->
+
+                    <div class="clearfix"></div>
+                    <div class="margin-bottom-40"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Sidebar / End -->
+
+
+    </div>
+</div>
+
+
+<!-- Footer
+================================================== -->
+<div class="margin-top-55"></div>

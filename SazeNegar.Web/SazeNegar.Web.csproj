@@ -5196,6 +5196,10 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Titlebar.cshtml" />
     <Content Include="Views\Blog\BlogList.cshtml" />
+    <Content Include="Views\Blog\TopArticlesSection.cshtml" />
+    <Content Include="Views\Home\About_us.cshtml" />
+    <Content Include="Views\Shared\_Layout_About_us.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
