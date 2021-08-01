@@ -1,4 +1,6 @@
-﻿<div class="col-lg-8 col-md-8 dir-rtl">
+﻿@model List<SazeNegar.Core.Models.Cars>
+
+<div class="col-lg-8 col-md-8 dir-rtl">
 
     <h4 class="headline">لیست خودرو ها</h4>
 
@@ -41,226 +43,107 @@
     <!-- Listings -->
     <div class="listings-container list-layout">
 
-        <!-- Listing Item -->
 
+        @foreach (var item in Model)
+        {
 
-        <a href="single-car.html">
-            <div class="listing-item">
+            <!-- Listing Item -->
 
-                <div href="single-car.html" class="listing-img-container">
+            <a href="/Cars/singleCar">
+                <div class="listing-item">
 
-                    <div class="listing-badges">
-                        <span class="featured">ویژه</span>
-                        <span>برای فروش</span>
-                    </div>
+                    <div class="listing-img-container">
 
-                    <div class="listing-img-content">
-                        <span class="listing-price"> 275,000 تومان</span>
-                        <span class="like-icon tooltip"></span>
-                    </div>
+                        <div class="listing-badges">
+                            @if (item.Special != null)
+                            {
+                                <span class="featured">ویژه</span>
+                            }
+                        </div>
 
-                    <div class="listing-carousel">
-                        <div><img src="images/41.jpg" alt=""></div>
-                    </div>
-                </div>
+                        <div class="listing-img-content">
+                            <span class="listing-price"> @item.Price تومان</span>
+                            <span class="like-icon tooltip"></span>
+                        </div>
 
-                <div class="listing-content">
-
-                    <div class="listing-title">
-                        <h4>
-                            <div>اسپرت</div>
-                        </h4>
-
-
-                        <div class="details button border">
-                            جزئیات
+                        <div class="listing-carousel">
+                            <div><img src="../../Files/CarsImages/Image/@item.Image" alt=""></div>
                         </div>
                     </div>
 
-                    <ul class="listing-details">
-                        <li>دنده اتومات</li>
-                        <li>سنسور عقب</li>
-                        <li>اسپرت</li>
-                        <li>شاسی بلند</li>
-                    </ul>
+                    <div class="listing-content">
 
-                    <div class="listing-footer">
-
-                        <span><i class="fa fa-calendar-o"></i> 1 روز قبل</span>
-                    </div>
-
-                </div>
-
-            </div>
-        </a>
-
-        <!-- Listing Item / End -->
-        <!-- Listing Item -->
-        <a href="single-car.html">
-            <div class="listing-item">
-
-                <div class="listing-img-container">
-
-                    <div class="listing-badges">
-                        <span>برای اجاره</span>
-                    </div>
-
-                    <div class="listing-img-content">
-                        <span class="listing-price"> 900 تومان</span>
-                        <span class="like-icon"></span>
-                    </div>
-
-                    <img src="images/42.jpg" alt="">
-
-                </div>
-
-                <div class="listing-content">
-
-                    <div class="listing-title">
-                        <h4>
-                            <div>اسپرت</div>
-                        </h4>
+                        <div class="listing-title">
+                            <h4>
+                                <div>@item.Brand.CarModel.CarClasses.FirstOrDefault(i => i.Id == 0)</div>
+                            </h4>
 
 
-                        <div class="details button border">
-                            جزئیات
+                            <div class="details button border">
+                                جزئیات
+                            </div>
                         </div>
-                    </div>
 
-                    <ul class="listing-details">
-                        <li>دنده اتومات</li>
-                        <li>سنسور عقب</li>
-                        <li>اسپرت</li>
-                        <li>شاسی بلند</li>
-                    </ul>
+                        <ul class="listing-details">
+                            @if (item.Gear != null)
+                            {
+                                <li>دنده اتومات</li>
+                            }
+                            @if (item.Navigation != null)
+                            {
+                                <li>نویگیشن</li>
+                            }
+                            @if (item.Sunroof != null)
+                            {
+                                <li>سانروف</li>
+                            }
+                        </ul>
 
-                    <div class="listing-footer">
+                        <div class="listing-footer">
 
-                        <span><i class="fa fa-calendar-o"></i> 1 روز قبل</span>
-                    </div>
-
-                </div>
-
-            </div>
-        </a>
-        <!-- Listing Item / End -->
-        <!-- Listing Item -->
-        <a href="single-car.html">
-            <div class="listing-item">
-
-                <div class="listing-img-container">
-
-                    <div class="listing-badges">
-                        <span class="featured">ویژه</span>
-                        <span>برای اجاره</span>
-                    </div>
-
-                    <div class="listing-img-content">
-                        <span class="listing-price">1700 تومان </span>
-                        <span class="like-icon"></span>
-                    </div>
-
-                    <img src="images/43.jpg" alt="">
-
-                </div>
-
-                <div class="listing-content">
-
-                    <div class="listing-title">
-                        <h4>
-                            <div>اسپرت</div>
-                        </h4>
-
-
-                        <div class="details button border">
-                            جزئیات
+                            <span><i class="fa fa-calendar-o"></i>@item.</span>
                         </div>
-                    </div>
 
-                    <ul class="listing-details">
-                        <li>دنده اتومات</li>
-                        <li>سنسور عقب</li>
-                        <li>اسپرت</li>
-                        <li>شاسی بلند</li>
-                    </ul>
-
-                    <div class="listing-footer">
-
-                        <span><i class="fa fa-calendar-o"></i> 1 روز قبل</span>
                     </div>
 
                 </div>
+            </a>
 
-            </div>
-        </a>
-        <!-- Listing Item / End -->
-        <!-- Listing Item -->
-        <a href="single-car.html">
-            <div class="listing-item">
+            <!-- Listing Item / End -->
+        }
 
-                <div class="listing-img-container">
-
-                    <div class="listing-badges">
-                        <span>برای فروش</span>
-                    </div>
-
-                    <div class="listing-img-content">
-                        <span class="listing-price"> 420,000 تومان</span>
-                        <span class="like-icon"></span>
-                    </div>
-
-                    <div class="listing-carousel">
-                        <div><img src="images/44.jpg" alt=""></div>
-                    </div>
-
-                </div>
-
-                <div class="listing-content">
-
-                    <div class="listing-title">
-                        <h4>
-                            <div href="#">اسپرت</div>
-                        </h4>
-
-
-                        <div class="details button border">
-                            جزئیات
-                        </div>
-                    </div>
-
-                    <ul class="listing-details">
-                        <li>دنده اتومات</li>
-                        <li>سنسور عقب</li>
-                        <li>اسپرت</li>
-                        <li>شاسی بلند</li>
-                    </ul>
-
-                    <div class="listing-footer">
-
-                        <span><i class="fa fa-calendar-o"></i> 1 روز قبل</span>
-                    </div>
-
-                </div>
-
-            </div>
-        </a>
-        <!-- Listing Item / End -->
 
     </div>
     <!-- Listings Container / End -->
     <!-- Pagination -->
-    <div class="pagination-container margin-top-20">
+    <div class="clearfix"></div>
+    <div class="pagination-container">
         <nav class="pagination">
             <ul>
-                <li><a href="#" class="prev">قبلی</a></li>
-                <li><a href="#" class="current-page">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#" class="next">بعدی</a></li>
+                @{
+                    if (ViewBag.CurrentPage < ViewBag.PageCount)
+                    {
+                        <li><a href="/Blog?pageNumber=@(ViewBag.CurrentPage+1)@(ViewBag.CategoryId != null? $"&category={ViewBag.CategoryId}":null)@(ViewBag.SearchString != null? $"&searchString={ViewBag.SearchString}":null)" class="next">بعدی</a></li>
+                    }
+                    for (int i = 1; i <= ViewBag.PageCount; i++)
+                    {
+                        <li class="@(i == ViewBag.CurrentPage ? "active" : null)"><a href="/Blog?pageNumber=@i@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">@i</a></li>
+                    }
+                    if (ViewBag.CurrentPage > 1)
+                    {
+                        <li>
+                            <a href="/Blog?pageNumber=@(ViewBag.CurrentPage - 1)@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)" class="prev">
+                                قبلی
+                            </a>
+                        </li>
+                    }
+                }
             </ul>
         </nav>
 
 
     </div>
+    <div class="clearfix"></div>
     <!-- Pagination / End -->
 
 </div>

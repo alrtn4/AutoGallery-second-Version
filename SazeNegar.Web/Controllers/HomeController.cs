@@ -117,24 +117,30 @@ namespace SazeNegar.Web.Controllers
         }
         public ActionResult About_us()
         {
-            ViewBag.About_usContent = _contentRepo.GetAboutUs((int)StaticContentTypes.About_us, 5);
-            ViewBag.About_usPic = _contentRepo.GetAboutUs((int) StaticContentTypes.About_usPic, 2);
-            ViewBag.About_usBanner = _contentRepo.GetAboutUs((int) StaticContentTypes.FlipBanner, 1);
+            ViewBag.About_usContent = _contentRepo.GetAboutUs((int) StaticContentTypes.About_us, 5);
+            ViewBag.About_usPic = _contentRepo.GetAboutUs((int) StaticContentTypes.About_usPic, 1)[0];
+            ViewBag.About_usBanner = _contentRepo.GetAboutUs((int) StaticContentTypes.FlipBanner, 1)[0];
 
             return View();
         }
         public ActionResult Contact()
         {
-            ViewBag.Image = _contentRepo.GetSomeStaticContentDetail((int) StaticContentTypes.ContactImage, 1);
-            ViewBag.Phone = _contentRepo.GetStaticContentDetail((int) StaticContents.Phone);
-            ViewBag.Email = _contentRepo.GetStaticContentDetail((int) StaticContents.Email);
-            ViewBag.Fax = _contentRepo.GetStaticContentDetail((int) StaticContents.Fax);
-            ViewBag.Web = _contentRepo.GetStaticContentDetail((int)StaticContents.Web);
+            ViewBag.Image = _contentRepo.GetSomeStaticContentDetail((int) StaticContentTypes.ContactImage, 1)[0].Image;
+            ViewBag.Phone = _contentRepo.Get((int) StaticContents.Phone).ShortDescription;
+            ViewBag.Email = _contentRepo.Get((int) StaticContents.Email).ShortDescription;
+            ViewBag.Fax = _contentRepo.Get((int) StaticContents.Fax).ShortDescription;
+            ViewBag.Web = _contentRepo.Get((int) StaticContents.Web).ShortDescription;
             return View();
         }
         [HttpPost]
         public ActionResult Contact(ContactForm contactForm)
         {
+            ViewBag.Image = _contentRepo.GetSomeStaticContentDetail((int)StaticContentTypes.ContactImage, 1)[0].Image;
+            ViewBag.Phone = _contentRepo.Get((int)StaticContents.Phone).ShortDescription;
+            ViewBag.Email = _contentRepo.Get((int)StaticContents.Email).ShortDescription;
+            ViewBag.Fax = _contentRepo.Get((int)StaticContents.Fax).ShortDescription;
+            ViewBag.Web = _contentRepo.Get((int)StaticContents.Web).ShortDescription;
+
             _contactFormRepo.Add(contactForm);
             return View(contactForm);
         }

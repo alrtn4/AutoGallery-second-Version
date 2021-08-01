@@ -25,11 +25,10 @@ namespace SazeNegar.Core.Models
         public string Navigation { get; set; }
         [Display(Name = "تصویر")]
         public string Image { get; set; }
-        public int temp { get; set; }
         [Display(Name = "ویژه")]
         public string Special { get; set; }
 
-        public int? BrandId { get; set; }
+        public int BrandId { get; set; }
         public virtual Brands Brand { get; set; }
         public virtual ICollection<Cart> Cart { get; set; }
 

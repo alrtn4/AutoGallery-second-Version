@@ -19,7 +19,6 @@ namespace SazeNegar.Core.Models
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(100, ErrorMessage = "{0} باید از 100 کارکتر کمتر باشد")]
         public string Model { get; set; }
-
         public virtual ICollection<Brands> Brand { get; set; }
         public virtual ICollection<CarClass> CarClasses { get; set; }
 

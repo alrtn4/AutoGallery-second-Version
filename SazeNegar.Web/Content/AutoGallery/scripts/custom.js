@@ -1251,7 +1251,7 @@ $(document).ready(function(){
 
         var action = $(this).attr('action');
 
-        $('#contact #submit').after('<img src="images/loader.gif" class="loader" />')
+        $('#contact #submit').after('<img src="../../Content/AutoGallery/images/loader.gif" class="loader" />');
 
         $('#submit')
             .prop('disabled',true)
