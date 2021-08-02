@@ -1,4 +1,6 @@
-﻿<!-- Sidebar -->
+﻿@model List<SazeNegar.Core.Models.Cars>
+
+<!-- Sidebar -->
 <div class="col-lg-4 col-md-4">
     <div class="sidebar sticky right">
 
@@ -142,105 +144,45 @@
                 <h3 class="margin-bottom-35">خودرو های ویژه</h3>
 
                 <div class="listing-carousel outer">
-                    <!-- Item -->
-                    <div class="item">
-                        <div class="listing-item compact">
+                    @foreach (var item in Model)
+                    {
+                        <!-- Item -->
+                        <div class="item">
+                            <div class="listing-item compact">
 
-                            <a href="single-car.html" class="listing-img-container">
+                                <a href="single-car.html" class="listing-img-container">
 
-                                <div class="listing-badges">
-                                    <span class="featured">ویژه</span>
-                                    <span>فروشی</span>
-                                </div>
+                                    <div class="listing-badges">
+                                        @if (item.Special != null)
+                                        {
+                                            <span class="featured">ویژه</span>
+                                        }
+                                        @*<span>فروشی</span>*@
+                                    </div>
 
-                                <div class="listing-img-content">
-                                    <span class="listing-compact-title">
-                                        بی ام دبلیو <i>
-                                            275,000
-                                            تومان
-                                        </i>
-                                    </span>
+                                    <div class="listing-img-content">
+                                        <span class="listing-compact-title">
+                                            @item.Brand.Brand
+                                            <i>
+                                                @item.Price
+                                                تومان
+                                            </i>
+                                        </span>
 
-                                    <ul class="listing-hidden-content">
-                                        <li>اسپرت <span>دودر</span></li>
-                                        <li>دنده<span>اتومات</span></li>
-                                        <li>نویگشین <span>دارد</span></li>
-                                        <li>سانروف <span>دارد</span></li>
-                                    </ul>
-                                </div>
+                                        <ul class="listing-hidden-content">
+                                            <li>دنده<span>@item.Gear</span></li>
+                                            <li>نویگشین <span>@item.Navigation</span></li>
+                                            <li>سانروف <span>@item.Sunroof</span></li>
+                                        </ul>
+                                    </div>
 
-                                <img src="images/41.jpg" alt="">
-                            </a>
+                                    <img src="../../Files/CarsImages/Image/@item.Image" alt="">
+                                </a>
 
+                            </div>
                         </div>
-                    </div>
-                    <!-- Item / End -->
-                    <!-- Item -->
-                    <div class="item">
-                        <div class="listing-item compact">
-
-                            <a href="single-car.html" class="listing-img-container">
-
-                                <div class="listing-badges">
-                                    <span class="featured">ویژه</span>
-                                    <span>فروشی</span>
-                                </div>
-
-                                <div class="listing-img-content">
-                                    <span class="listing-compact-title">
-                                        بی ام دبلیو <i>
-                                            275,000
-                                            تومان
-                                        </i>
-                                    </span>
-
-                                    <ul class="listing-hidden-content">
-                                        <li>اسپرت <span>دودر</span></li>
-                                        <li>دنده<span>اتومات</span></li>
-                                        <li>نویگشین <span>دارد</span></li>
-                                        <li>سانروف <span>دارد</span></li>
-                                    </ul>
-                                </div>
-
-                                <img src="images/42.jpg" alt="">
-                            </a>
-
-                        </div>
-                    </div>
-                    <!-- Item / End -->
-                    <!-- Item -->
-                    <div class="item">
-                        <div class="listing-item compact">
-
-                            <a href="single-car.html" class="listing-img-container">
-
-                                <div class="listing-badges">
-                                    <span class="featured">ویژه</span>
-                                    <span>اجاره ای</span>
-                                </div>
-
-                                <div class="listing-img-content">
-                                    <span class="listing-compact-title">
-                                        بی ام دبلیو <i>
-                                            275,000
-                                            تومان
-                                        </i>
-                                    </span>
-
-                                    <ul class="listing-hidden-content">
-                                        <li>اسپرت <span>دودر</span></li>
-                                        <li>دنده<span>اتومات</span></li>
-                                        <li>نویگشین <span>دارد</span></li>
-                                        <li>سانروف <span>دارد</span></li>
-                                    </ul>
-                                </div>
-
-                                <img src="images/43.jpg" alt="">
-                            </a>
-
-                        </div>
-                    </div>
-                    <!-- Item / End -->
+                        <!-- Item / End -->
+                    }
                 </div>
 
             </div>

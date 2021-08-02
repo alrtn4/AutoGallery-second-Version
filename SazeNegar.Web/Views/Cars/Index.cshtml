@@ -1,5 +1,4 @@
-﻿@using SazeNegar.Infrastructure.Repositories
-@model List<SazeNegar.Core.Models.Cars>
+﻿@model List<SazeNegar.Core.Models.Cars>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -89,7 +88,7 @@
 
                                 <div class="listing-title">
                                     <h4>
-                                        <div>@</div>
+                                        <div>@item.Brand.Brand</div>
                                     </h4>
 
 
@@ -115,7 +114,7 @@
 
                                 <div class="listing-footer">
 
-                                    <span><i class="fa fa-calendar-o"></i>@{if(ViewBag.carClassList)return }</span>
+                                    <span><i class="fa fa-calendar-o"></i>@item.PersianDateTime </span>
                                 </div>
 
                             </div>
@@ -135,21 +134,21 @@
                 <nav class="pagination">
                     <ul>
                         @{
-                            if (ViewBag.CurrentPage < ViewBag.PageCount)
-                            {
-                                <li><a href="/Blog?pageNumber=@(ViewBag.CurrentPage+1)@(ViewBag.CategoryId != null? $"&category={ViewBag.CategoryId}":null)@(ViewBag.SearchString != null? $"&searchString={ViewBag.SearchString}":null)" class="next">بعدی</a></li>
-                            }
-                            for (int i = 1; i <= ViewBag.PageCount; i++)
-                            {
-                                <li class="@(i == ViewBag.CurrentPage ? "active" : null)"><a href="/Blog?pageNumber=@i@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">@i</a></li>
-                            }
                             if (ViewBag.CurrentPage > 1)
                             {
                                 <li>
-                                    <a href="/Blog?pageNumber=@(ViewBag.CurrentPage - 1)@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)" class="prev">
+                                    <a href="/Cars?pageNumber=@(ViewBag.CurrentPage - 1)@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)" class="prev">
                                         قبلی
                                     </a>
                                 </li>
+                            }
+                            for (int i = 1; i <= ViewBag.PageCount; i++)
+                            {
+                                <li class="@(i == ViewBag.CurrentPage ? "active" : null)"><a href="/Cars?pageNumber=@i@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">@i</a></li>
+                            }
+                            if (ViewBag.CurrentPage < ViewBag.PageCount)
+                            {
+                                <li><a href="/Cars?pageNumber=@(ViewBag.CurrentPage+1)@(ViewBag.CategoryId != null? $"&category={ViewBag.CategoryId}":null)@(ViewBag.SearchString != null? $"&searchString={ViewBag.SearchString}":null)" class="next">بعدی</a></li>
                             }
                         }
                     </ul>

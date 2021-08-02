@@ -14,14 +14,13 @@ using SazeNegar.Web.ViewModels;
 namespace SazeNegar.Web.Areas.Admin.Controllers
 {
     [Authorize]
-    public class CarsController : Controller
+    public class CarsInfoController : Controller
     {
-        private readonly CarsRepository _repo;
+        private readonly CarsInfoRepository _repo;
         private readonly BrandsRepository _repoBrands;
-        public CarsController(CarsRepository repo, BrandsRepository repoBrands)
+        public CarsInfoController(CarsInfoRepository repo)
         {
             _repo = repo;
-            _repoBrands = repoBrands;
         }
         // GET: Admin/ArticleCategories
         public ActionResult Index()
@@ -32,35 +31,72 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
         // GET: Admin/ArticleCategories/Create
         public ActionResult Create()
         {
-            CarBrandsViewModel carBrandsViewModel = new CarBrandsViewModel();
-            carBrandsViewModel.CarsList = _repo.GetAll();
-            carBrandsViewModel.CarBrandsList = _repo.GetBrandsList();
+            CarsInfo carsInfo = new CarsInfo();
+            carsInfo = _repo.GetAll();
 
-            return View(carBrandsViewModel);
+            return View(carsInfo);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CarBrandsViewModel carBrandsViewModel, HttpPostedFileBase carImage, int selectedBrand)
+        public ActionResult Create(CarsInfo carsInfo, HttpPostedFileBase carImage1,
+            HttpPostedFileBase carImage2,
+            HttpPostedFileBase carImage3,
+            HttpPostedFileBase carImage4,
+            HttpPostedFileBase carImage5,
+            HttpPostedFileBase carImage6)
         {
             if (ModelState.IsValid)
             {
                 #region Upload Image
-                if (carImage != null)
+                if (carImage1 != null)
                 {
-                    var newFileName = Guid.NewGuid() + Path.GetExtension(carImage.FileName);
-                    carImage.SaveAs(Server.MapPath("~/Files/CarsImages/Image/" + newFileName));
+                    var newFileName = Guid.NewGuid() + Path.GetExtension(carImage1.FileName);
+                    carImage1.SaveAs(Server.MapPath("~/Files/CarsInfoImages/Image/" + newFileName));
 
-                    carBrandsViewModel.Cars.Image = newFileName;
+                    carsInfo.Image1 = newFileName;
+                }
+                if (carImage2 != null)
+                {
+                    var newFileName = Guid.NewGuid() + Path.GetExtension(carImage2.FileName);
+                    carImage2.SaveAs(Server.MapPath("~/Files/CarsInfoImages/Image/" + newFileName));
+
+                    carsInfo.Image2 = newFileName;
+                }
+                if (carImage3 != null)
+                {
+                    var newFileName = Guid.NewGuid() + Path.GetExtension(carImage3.FileName);
+                    carImage3.SaveAs(Server.MapPath("~/Files/CarsInfoImages/Image/" + newFileName));
+
+                    carsInfo.Image3 = newFileName;
+                }
+                if (carImage4 != null)
+                {
+                    var newFileName = Guid.NewGuid() + Path.GetExtension(carImage4.FileName);
+                    carImage4.SaveAs(Server.MapPath("~/Files/CarsInfoImages/Image/" + newFileName));
+
+                    carsInfo.Image4 = newFileName;
+                }
+                if (carImage5 != null)
+                {
+                    var newFileName = Guid.NewGuid() + Path.GetExtension(carImage5.FileName);
+                    carImage5.SaveAs(Server.MapPath("~/Files/CarsInfoImages/Image/" + newFileName));
+
+                    carsInfo.Image5 = newFileName;
+                }
+                if (carImage6 != null)
+                {
+                    var newFileName = Guid.NewGuid() + Path.GetExtension(carImage6.FileName);
+                    carImage6.SaveAs(Server.MapPath("~/Files/CarsInfoImages/Image/" + newFileName));
+
+                    carsInfo.Image6 = newFileName;
                 }
                 #endregion
 
-                carBrandsViewModel.Cars.BrandId = selectedBrand;
-                carBrandsViewModel.Cars.PersianDateTime = carBrandsViewModel.Cars.InsertDate != null ? new PersianDateTime(carBrandsViewModel.Cars.InsertDate.Value).ToString() : "-";
-                _repo.Add(carBrandsViewModel.Cars);
+                _repo.Add(carsInfo);
                 return RedirectToAction("Index");
             }
 
-            return View(carBrandsViewModel);
+            return View(carsInfo);
         }
 
         // GET: Admin/ArticleCategories/Edit/5

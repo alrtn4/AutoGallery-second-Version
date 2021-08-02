@@ -5,6 +5,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SazeNegar.Infrastructure;
+using SazeNegar.Infrastructure.Repositories;
 
 namespace SazeNegar.Infrastructure.Repositories
 {
@@ -18,6 +20,22 @@ namespace SazeNegar.Infrastructure.Repositories
             _logger = logger;
         }
 
-        
+        public List<CarClass> GetCarClassById(int id)
+        {
+            var Cars = _context.Cars.Where(i => i.Id == id).SingleOrDefault();
+            var Brands = _context.Brands.Where(i => i.Id == Cars.BrandId).SingleOrDefault();
+            var CarModel = _context.CarModels.Where(i => i.Id == Brands.CarModelId && i.CarClasses.Count != 0).SingleOrDefault();
+            var carClasses = new List<CarClass>();
+            foreach (var carClass in _context.CarClasses.ToList())
+            {
+                foreach (var carModel in carClass.CarModels.ToList())
+                {
+                    if (carModel.Id == CarModel.Id)
+                        carClasses.Add(carClass);
+                }
+            }
+
+            return carClasses;
+        }
     }
 }

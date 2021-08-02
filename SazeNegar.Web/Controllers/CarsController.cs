@@ -27,6 +27,7 @@ namespace SazeNegar.Web.Controllers
         public ActionResult Index(int pageNumber = 1, string searchString = null)
         {
             var cars = _carsRepo.GetAll();
+            //var vm = new List<SazeNegar.Infrastructure.ViewModels.CarListViewModel>();
             var vm = new List<Cars>();
             var take = 3;
             var skip = pageNumber * take - take;
@@ -35,6 +36,7 @@ namespace SazeNegar.Web.Controllers
             //{
             //    vm.Add(item);
             //}
+            //vm = _carsRepo.GetCarsList(skip, take);
             vm = _carsRepo.GetCarsList(skip, take, searchString);
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -51,18 +53,19 @@ namespace SazeNegar.Web.Controllers
             ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
             ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
             List<IQueryable<CarModel>> carClassList = null;
-            foreach (var item in vm)
-            {
-                carClassList.Add(_carsRepo.GetCarClasses(item));
-            }
+            //foreach (var item in vm)
+            //{
+            //    carClassList.Add(_carsRepo.GetCarClasses(item));
+            //}
 
-            ViewBag.carClassList = carClassList;
+            //ViewBag.carClassList = carClassList;
             return View(vm);
         }
 
         public ActionResult Sidebar()
         {
-            return View();
+            var sidebarContent = _carsRepo.GetCarsList(0, 3, null);
+            return View(sidebarContent);
         }
         public ActionResult Titlebar()
         {

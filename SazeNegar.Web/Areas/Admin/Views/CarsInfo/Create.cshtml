@@ -1,0 +1,327 @@
+﻿@model SazeNegar.Core.Models.CarsInfo
+
+
+@using SazeNegar.Core.Utility;
+@using System.Web.UI.WebControls;
+@using SazeNegar.Infrastructure;
+@{
+    ViewBag.Title = "افزودن ماشین";
+}
+<input type="hidden" id="nav_active" value="static_content">
+<input type="hidden" id="nav_item_active" value="content">
+@{
+    if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger">
+            <strong>خطا!</strong> @ViewBag.Message
+        </div>
+    }
+}
+<div class="col-lg-12">
+    <div class="card card-custom gutter-b">
+        <div class="card-header">
+            <h3 class="card-title">
+                افزودن ماشین
+            </h3>
+        </div>
+        @using (Html.BeginForm("Create", "CarsInfo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-5">
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "form-text text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Doors, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.Doors, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Break, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.Break, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Explanation, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.Explanation, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetailsSunroof, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.DetailsSunroof, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetailsHeight, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.DetailsHeight, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetailsMirror, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.DetailsMirror, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetailsSencor, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.DetailsSencor, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetailsElectricity, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.DetailsElectricity, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetailsMap, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.DetailsMap, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetailsKeyless, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.DetailsKeyless, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DetailsGuide, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.DetailsGuide, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FeaturesComputer, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.FeaturesComputer, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FeaturesRightKey, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.FeaturesRightKey, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FeaturesLeftKey, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.FeaturesLeftKey, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FeaturesTempreture, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.FeaturesTempreture, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FeaturesCruse, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.FeaturesCruse, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FeaturesJack, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.FeaturesJack, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FeaturesCurtain, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.FeaturesCurtain, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FeaturesHeater, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.FeaturesHeater, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TechnicalEngineShort, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.TechnicalEngineShort, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TechnicalEngineDetails, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.TechnicalEngineDetails, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TechnicalBreakShort, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.TechnicalBreakShort, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TechnicalBreakDetails, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.TechnicalBreakDetails, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TechnicalVentilationShort, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.TechnicalVentilationShort, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TechnicalVentilationDetails, new { })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.TechnicalVentilationDetails, new { htmlAttributes = new { @class = "form-control " } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-label">تصویر</label>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="image-input image-input-outline" id="car-image">
+                            <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_1.jpg)"></div>
+
+                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="آپلود تصویر">
+                                <i class="fa fa-pen icon-sm text-muted"></i>
+                                <input type="file" name="carImage1" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="static-content_image_remove" />
+                            </label>
+
+                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="حذف تصویر">
+                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-label">تصویر</label>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="image-input image-input-outline" id="car-image">
+                            <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_1.jpg)"></div>
+
+                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="آپلود تصویر">
+                                <i class="fa fa-pen icon-sm text-muted"></i>
+                                <input type="file" name="carImage2" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="static-content_image_remove" />
+                            </label>
+
+                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="حذف تصویر">
+                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-label">تصویر</label>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="image-input image-input-outline" id="car-image">
+                            <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_1.jpg)"></div>
+
+                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="آپلود تصویر">
+                                <i class="fa fa-pen icon-sm text-muted"></i>
+                                <input type="file" name="carImage3" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="static-content_image_remove" />
+                            </label>
+
+                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="حذف تصویر">
+                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-label">تصویر</label>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="image-input image-input-outline" id="car-image">
+                            <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_1.jpg)"></div>
+
+                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="آپلود تصویر">
+                                <i class="fa fa-pen icon-sm text-muted"></i>
+                                <input type="file" name="carImage4" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="static-content_image_remove" />
+                            </label>
+
+                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="حذف تصویر">
+                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-label">تصویر</label>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="image-input image-input-outline" id="car-image">
+                            <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_1.jpg)"></div>
+
+                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="آپلود تصویر">
+                                <i class="fa fa-pen icon-sm text-muted"></i>
+                                <input type="file" name="carImage5" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="static-content_image_remove" />
+                            </label>
+
+                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="حذف تصویر">
+                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-label">تصویر</label>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="image-input image-input-outline" id="car-image">
+                            <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_1.jpg)"></div>
+
+                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="آپلود تصویر">
+                                <i class="fa fa-pen icon-sm text-muted"></i>
+                                <input type="file" name="carImage6" accept=".png, .jpg, .jpeg" />
+                                <input type="hidden" name="static-content_image_remove" />
+                            </label>
+
+                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="حذف تصویر">
+                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="@Url.Action("Index")" class="btn btn-secondary">انصراف</a>
+                <input type="submit" value="ثبت" class="btn btn-primary mr-2" />
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .image-input .image-input-wrapper {
+        width: 200px;
+    }
+</style>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/ckeditor/adapters/jquery.js"></script>
+    <script>
+        $(function () {
+            $('#Description').ckeditor();
+
+        });
+        new KTImageInput('car-image');
+    </script>
+}
+

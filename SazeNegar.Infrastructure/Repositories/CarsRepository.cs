@@ -1,4 +1,5 @@
 ﻿using SazeNegar.Core.Models;
+using SazeNegar.Infrastructure.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,10 +13,12 @@ namespace SazeNegar.Infrastructure.Repositories
     {
         private readonly MyDbContext _context;
         private readonly LogsRepository _logger;
-        public CarsRepository(MyDbContext context, LogsRepository logger) : base(context, logger)
+        private readonly CarClassRepository _carClassRepository;
+        public CarsRepository(MyDbContext context, LogsRepository logger, CarClassRepository carClassRepository) : base(context, logger)
         {
             _context = context;
             _logger = logger;
+            _carClassRepository = carClassRepository;
         }
 
         //public bool CarHasBrand(string carId, string brandId)
@@ -67,9 +70,26 @@ namespace SazeNegar.Infrastructure.Repositories
             else
             {
                 return _context.Cars
-                    .Where(a => a.IsDeleted == false)
+                    .Where(a => a.IsDeleted == false).Include(x => x.Brand)
                     .OrderByDescending(a => a.Id).Skip(skip).Take(take).ToList();
             }
+        }
+        public List<CarListViewModel> GetCarsList(int skip, int take)
+        {
+
+            List<CarListViewModel> carList = new List<CarListViewModel>();
+            var selectedCars = _context.Cars.Where(a => a.IsDeleted == false)
+                .OrderByDescending(a => a.Id).Skip(skip).Take(take).ToList();
+            int i = 0;
+            foreach (var item in selectedCars)
+            {
+                carList.Add(new CarListViewModel());
+                carList[i].Cars = item;
+                carList[i].CarClasses = _carClassRepository.GetCarClassById(item.Id);
+                i++;
+            }
+
+            return carList;
         }
         //public List<Cars> GetCarsList()
         //{

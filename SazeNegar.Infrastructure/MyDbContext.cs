@@ -5,7 +5,6 @@ using System.Text;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SazeNegar.Core.Models;
 
-
 namespace SazeNegar.Infrastructure
 {
     public class MyDbContext : IdentityDbContext<User>
@@ -43,6 +42,7 @@ namespace SazeNegar.Infrastructure
         public DbSet<CarModel> CarModels { get; set; }
         public DbSet<CarModelCarClass> CarModelCarClasses { get; set; }
         public DbSet<CarClass> CarClasses { get; set; }
+        public DbSet<CarsInfo> CarsInfos { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

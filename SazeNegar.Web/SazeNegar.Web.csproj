@@ -194,6 +194,7 @@
     <Compile Include="Areas\Admin\Controllers\BrandsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CarClassController.cs" />
     <Compile Include="Areas\Admin\Controllers\CarModelController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CarsInfoController.cs" />
     <Compile Include="Areas\Admin\Controllers\CarsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SliderCartController.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticleCategoriesController.cs" />
@@ -242,6 +243,7 @@
     <Compile Include="ViewModels\CarBrandsViewModels.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\ArticleViewModels.cs" />
+    <Compile Include="ViewModels\CarViewModels.cs" />
     <Compile Include="ViewModels\CommonViewModels.cs" />
     <Compile Include="ViewModels\IdentityModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
@@ -3041,6 +3043,10 @@
     <Content Include="Areas\Admin\Views\CarModel\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SliderCart\Create.cshtml" />
     <Content Include="Areas\Admin\Views\StaticContentDetails\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CarsInfo\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CarsInfo\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CarsInfo\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CarsInfo\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -5208,6 +5214,7 @@
     <Folder Include="Files\ArticleImages\Temp\" />
     <Folder Include="Files\CarsImages\Image\" />
     <Folder Include="Files\CarsImages\Temp\" />
+    <Folder Include="Files\CarsInfoImages\Image\" />
     <Folder Include="Files\CertificatesImages\Temp\" />
     <Folder Include="Files\GalleryImages\Temp\" />
     <Folder Include="Files\PartnersImages\Temp\" />
