@@ -1,4 +1,4 @@
-﻿@model SazeNegar.Web.ViewModels.CarBrandsViewModel
+﻿@model SazeNegar.Web.ViewModels.CarBrandsInfoViewModel
 
 
 @using SazeNegar.Core.Utility;
@@ -92,9 +92,18 @@
         <div class="form-group col-md-5">
             <label for="selectedBrand">لیست برندها</label>
             <select class="form-control" id="selectedBrand" name="selectedBrand">
-                @foreach (var item in Model.CarBrandsList)
+                @foreach (var item in Model.BrandsList)
                 {
                     <option value="@item.Id">@item.Brand</option>
+                }
+            </select>
+        </div>
+        <div class="form-group col-md-5">
+            <label for="selectedCarInfo">لیست اطلاعات ماشین ها</label>
+            <select class="form-control" id="selectedCarInfo" name="selectedCarInfo">
+                @foreach (var item in Model.CarsInfoList)
+                {
+                    <option value="@item.Id">@item.Title</option>
                 }
             </select>
         </div>

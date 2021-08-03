@@ -31,6 +31,8 @@ namespace SazeNegar.Core.Models
 
         public int BrandId { get; set; }
         public virtual Brands Brand { get; set; }
+        public int CarInfoId { get; set; }
+        public virtual CarsInfo CarsInfo { get; set; }
         public virtual ICollection<Cart> Cart { get; set; }
 
         public string InsertUser { get; set; }

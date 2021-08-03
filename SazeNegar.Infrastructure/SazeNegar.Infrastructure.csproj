@@ -133,6 +133,14 @@
     <Compile Include="Migrations\202108020550455_init16.designer.cs">
       <DependentUpon>202108020550455_init16.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108030503070_init17.cs" />
+    <Compile Include="Migrations\202108030503070_init17.designer.cs">
+      <DependentUpon>202108030503070_init17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108030742589_init18.cs" />
+    <Compile Include="Migrations\202108030742589_init18.designer.cs">
+      <DependentUpon>202108030742589_init18.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -228,6 +236,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108020550455_init16.resx">
       <DependentUpon>202108020550455_init16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108030503070_init17.resx">
+      <DependentUpon>202108030503070_init17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108030742589_init18.resx">
+      <DependentUpon>202108030742589_init18.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

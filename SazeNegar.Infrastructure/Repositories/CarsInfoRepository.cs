@@ -19,11 +19,15 @@ namespace SazeNegar.Infrastructure.Repositories
             _logger = logger;
         }
 
-        public CarsInfo GetCar(int id)
+        public CarsInfo GetCarInfo(int id)
         {
             return _context.CarsInfos.FirstOrDefault(c => c.Id == id);
         }
 
+        public List<CarsInfo> GetCarsInfosList()
+        {
+            return _context.CarsInfos.ToList();
+        }
         public int GetCarsInfoCount()
         {
             return _context.CarsInfos

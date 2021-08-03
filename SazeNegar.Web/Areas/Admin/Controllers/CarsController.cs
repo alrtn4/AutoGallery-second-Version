@@ -32,15 +32,15 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
         // GET: Admin/ArticleCategories/Create
         public ActionResult Create()
         {
-            CarBrandsViewModel carBrandsViewModel = new CarBrandsViewModel();
-            carBrandsViewModel.CarsList = _repo.GetAll();
-            carBrandsViewModel.CarBrandsList = _repo.GetBrandsList();
+            CarBrandsInfoViewModel carBrandsInfoViewModel = new CarBrandsInfoViewModel();
+            carBrandsInfoViewModel.CarsList = _repo.GetAll();
+            carBrandsInfoViewModel.BrandsList = _repo.GetBrandsList();
 
-            return View(carBrandsViewModel);
+            return View(carBrandsInfoViewModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CarBrandsViewModel carBrandsViewModel, HttpPostedFileBase carImage, int selectedBrand)
+        public ActionResult Create(CarBrandsInfoViewModel carBrandsViewModel, HttpPostedFileBase carImage, int selectedBrand, int selectedCarInfo)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +55,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                 #endregion
 
                 carBrandsViewModel.Cars.BrandId = selectedBrand;
+                carBrandsViewModel.Cars.CarInfoId = selectedCarInfo;
                 carBrandsViewModel.Cars.PersianDateTime = carBrandsViewModel.Cars.InsertDate != null ? new PersianDateTime(carBrandsViewModel.Cars.InsertDate.Value).ToString() : "-";
                 _repo.Add(carBrandsViewModel.Cars);
                 return RedirectToAction("Index");
@@ -70,9 +71,10 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CarBrandsViewModel carBrandsViewModel = new CarBrandsViewModel();
+            CarBrandsInfoViewModel carBrandsViewModel = new CarBrandsInfoViewModel();
             carBrandsViewModel.Cars = _repo.Get(id);
-            carBrandsViewModel.CarBrandsList = _repo.GetBrandsList();
+            carBrandsViewModel.BrandsList = _repo.GetBrandsList();
+            carBrandsViewModel.CarsInfoList = _repo.GetCarInfoList();
             ViewBag.brandId = _repo.Get(id).BrandId;
             if (carBrandsViewModel == null)
             {
@@ -83,7 +85,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CarBrandsViewModel carBrandsViewModel, HttpPostedFileBase carImage)
+        public ActionResult Edit(CarBrandsInfoViewModel carBrandsViewModel, HttpPostedFileBase carImage)
         {
             if (ModelState.IsValid)
             {
@@ -137,8 +139,8 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
             var db = new MyDbContext();
             var _logsRepository = new LogsRepository(db);
             var _brandsRepo = new BrandsRepository(db, _logsRepository);
-            CarBrandsViewModel brandList = new CarBrandsViewModel();
-            brandList.CarBrandsList = _brandsRepo.GetAll();
+            CarBrandsInfoViewModel brandList = new CarBrandsInfoViewModel();
+            brandList.BrandsList = _brandsRepo.GetAll();
 
             return View(brandList);
         }

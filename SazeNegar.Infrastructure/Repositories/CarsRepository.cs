@@ -21,15 +21,6 @@ namespace SazeNegar.Infrastructure.Repositories
             _carClassRepository = carClassRepository;
         }
 
-        //public bool CarHasBrand(string carId, string brandId)
-        //{
-        //    return _context.Cars.Where(a => a.UserId == userId && a.RoleId == roleId).Any();
-        //}
-        //public List<Brands> GetBrands()
-        //{
-        //    return _context.Brands.ToList();
-        //}
-
         public Cars GetCar(int id)
         {
             return _context.Cars.FirstOrDefault(c => c.Id == id);
@@ -38,6 +29,11 @@ namespace SazeNegar.Infrastructure.Repositories
         public List<Brands> GetBrandsList()
         {
             return _context.Brands.Where(i => i.IsDeleted == false).ToList();
+        }
+
+        public List<CarsInfo> GetCarInfoList()
+        {
+            return _context.CarsInfos.Where(i => i.IsDeleted == false).ToList();
         }
 
         public IQueryable<CarModel> GetCarClasses(Cars cars)
@@ -55,6 +51,7 @@ namespace SazeNegar.Infrastructure.Repositories
             cars.Brand = brands;
             Update(cars);
         }
+        
         public List<Cars> GetCarsList(int skip, int take, int categoryId)
         {
             return _context.Cars.Where(a => a.IsDeleted == false).OrderByDescending(a => a.Id).Skip(skip).Take(take).ToList();
@@ -91,10 +88,7 @@ namespace SazeNegar.Infrastructure.Repositories
 
             return carList;
         }
-        //public List<Cars> GetCarsList()
-        //{
-        //    return _context.Cars.Where(a => a.IsDeleted == false).OrderByDescending(a => a.Id).Skip(skip).Take(take).ToList();
-        //}
+        
         public int GetCarsCount(int? categoryId = null)
         {
             if (categoryId == null)
@@ -103,9 +97,6 @@ namespace SazeNegar.Infrastructure.Repositories
                 return _context.Cars
                     .Count(a => a.IsDeleted == false);
         }
-        //public List<Cars> GetTopCars(int? take = null)
-        //{
-        //    return take != null ? _context.Articles.Where(a => a.IsDeleted == false).OrderByDescending(a => a.ViewCount).Take(take.Value).ToList() : _context.Articles.OrderByDescending(a => a.ViewCount).ToList();
-        //}
+        
     }
 }
