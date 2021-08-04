@@ -40,7 +40,7 @@ namespace SazeNegar.Infrastructure
         public DbSet<Cars> Cars { get; set; }
         public DbSet<Brands> Brands { get; set; }
         public DbSet<CarModel> CarModels { get; set; }
-        public DbSet<CarModelCarClass> CarModelCarClasses { get; set; }
+        public DbSet<CarClassCarModels> CarClassCarModels { get; set; }
         public DbSet<CarClass> CarClasses { get; set; }
         public DbSet<CarsInfo> CarsInfos { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

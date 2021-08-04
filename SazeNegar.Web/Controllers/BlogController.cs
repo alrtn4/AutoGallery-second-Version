@@ -112,7 +112,7 @@ namespace SazeNegar.Web.Controllers
                     AddedDate = DateTime.Now,
                 };
                 _articlesRepo.AddComment(comment);
-                return RedirectToAction("ContactUsSummary", "Home");
+                return RedirectToAction("Details", new {id = form.ArticleId});
             }
             return RedirectToAction("Details", new { id = form.ArticleId });
         }

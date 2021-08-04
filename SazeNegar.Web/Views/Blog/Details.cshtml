@@ -1,0 +1,193 @@
+﻿@model SazeNegar.Web.ViewModels.ArticleDetailsViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Titlebar
+        ================================================== -->
+<div id="titlebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h2>وبلاگ</h2>
+                <span>همیشه به روز باشید</span>
+
+                <!-- Breadcrumbs -->
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="index.html">خانه</a></li>
+                        <li>وبلاگ</li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+
+    <!-- Blog Posts -->
+    <div class="blog-page">
+        <div class="row">
+
+
+            <!-- Post Content -->
+            <div class="col-md-12">
+
+
+                <!-- Blog Post -->
+                <div class="blog-post single-post">
+
+                    <!-- Img -->
+                    <img class="post-img" src="../../Files/ArticleImages/Image/@Model.Image" alt="">
+
+
+                    <!-- Content -->
+                    <div class="post-content">
+                        <h3>@Model.Title</h3>
+
+                        <ul class="post-meta">
+                            <li>@Model.PersianDate</li>
+                            <li>@Model.ArticleComments.Count دیدگاه</li>
+                        </ul>
+
+                        @Html.Raw(@Model.Description)
+
+
+                        <!-- Share Buttons -->
+                        <ul class="share-buttons margin-top-40 margin-bottom-0">
+                            <li><a class="fb-share" href="https://@ViewBag.Facebook"> <i class="fa fa-facebook"></i>فیسبوک </a></li>
+                            <li>
+                                <a class="instagram-share" href="https://@ViewBag.Instagram">
+                                    <i class="fa fa-instagram"></i>اینستاگرام
+                                </a>
+                            </li>
+                            <li><a class="twitter-share" href="https://@ViewBag.Twitter"> <i class="fa fa-twitter"></i>توییتر </a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+                <!-- Blog Post / End -->
+                <!-- Post Navigation -->
+                @*<ul id="posts-nav" class="margin-top-0 margin-bottom-40">
+                        <li class="next-post">
+                            <a href="#">
+                                <span>مقاله ی بعدی</span>
+                                مقاله شماره 3
+                            </a>
+                        </li>
+                        <li class="prev-post">
+                            <a href="#">
+                                <span>مقاله ی قبلی</span>
+                                مقاله شماره 1
+                            </a>
+                        </li>
+                    </ul>*@
+
+
+                <!-- About Author -->
+                @*<div class="about-author">
+                        <img src="images/agent-avatar.jpg" alt="" />
+                        <div class="about-description">
+                            <h4>لورم ایپسوم</h4>
+                            <a href="#">lorem@tehran.com</a>
+                            <p>
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+                                می باشد.
+                            </p>
+                        </div>
+                    </div>*@
+
+
+
+
+
+                <div class="margin-top-50"></div>
+
+                <!-- Reviews -->
+                <section class="comments">
+                    <h4 class="headline margin-bottom-35">
+                        دیدگاه ها <span class="comments-amount">(@Model.ArticleComments.Count)</span>
+                    </h4>
+
+                    <ul>
+                        @foreach (var item in Model.ArticleComments)
+                        {
+                            <li>
+                                <div class="avatar">
+                                    <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70"
+                                         alt="" />
+                                </div>
+                                <div class="comment-content">
+                                    <div class="arrow-comment"></div>
+                                    <div class="comment-by">
+                                        @item.Name<span class="date">@item.AddedDate</span>
+                                        
+                                    </div>
+                                    <p>
+                                        @item.Message
+                                    </p>
+                                </div>
+
+                            </li>
+                        }
+
+                    </ul>
+
+                </section>
+                <div class="clearfix"></div>
+                <div class="margin-top-55"></div>
+
+
+                <!-- Add Comment -->
+                <h4 class="headline">ارسال دیدگاه</h4>
+                <div class="margin-top-15"></div>
+
+                <!-- Add Comment Form -->
+                <form id="add-comment" class="add-comment" action="/Blog/PostComment" method="post">
+            @*@using (Html.BeginForm("PostComment", "Blog", FormMethod.Post, new {id = "commentform", @class = "comment-form"}))
+            {*@
+                <input type="hidden" id="ArticleId" name="ArticleId" value="@Model.Id">
+                <fieldset>
+
+                    <div>
+                        <label>نام:</label>
+                        <input type="text" value="" name="Name"/>
+                    </div>
+
+                    <div>
+                        <label>ایمیل: <span>*</span></label>
+                        <input type="text" style="text-align: left;" value="" name="Email"/>
+                    </div>
+
+                    <div>
+                        <label>دیدگاه: <span>*</span></label>
+                        <textarea cols="40" rows="3" name="Message"></textarea>
+                    </div>
+
+                </fieldset>
+
+                <input type="submit" value="ارسال دیدگاه" class="submit" id="submit" name="submit">
+                <div class="clearfix"></div>
+                <div class="margin-bottom-20"></div>
+              @*}*@
+                </form>
+
+            </div>
+
+        </div>
+        <!-- Sidebar / End -->
+
+
+    </div>
+</div>

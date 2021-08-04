@@ -35,6 +35,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
             CarBrandsInfoViewModel carBrandsInfoViewModel = new CarBrandsInfoViewModel();
             carBrandsInfoViewModel.CarsList = _repo.GetAll();
             carBrandsInfoViewModel.BrandsList = _repo.GetBrandsList();
+            carBrandsInfoViewModel.CarsInfoList = _repo.GetCarInfoList();
 
             return View(carBrandsInfoViewModel);
         }
@@ -85,7 +86,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CarBrandsInfoViewModel carBrandsViewModel, HttpPostedFileBase carImage)
+        public ActionResult Edit(CarBrandsInfoViewModel carBrandsViewModel, HttpPostedFileBase carImage, int selectedBrand, int selectedCarInfo)
         {
             if (ModelState.IsValid)
             {
@@ -99,8 +100,9 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                 }
                 #endregion
 
+                carBrandsViewModel.Cars.BrandId = selectedBrand;
+                carBrandsViewModel.Cars.CarInfoId = selectedCarInfo;
                 _repo.Update(carBrandsViewModel.Cars);
-                //_repoBrands.Update(carBrandsViewModel.CarBrandsList);
                 return RedirectToAction("Index");
             }
             return View(carBrandsViewModel);

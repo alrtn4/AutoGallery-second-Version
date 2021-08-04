@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SazeNegar.Core.Models
 {
-    public class CarModelCarClass
+    public class CarClassCarModels
     {
         public int Id { get; set; }
         public int CarModelId { get; set; }

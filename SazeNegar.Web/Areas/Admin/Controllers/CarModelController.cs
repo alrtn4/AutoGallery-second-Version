@@ -40,7 +40,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                 {
                     CarClassID = item.Id,
                     CarClassTitle = item.Title,
-                    Access = db.CarModelCarClasses
+                    Access = db.CarClassCarModels
                         .Where(a => a.CarModelId == carModelId && a.CarClassId == item.Id).Any()
                 };
                 if(item.IsDeleted != true)
@@ -80,15 +80,15 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
             {
                 #region Add carClass if is in selectedCarClasses and is not in CarModelCarClasses
 
-                if (selectCarClasses.Contains(carClass.Id) && !db.CarModelCarClasses
+                if (selectCarClasses.Contains(carClass.Id) && !db.CarClassCarModels
                         .Where(a => a.CarModelId == carModelId && a.CarClassId == carClass.Id).Any())
                 {
-                    CarModelCarClass mCarClass = new CarModelCarClass()
+                    CarClassCarModels mCarClass = new CarClassCarModels()
                     {
                         CarModelId = carModelId,
                         CarClassId = carClass.Id
                     };
-                    db.CarModelCarClasses.Add(mCarClass);
+                    db.CarClassCarModels.Add(mCarClass);
                     db.SaveChanges();
                 }
 
@@ -96,12 +96,12 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
 
                 #region Delete CarModel if is in CarModelCarClass  and is not in selectCarClasses
 
-                if (!selectCarClasses.Contains(carClass.Id) && db.CarModelCarClasses
+                if (!selectCarClasses.Contains(carClass.Id) && db.CarClassCarModels
                         .Where(a => a.CarModelId == carModelId && a.CarClassId == carClass.Id).Any())
                 {
-                    CarModelCarClass mCarClass = db.CarModelCarClasses
+                    CarClassCarModels mCarClass = db.CarClassCarModels
                         .Where(a => a.CarModelId == carModelId && a.CarClassId == carClass.Id).FirstOrDefault();
-                    db.CarModelCarClasses.Remove(mCarClass);
+                    db.CarClassCarModels.Remove(mCarClass);
                     db.SaveChanges();
                 }
 

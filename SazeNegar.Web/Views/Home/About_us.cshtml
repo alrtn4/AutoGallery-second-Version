@@ -1,4 +1,6 @@
-﻿@{
+﻿@model SazeNegar.Web.ViewModels.About_usViewModel
+
+@{
     Layout = "~/Views/Shared/_Layout_About_us.cshtml";
 }
 
@@ -38,95 +40,64 @@
                         <div class="sec-title">
                             <div class="devider"><span></span></div>
                             <h2>درباره ما</h2>
-                            <div class="text">@ViewBag.About_usContent[0].Title</div>
+                            <div class="text">@Model.About_usHeader[0].Title</div>
                         </div>
                         <div class="text-box">
                             <p>
-                                @Html.Raw(@ViewBag.About_usContent[0].Description)
+                                @Html.Raw(@Model.About_usHeader[0].Description)
                             </p>
                         </div>
                     </div>
 
                     <div class="row features">
-                        <!-- Feature Block -->
-                        <div class="feature-block-two col-lg-12 col-md-12 col-sm-12">
-                            <div class="inner-box">
-                                <span class="icon flaticon-car"></span>
-                                <h4>@ViewBag.About_usContent[1].Title</h4>
-                                <div class="text">
-                                    @Html.Raw(@ViewBag.About_usContent[1].Description)
+                        @foreach (var item in Model.About_us)
+                        {
+                            <div class="feature-block-two col-lg-12 col-md-12 col-sm-12">
+                                <div class="inner-box">
+                                    <span class="icon flaticon-analytics"></span>
+                                    <h4>@item.Title</h4>
+                                    <div class="text">
+                                        @Html.Raw(@item.Description)
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
 
-                        <!-- Feature Block -->
-                        <div class="feature-block-two col-lg-12 col-md-12 col-sm-12">
-                            <div class="inner-box">
-                                <span class="icon flaticon-analytics"></span>
-                                <h4>@ViewBag.About_usContent[2].Title</h4>
-                                <div class="text">
-                                    @Html.Raw(@ViewBag.About_usContent[2].Description)
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Feature Block -->
-                        <div class="feature-block-two col-lg-12 col-md-12 col-sm-12">
-                            <div class="inner-box">
-                                <span class="icon flaticon-search"></span>
-                                <h4>@ViewBag.About_usContent[3].Title</h4>
-                                <div class="text">
-                                    @Html.Raw(@ViewBag.About_usContent[3].Description)
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Feature Block -->
-                        <div class="feature-block-two col-lg-12 col-md-12 col-sm-12">
-                            <div class="inner-box">
-                                <span class="icon flaticon-protect"></span>
-                                <h4>@ViewBag.About_usContent[4].Title</h4>
-                                <div class="text">
-                                    @Html.Raw(@ViewBag.About_usContent[4].Description)
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- image Column -->
             <div class="image-column col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                <div class="image-box wow fadeInRight">
-                    <figure class="image">
-                        <img src="~/Files/StaticContentImages/Image/@ViewBag.About_usPic[0].Image" data-src="~/Files/StaticContentImages/Image/@ViewBag.About_usPic[0].Image" alt="">
-                    </figure>
-                    <div class="contact-info">
-                        <i class="icon fa fa-phone"></i>
-                        <a href="tel:@ViewBag.About_usPic[0].ShortDescription" class="number">@ViewBag.About_usPic[0].ShortDescription</a>
+                    <div class="image-box wow fadeInRight">
+                        <figure class="image">
+                            <img src="~/Files/StaticContentImages/Image/@Model.About_usPic[0].Image" data-src="~/Files/StaticContentImages/Image/@Model.About_usPic[0].Image" alt="">
+                        </figure>
+                        <div class="contact-info">
+                            <i class="icon fa fa-phone"></i>
+                            <a href="tel:@Model.About_usPic[0].ShortDescription" class="number">@Model.About_usPic[0].ShortDescription</a>
+                        </div>
+                    </div>
+                    <div class="image-box wow fadeInRight">
+                        <figure class="image">
+                            <img src="~/Files/StaticContentImages/Image/@Model.About_usPic[1].Image" data-src="~/Files/StaticContentImages/Image/@Model.About_usPic[1].Image" alt="">
+                        </figure>
+                        <div class="contact-info">
+                            <i class="icon fa fa-phone"></i>
+                            <a href="tel:@Model.About_usPic[1].ShortDescription" class="number">@Model.About_usPic[1].ShortDescription</a>
+                        </div>
                     </div>
                 </div>
-                <div class="image-box wow fadeInRight">
-                    <figure class="image">
-                        <img src="~/Files/StaticContentImages/Image/@ViewBag.About_usPic[1].Image" data-src="~/Files/StaticContentImages/Image/@ViewBag.About_usPic[1].Image" alt="">
-                    </figure>
-                    <div class="contact-info">
-                        <i class="icon fa fa-phone"></i>
-                        <a href="tel:@ViewBag.About_usPic[1].ShortDescription" class="number">@ViewBag.About_usPic[1].ShortDescription</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
 <!-- Why Choose Us -->
-
 <!-- Flip banner -->
-<a href="cars.html" class="flip-banner parallax" data-background="~/Files/StaticContentImages/Image/@ViewBag.About_usBanner[0].Image"
-   data-color="#d37912" data-color-opacity="0.9" data-img-width="2500" data-img-height="1600">
-    <div class="flip-banner-content">
-        <h2 class="flip-visible">@Html.Raw(ViewBag.About_usBanner[0].Description)</h2>
-        <h2 class="flip-hidden">@Html.Raw(ViewBag.About_usBanner[0].ShortDescription) <i class="sl sl-icon-arrow-left"></i></h2>
-    </div>
-</a>
+<a href="cars.html" class="flip-banner parallax" data-background="~/Files/StaticContentImages/Image/@Model.About_usBanner[0].Image"
+       data-color="#d37912" data-color-opacity="0.9" data-img-width="2500" data-img-height="1600">
+        <div class="flip-banner-content">
+            <h2 class="flip-visible">@Html.Raw(Model.About_usBanner[0].Title)</h2>
+            <h2 class="flip-hidden">@Html.Raw(@Model.About_usBanner[0].ShortDescription) <i class="sl sl-icon-arrow-left"></i></h2>
+        </div>
+    </a>
 <!-- Flip banner / End -->
