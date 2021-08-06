@@ -97,8 +97,8 @@ namespace SazeNegar.Web.Controllers
         }
         public ActionResult FlipBanner()
         {
-            var FlipBanner_Content = _contentRepo.GetSomeStaticContentDetail((int)StaticContentTypes.FlipBanner, 1);
-            return PartialView(FlipBanner_Content);
+            var About_usBanner_Content = _contentRepo.GetSomeStaticContentDetail((int)StaticContentTypes.About_usBanner, 1);
+            return PartialView(About_usBanner_Content);
         }
         public ActionResult Footer()
         {
@@ -117,11 +117,17 @@ namespace SazeNegar.Web.Controllers
         }
         public ActionResult About_us()
         {
-            ViewBag.About_usContent = _contentRepo.GetAboutUs((int) StaticContentTypes.About_us, 5);
-            ViewBag.About_usPic = _contentRepo.GetAboutUs((int) StaticContentTypes.About_usPic, 1)[0];
-            ViewBag.About_usBanner = _contentRepo.GetAboutUs((int) StaticContentTypes.FlipBanner, 1)[0];
+            //ViewBag.About_usContent = _contentRepo.GetAboutUs((int) StaticContentTypes.About_us, 5);
+            //ViewBag.About_usPic = _contentRepo.GetAboutUs((int) StaticContentTypes.About_usPic, 1)[0];
+            //ViewBag.About_usBanner = _contentRepo.GetAboutUs((int) StaticContentTypes.FlipBanner, 1)[0];
 
-            return View();
+            About_usViewModel vm = new About_usViewModel(); 
+            vm.About_usHeader = _contentRepo.GetAboutUs((int)StaticContentTypes.About_usHeader, 1);
+            vm.About_us = _contentRepo.GetAboutUs((int)StaticContentTypes.About_us, 4);
+            vm.About_usPic = _contentRepo.GetAboutUs((int)StaticContentTypes.About_usPic, 2);
+            vm.About_usBanner = _contentRepo.GetAboutUs((int)StaticContentTypes.About_usBanner, 1);
+
+            return View(vm);
         }
         public ActionResult Contact()
         {
