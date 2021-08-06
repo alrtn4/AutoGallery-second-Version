@@ -1,4 +1,4 @@
-﻿@model List<SazeNegar.Core.Models.StaticContentDetail>
+﻿@model List<SazeNegar.Core.Models.Article>
 
 <!-- Fullwidth Section -->
 <section class="fullwidth margin-top-95 margin-bottom-0">
@@ -23,10 +23,10 @@
                     <div class="post-content">
                         <h3><a href="blog-post.html">@Model[0].Title</a></h3>
                         <p>
-                            @Model[0].Description
+                            @Html.Raw(@Model[0].ShortDescription)
                         </p>
 
-                        <a href="@Model[0].Link" class="read-more">ادامه <i class="fa fa-angle-left"></i></a>
+                        <a href="/Blog/Details/@Model[0].Id" class="read-more">ادامه <i class="fa fa-angle-left"></i></a>
                     </div>
 
                 </div>
@@ -48,10 +48,10 @@
                     <div class="post-content">
                         <h3><a href="blog-post.html">@Model[1].Title</a></h3>
                         <p>
-                            @Model[1].Description
+                            @Model[1].ShortDescription
                         </p>
 
-                        <a href="@Model[1].Link" class="read-more">ادامه <i class="fa fa-angle-left"></i></a>
+                        <a href="/Blog/Details/@Model[1].Id" class="read-more">ادامه <i class="fa fa-angle-left"></i></a>
                     </div>
 
                 </div>
@@ -73,10 +73,10 @@
                     <div class="post-content">
                         <h3><a href="blog-post.html">@Model[2].Title</a></h3>
                         <p>
-                            @Model[2].Description
+                            @Model[2].ShortDescription
                         </p>
 
-                        <a href="@Model[2].Link" class="read-more">ادامه <i class="fa fa-angle-left"></i></a>
+                        <a href="/Blog/Details/@Model[2].Id" class="read-more">ادامه <i class="fa fa-angle-left"></i></a>
                     </div>
 
                 </div>

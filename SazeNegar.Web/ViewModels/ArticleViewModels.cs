@@ -20,6 +20,7 @@ namespace SazeNegar.Web.ViewModels
         [DataType(DataType.MultilineText)]
         [AllowHtml]
         public string Description { get; set; }
+        //public string ShortDescription { get; set; }
         public int ArticleCategoryId { get; set; }
         public HttpPostedFileBase ArticleImage { get; set; }
 
@@ -80,11 +81,13 @@ namespace SazeNegar.Web.ViewModels
         {
             this.Id = article.Id;
             this.Title = article.Title;
+            this.ShortDescription = article.ShortDescription;
             this.Image = article.Image;
             this.PersianDate = article.AddedDate != null ? new PersianDateTime(article.AddedDate.Value).ToString("d MMMM yyyy") : "-";
         }
         public int Id { get; set; }
         public string Title { get; set; }
+        public string ShortDescription { get; set; }
         public string Image { get; set; }
         public string PersianDate { get; set; }
     }

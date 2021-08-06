@@ -24,7 +24,7 @@ namespace SazeNegar.Web.Controllers
         // GET: Blog
         //[Route("Blog")]
         //[Route("Blog/{id}/{title}")]
-        public ActionResult Index(int pageNumber = 1, string searchString = null)
+        public ActionResult Index(int pageNumber = 1)
         {
             var cars = _carsRepo.GetAll();
             var vm = new List<Cars>();
@@ -32,13 +32,17 @@ namespace SazeNegar.Web.Controllers
             var skip = pageNumber * take - take;
             var count = 0;
             
-            vm = _carsRepo.GetCarsList(skip, take, searchString);
-            if (!string.IsNullOrEmpty(searchString))
+            vm = _carsRepo.GetCarsList(skip, take, null);
+            if (!string.IsNullOrEmpty(null))
             {
-                cars = _carsRepo.GetCarsList(skip, take, searchString);
+                cars = _carsRepo.GetCarsList(skip, take, null);
                 count = _carsRepo.GetCarsCount();
-                ViewBag.SearchString = searchString;
-                ViewBag.Title = $"جستجو: {searchString}";
+                ViewBag.SearchString = null;
+                ViewBag.Title = $"جستجو: {null}";
+                var pageCount2 = (int)Math.Ceiling((double)count / take);
+                ViewBag.PageCount = pageCount2;
+                ViewBag.CurrentPage = pageNumber;
+                return View(cars);
             }
             count = _carsRepo.GetCarsCount();
             var pageCount = (int)Math.Ceiling((double)count / take);
@@ -49,6 +53,38 @@ namespace SazeNegar.Web.Controllers
             ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
             List<IQueryable<CarModel>> carClassList = null;
             
+            return View(vm);
+        }
+        [HttpPost]
+        public ActionResult Index(int pageNumber = 1, string searchString = null)
+        {
+            var cars = _carsRepo.GetAll();
+            var vm = new List<Cars>();
+            var take = 3;
+            var skip = pageNumber * take - take;
+            var count = 0;
+
+            vm = _carsRepo.GetCarsList(skip, take, searchString);
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                cars = _carsRepo.GetCarsList(skip, take, searchString);
+                count = _carsRepo.GetCarsCount();
+                ViewBag.SearchString = searchString;
+                ViewBag.Title = $"جستجو: {searchString}";
+                var pageCount2 = (int)Math.Ceiling((double)count / take);
+                ViewBag.PageCount = pageCount2;
+                ViewBag.CurrentPage = pageNumber;
+                return View(cars);
+            }
+            count = _carsRepo.GetCarsCount();
+            var pageCount = (int)Math.Ceiling((double)count / take);
+            ViewBag.PageCount = pageCount;
+            ViewBag.CurrentPage = pageNumber;
+            ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
+            ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
+            ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
+            List<IQueryable<CarModel>> carClassList = null;
+
             return View(vm);
         }
 

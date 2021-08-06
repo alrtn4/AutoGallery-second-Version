@@ -18,10 +18,12 @@
             <h4 class="headline">لیست خودرو ها</h4>
 
             <!-- Main Search Input -->
-            <div class="main-search-input margin-bottom-35">
-                <input type="text" class="ico-01" placeholder="مدل و ... را وارد کنید" value="" />
-                <button class="button">جستجو</button>
-            </div>
+            <form method="post" action="/Cars/Index">
+                <div class="main-search-input margin-bottom-35">
+                    <input type="text" class="ico-01" placeholder="مدل و ... را وارد کنید" value="" name="searchString"/>
+                    <button class="button" type="submit">جستجو</button>
+                </div>
+            </form>
 
             <!-- Sorting / Layout Switcher -->
             <div class="row margin-bottom-15">
@@ -100,15 +102,15 @@
                                 <ul class="listing-details">
                                     @if (item.Gear != null)
                                     {
-                                        <li>دنده اتومات</li>
+                                        <li>دنده: @item.Gear</li>
                                     }
                                     @if (item.Navigation != null)
                                     {
-                                        <li>نویگیشن</li>
+                                        <li>نویگیشن: @item.Navigation</li>
                                     }
                                     @if (item.Sunroof != null)
                                     {
-                                        <li>سانروف</li>
+                                        <li>سانروف: @item.Sunroof</li>
                                     }
                                 </ul>
 

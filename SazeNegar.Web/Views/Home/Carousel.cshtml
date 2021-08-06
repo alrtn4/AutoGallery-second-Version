@@ -17,11 +17,11 @@
                         <div class="carousel-item">
                             <div class="listing-item">
                                 
-                                <a href="/cars/detail/@item.Id" class="listing-img-container">
+                                <a href="/SingleCar/Index/@item.Cars.Id" class="listing-img-container">
 
                                     <div class="listing-badges">
-                                        <span class="featured">@item.Special</span>
-                                        <span>@item.Tag</span>
+                                        <span class="featured">@item.Cars.Special</span>
+                                        @*<span>@item.Cars.Tag</span>*@
                                     </div>
 
                                     <div class="listing-img-content">
@@ -30,7 +30,7 @@
                                     </div>
 
                                     <div>
-                                        <img src="~/Files/CarsImages/image/@item.Cars.Image" alt="">
+                                        <img src="~/Files/CarsImages/image/@item.Cars.Image" alt="" style="height: 230px">
                                     </div>
 
                                 </a>

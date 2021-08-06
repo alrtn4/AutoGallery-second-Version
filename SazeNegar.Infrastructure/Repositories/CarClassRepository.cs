@@ -23,7 +23,7 @@ namespace SazeNegar.Infrastructure.Repositories
         public List<CarClass> GetCarClassById(int id)
         {
             var Cars = _context.Cars.Where(i => i.Id == id).Include(x => x.Brand).SingleOrDefault();
-            var Brands = _context.Brands.Where(i => i.Id == Cars.BrandId).Include(x => x.CarModel).SingleOrDefault();
+            var Brands = _context.Brands.Where(i => i.Id == Cars.BrandsId).Include(x => x.CarModel).SingleOrDefault();
             var CarModel = _context.CarModels.Where(i => i.Id == Brands.CarModelId).Include(x => x.CarClasses).Where(i => i.CarClasses.Count != 0).SingleOrDefault();
             var carClasses = new List<CarClass>();
             foreach (var carClass in _context.CarClasses.ToList())

@@ -83,7 +83,7 @@ namespace SazeNegar.Infrastructure.Repositories
         }
         public List<Article> GetTopArticles(int? take = null)
         {
-            return take != null ? _context.Articles.Where(a => a.IsDeleted == false).OrderByDescending(a => a.ViewCount).Take(take.Value).ToList() : _context.Articles.OrderByDescending(a => a.ViewCount).ToList();
+            return take != null ? _context.Articles.Where(a => a.IsDeleted == false).OrderByDescending(a => a.ArticleComments.Count).Take(take.Value).ToList() : _context.Articles.OrderByDescending(a => a.ViewCount).ToList();
         }
         public List<Article> GetArticlesByCategory(int categoryId)
         {

@@ -92,7 +92,7 @@ namespace SazeNegar.Web.Controllers
         }
         public ActionResult Blog()
         {
-            var Blog_Content = _contentRepo.GetSomeStaticContentDetail((int)StaticContentTypes.Blog, 3);
+            var Blog_Content = _articlesRepository.GetTopArticles(3);
             return PartialView(Blog_Content);
         }
         public ActionResult FlipBanner()

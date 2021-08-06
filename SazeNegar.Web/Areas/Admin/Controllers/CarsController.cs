@@ -55,8 +55,8 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                 }
                 #endregion
 
-                carBrandsViewModel.Cars.BrandId = selectedBrand;
-                carBrandsViewModel.Cars.CarInfoId = selectedCarInfo;
+                carBrandsViewModel.Cars.BrandsId = selectedBrand;
+                carBrandsViewModel.Cars.CarsInfoId = selectedCarInfo;
                 carBrandsViewModel.Cars.PersianDateTime = carBrandsViewModel.Cars.InsertDate != null ? new PersianDateTime(carBrandsViewModel.Cars.InsertDate.Value).ToString() : "-";
                 _repo.Add(carBrandsViewModel.Cars);
                 return RedirectToAction("Index");
@@ -76,7 +76,8 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
             carBrandsViewModel.Cars = _repo.Get(id);
             carBrandsViewModel.BrandsList = _repo.GetBrandsList();
             carBrandsViewModel.CarsInfoList = _repo.GetCarInfoList();
-            ViewBag.brandId = _repo.Get(id).BrandId;
+            ViewBag.brandId = _repo.Get(id).BrandsId;
+            ViewBag.CarInfoId = _repo.Get(id).CarsInfoId;
             if (carBrandsViewModel == null)
             {
                 return HttpNotFound();
@@ -100,8 +101,8 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                 }
                 #endregion
 
-                carBrandsViewModel.Cars.BrandId = selectedBrand;
-                carBrandsViewModel.Cars.CarInfoId = selectedCarInfo;
+                carBrandsViewModel.Cars.BrandsId = selectedBrand;
+                carBrandsViewModel.Cars.CarsInfoId = selectedCarInfo;
                 _repo.Update(carBrandsViewModel.Cars);
                 return RedirectToAction("Index");
             }

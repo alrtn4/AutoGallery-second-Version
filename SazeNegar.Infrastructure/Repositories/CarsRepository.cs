@@ -82,7 +82,7 @@ namespace SazeNegar.Infrastructure.Repositories
             {
                 carList.Add(new CarListViewModel());
                 carList[i].Cars = item;
-                carList[i].CarClasses = _carClassRepository.GetCarClassById(item.Id);
+                //carList[i].CarClasses = _carClassRepository.GetCarClassById(item.Id);
                 i++;
             }
 

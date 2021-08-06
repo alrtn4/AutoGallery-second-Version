@@ -1,5 +1,9 @@
 ﻿@model SazeNegar.Core.Models.Cars
 
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <!-- Titlebar
     ================================================== -->
 <div id="titlebar" class="s-titlebar">
@@ -185,7 +189,7 @@
                                 <a href="single-car.html" class="listing-img-container">
 
                                     <div class="listing-badges">
-                                        @if (item.Special != null)
+                                        @if (item.Cars.Special != null)
                                         {
                                             <span class="featured">ویژه</span>
                                         }
@@ -194,21 +198,21 @@
 
                                     <div class="listing-img-content">
                                         <span class="listing-compact-title">
-                                            @item.Brand.Brand
+                                            @item.Cars.Brand.Brand
                                             <i>
-                                                @item.Price
+                                                @item.Cars.Price
                                                 تومان
                                             </i>
                                         </span>
 
                                         <ul class="listing-hidden-content">
-                                            <li>دنده<span>@item.Gear</span></li>
-                                            <li>نویگشین <span>@item.Navigation</span></li>
-                                            <li>سانروف <span>@item.Sunroof</span></li>
+                                            <li>دنده<span>@item..Cars.Gear</span></li>
+                                            <li>نویگشین <span>@item.Cars.Navigation</span></li>
+                                            <li>سانروف <span>@item.Cars.Sunroof</span></li>
                                         </ul>
                                     </div>
 
-                                    <img src="../../Files/CarsImages/Image/@item.Image" alt="">
+                                    <img src="../../Files/CarsImages/Image/@item.Cars.Image" alt="">
                                 </a>
 
                             </div>
@@ -263,7 +267,7 @@
                                     <a href="single-car.html" class="listing-img-container">
 
                                         <div class="listing-badges">
-                                            @if (item.Special != null)
+                                            @if (item.Cars.Special != null)
                                             {
                                                 <span class="featured">ویژه</span>
                                             }
@@ -272,21 +276,21 @@
 
                                         <div class="listing-img-content">
                                             <span class="listing-compact-title">
-                                                @item.Brand.Brand
+                                                @item.Cars.Brand.Brand
                                                 <i>
-                                                    @item.Price
+                                                    @item.Cars.Price
                                                     تومان
                                                 </i>
                                             </span>
 
                                             <ul class="listing-hidden-content">
-                                                <li>دنده<span>@item.Gear</span></li>
-                                                <li>نویگشین <span>@item.Navigation</span></li>
-                                                <li>سانروف <span>@item.Sunroof</span></li>
+                                                <li>دنده<span>@item.Cars.Gear</span></li>
+                                                <li>نویگشین <span>@item.Cars.Navigation</span></li>
+                                                <li>سانروف <span>@item.Cars.Sunroof</span></li>
                                             </ul>
                                         </div>
 
-                                        <img src="../../Files/CarsImages/Image/@item.Image" alt="">
+                                        <img src="../../Files/CarsImages/Image/@item.Cars.Image" alt="" style="height: 230px">
                                     </a>
 
                                 </div>

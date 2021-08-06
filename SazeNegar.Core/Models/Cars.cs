@@ -29,9 +29,9 @@ namespace SazeNegar.Core.Models
         public string Special { get; set; }
         public string PersianDateTime { get; set; }
 
-        public int BrandId { get; set; }
+        public int BrandsId { get; set; }
         public virtual Brands Brand { get; set; }
-        public int CarInfoId { get; set; }
+        public int CarsInfoId { get; set; }
         public virtual CarsInfo CarsInfo { get; set; }
         public virtual ICollection<Cart> Cart { get; set; }
 
