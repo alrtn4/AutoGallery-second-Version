@@ -34,6 +34,7 @@ namespace SazeNegar.Core.Models
         public int CarsInfoId { get; set; }
         public virtual CarsInfo CarsInfo { get; set; }
         public virtual ICollection<Cart> Cart { get; set; }
+        public virtual  ICollection<Gallery> Gallery { get; set; }
 
         public string InsertUser { get; set; }
         public DateTime? InsertDate { get; set; }

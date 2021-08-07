@@ -13,6 +13,9 @@ namespace SazeNegar.Core.Models
         [Display(Name = "عنوان تصویر")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string Title { get; set; }
+        public string Type { get; set; }
+        public int CarsId { get; set; }
+        public Cars Cars { get; set; }
         public string InsertUser { get; set; }
         public DateTime? InsertDate { get; set; }
         public string UpdateUser { get; set; }

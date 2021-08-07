@@ -65,30 +65,30 @@ namespace SazeNegar.Core.Models
         public string TechnicalVentilationShort { get; set; }
         [Display(Name = "تهویه جزییات")]
         public string TechnicalVentilationDetails { get; set; }
-        [Display(Name = "تصویر اسلایدر 1")]
-        public string ImageTop1 { get; set; }
-        [Display(Name = "تصویر اسلایدر 2")]
-        public string ImageTop2 { get; set; }
-        [Display(Name = "تصویر اسلایدر 3")]
-        public string ImageTop3 { get; set; }
-        [Display(Name = "تصویر اسلایدر 4")]
-        public string ImageTop4 { get; set; }
-        [Display(Name = "تصویر اسلایدر 5")]
-        public string ImageTop5 { get; set; }
-        [Display(Name = "تصویر اسلایدر 6")]
-        public string ImageTop6 { get; set; }
-        [Display(Name = "تصویر نوبار 1")]
-        public string ImageNav1 { get; set; }
-        [Display(Name = "تصویر نوبار 2")]
-        public string ImageNav2 { get; set; }
-        [Display(Name = "تصویر نوبار 3")]
-        public string ImageNav3 { get; set; }
-        [Display(Name = "تصویر نوبار 4")]
-        public string ImageNav4 { get; set; }
-        [Display(Name = "تصویر نوبار 5")]
-        public string ImageNav5 { get; set; }
-        [Display(Name = "تصویر نوبار 6")]
-        public string ImageNav6 { get; set; }
+        //[Display(Name = "تصویر اسلایدر 1")]
+        //public string ImageTop1 { get; set; }
+        //[Display(Name = "تصویر اسلایدر 2")]
+        //public string ImageTop2 { get; set; }
+        //[Display(Name = "تصویر اسلایدر 3")]
+        //public string ImageTop3 { get; set; }
+        //[Display(Name = "تصویر اسلایدر 4")]
+        //public string ImageTop4 { get; set; }
+        //[Display(Name = "تصویر اسلایدر 5")]
+        //public string ImageTop5 { get; set; }
+        //[Display(Name = "تصویر اسلایدر 6")]
+        //public string ImageTop6 { get; set; }
+        //[Display(Name = "تصویر نوبار 1")]
+        //public string ImageNav1 { get; set; }
+        //[Display(Name = "تصویر نوبار 2")]
+        //public string ImageNav2 { get; set; }
+        //[Display(Name = "تصویر نوبار 3")]
+        //public string ImageNav3 { get; set; }
+        //[Display(Name = "تصویر نوبار 4")]
+        //public string ImageNav4 { get; set; }
+        //[Display(Name = "تصویر نوبار 5")]
+        //public string ImageNav5 { get; set; }
+        //[Display(Name = "تصویر نوبار 6")]
+        //public string ImageNav6 { get; set; }
 
         public virtual ICollection<Cars> Cars { get; set; }
 

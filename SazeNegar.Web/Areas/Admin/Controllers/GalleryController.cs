@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using SazeNegar.Core.Models;
@@ -13,9 +14,11 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
     public class GalleryController : Controller
     {
         private readonly GalleriesRepository _repo;
-        public GalleryController(GalleriesRepository repo)
+        private readonly CarsRepository _carsRepo;
+        public GalleryController(GalleriesRepository repo, CarsRepository carsRepo)
         {
             _repo = repo;
+            _carsRepo = carsRepo;
         }
         public ActionResult Index()
         {
@@ -23,11 +26,16 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
         }
         public ActionResult Create()
         {
+            var galleryType = new List<string>();
+            galleryType.Add("Top");
+            galleryType.Add("Bottom");
+            ViewBag.GalleryType = galleryType;
+            ViewBag.CarsList = _carsRepo.GetAll();
             return PartialView();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Gallery image,HttpPostedFileBase GalleryImage)
+        public ActionResult Create(Gallery image,HttpPostedFileBase GalleryImage, string selectedType, int selectedCar)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +63,8 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                 }
                 #endregion
 
+                image.Type = selectedType;
+                image.CarsId = selectedCar;
                 _repo.Add(image);
                 return RedirectToAction("Index");
             }
@@ -64,6 +74,12 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
 
         public ActionResult Edit(int? id)
         {
+            var galleryType = new List<string>();
+            galleryType.Add("Top");
+            galleryType.Add("Bottom");
+            ViewBag.GalleryType = galleryType;
+            ViewBag.CarsList = _carsRepo.GetAll();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -78,7 +94,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Gallery gallery, HttpPostedFileBase GalleryImage)
+        public ActionResult Edit(Gallery gallery, HttpPostedFileBase GalleryImage, string selectedType, int selectedCar)
         {
             if (ModelState.IsValid)
             {
@@ -111,6 +127,9 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                     gallery.Image = newFileName;
                 }
                 #endregion
+
+                gallery.Type = selectedType;
+                gallery.CarsId = selectedCar;
 
                 _repo.Update(gallery);
                 return RedirectToAction("Index");

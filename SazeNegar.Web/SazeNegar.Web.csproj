@@ -2644,13 +2644,7 @@
     <Content Include="Files\PartnersImages\75611f0d-c226-4f61-85d5-13567328e2b4.png" />
     <Content Include="Files\PartnersImages\fc360a78-58bf-49e0-9580-59021c17be6e.png" />
     <Content Include="Files\SliderCart\Image\411452a3-254b-4d42-a9bc-86e207eb25e4.jpg" />
-    <Content Include="Files\SliderCart\Image\511540d4-ebed-4aaf-aea2-86c5359ca853.jpg" />
-    <Content Include="Files\SliderCart\Image\5b57f721-f5ee-42f5-b805-c5e9a8d39e4e.jpeg" />
-    <Content Include="Files\SliderCart\Image\7b0ee9a1-54cf-4077-93bc-feb6c78ae3ae.jpg" />
-    <Content Include="Files\SliderCart\Image\a6482fb4-3796-410f-9fb2-0c63f80d25ef.jpg" />
-    <Content Include="Files\SliderCart\Image\b7ff09fc-3ef1-4b64-a8d8-eea1b7d2d562.jpg" />
     <Content Include="Files\SliderCart\Image\baf7d3d6-4285-4af5-a103-4ec0c18da00a.jpg" />
-    <Content Include="Files\SliderCart\Image\bef8bae8-d0a3-4cbf-a26f-95def6562d52.jpg" />
     <Content Include="Files\SliderCart\Image\c979eba8-da92-4645-b809-4047623e36ed.jpg" />
     <Content Include="Files\SliderCart\Image\eb178976-d049-46c6-b551-b75fc474d82d.jpg" />
     <Content Include="Files\StaticContentImages\Image\08374245-a12e-467f-a642-f49a14b2435f.jpg" />
@@ -3049,6 +3043,8 @@
     <Content Include="Areas\Admin\Views\CarsInfo\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\CarsInfo\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CarsInfo\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

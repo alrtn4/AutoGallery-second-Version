@@ -24,6 +24,34 @@ namespace SazeNegar.Web.Controllers
         // GET: Blog
         //[Route("Blog")]
         //[Route("Blog/{id}/{title}")]
+        public ActionResult Index(int pageNumber = 1)
+        {
+            var articles = _articlesRepo.GetAll();
+            var vm = new List<ArticleListViewModel>();
+            var take = 3;
+            var skip = pageNumber * take - take;
+            var count = 0;
+            foreach (var item in articles)
+            {
+                vm.Add(new ArticleListViewModel(item));
+            }
+            if (!string.IsNullOrEmpty(null))
+            {
+                articles = _articlesRepo.GetArticlesList(skip, take, null);
+                count = _articlesRepo.GetArticlesCount();
+                ViewBag.SearchString = null;
+                ViewBag.Title = $"جستجو: {null}";
+            }
+            count = _articlesRepo.GetArticlesCount();
+            var pageCount = (int)Math.Ceiling((double)count / take);
+            ViewBag.PageCount = pageCount;
+            ViewBag.CurrentPage = pageNumber;
+            ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int) StaticContents.Facebook).Link;
+            ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
+            ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
+            return View(vm);
+        }
+        [HttpPost]
         public ActionResult Index(int pageNumber = 1, string searchString = null)
         {
             var articles = _articlesRepo.GetAll();
@@ -37,16 +65,25 @@ namespace SazeNegar.Web.Controllers
             }
             if (!string.IsNullOrEmpty(searchString))
             {
+                vm = new List<ArticleListViewModel>();
                 articles = _articlesRepo.GetArticlesList(skip, take, searchString);
-                count = _articlesRepo.GetArticlesCount();
+                foreach (var item in articles)
+                {
+                    vm.Add(new ArticleListViewModel(item));
+                }
+                count = vm.Count;
                 ViewBag.SearchString = searchString;
                 ViewBag.Title = $"جستجو: {searchString}";
+                var pageCount2 = (int)Math.Ceiling((double)count / take);
+                ViewBag.PageCount = pageCount2;
+                ViewBag.CurrentPage = pageNumber;
+                return View(vm);
             }
             count = _articlesRepo.GetArticlesCount();
             var pageCount = (int)Math.Ceiling((double)count / take);
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = pageNumber;
-            ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int) StaticContents.Facebook).Link;
+            ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
             ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
             ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
             return View(vm);

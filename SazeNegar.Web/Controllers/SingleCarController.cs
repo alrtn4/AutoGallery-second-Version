@@ -14,11 +14,13 @@ namespace SazeNegar.Web.Controllers
     {
         private readonly CarsInfoRepository _carsInfoRepo;
         private readonly CarsRepository _carsRepo;
+        private readonly GalleriesRepository _galleiesRepo;
         private readonly StaticContentDetailsRepository _contentRepo;
 
-        public SingleCarController(CarsRepository carsRepository)
+        public SingleCarController(CarsRepository carsRepository, GalleriesRepository galleriesRepository)
         {
             _carsRepo = carsRepository;
+            _galleiesRepo = galleriesRepository;
         }
 
         // GET: Blog
@@ -26,7 +28,10 @@ namespace SazeNegar.Web.Controllers
         //[Route("Blog/{id}/{title}")]
         public ActionResult Index(int id)
         {
-            var singleCarContent = _carsRepo.GetCar(id);
+
+            CarGalleryViewModel singleCarContent = new CarGalleryViewModel();
+            singleCarContent.Cars = _carsRepo.GetCar(id);
+            singleCarContent.Galleries = _galleiesRepo.GetAll();
             ViewBag.CarList = _carsRepo.GetCarsList(0, 3);
             return View(singleCarContent);
         }

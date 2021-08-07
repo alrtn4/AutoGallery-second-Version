@@ -42,3 +42,6 @@
     margin-right: auto !important;
     display: block !important;
 }
+input, input[type="text"], input[type="password"], input[type="email"], input[type="number"], textarea, select {
+    line-height: 0;
+}
