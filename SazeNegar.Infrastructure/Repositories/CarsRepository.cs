@@ -97,6 +97,78 @@ namespace SazeNegar.Infrastructure.Repositories
                 return _context.Cars
                     .Count(a => a.IsDeleted == false);
         }
-        
+
+        #region Get Products Grid
+
+        public List<Cars> GetCarsGrid(int? carBrandId, List<int> carOptionIds = null, long? fromPrice = null, long? toPrice = null, string searchString = null)
+        {
+            var cars = new List<Cars>();
+            var count = 0;
+            if (carBrandId == null || carBrandId == 0)
+            {
+                if (string.IsNullOrEmpty(searchString))
+                {
+                    cars = _context.Cars.Include(p => p.ProductMainFeatures).Include(p => p.ProductFeatureValues).Where(p => p.IsDeleted == false).OrderByDescending(p => p.InsertDate).ToList();
+
+                    foreach (var car in cars)
+                    {
+                        car.ProductMainFeatures = car.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
+                    }
+                }
+                else
+                {
+                    products = _context.Products.Include(p => p.ProductMainFeatures)
+                        .Include(p => p.ProductFeatureValues)
+                        .Where(p => p.IsDeleted == false && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower()) || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())))
+                        .OrderByDescending(p => p.InsertDate).ToList();
+
+                    foreach (var product in products)
+                    {
+                        product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
+                    }
+                }
+            }
+            else
+            {
+                products = _context.Products.Include(p => p.ProductMainFeatures).Include(p => p.ProductFeatureValues).Where(p => p.IsDeleted == false && p.ProductGroupId == carBrandId).OrderByDescending(p => p.InsertDate).ToList();
+
+                foreach (var product in products)
+                {
+                    product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
+                }
+
+                var allChildrenGroups = GetAllChildrenProductGroupIds(carBrandId.Value);
+                foreach (var groupId in allChildrenGroups)
+                    products.AddRange(_context.Products.Where(p => p.IsDeleted == false && p.ProductGroupId == groupId).OrderByDescending(p => p.InsertDate).ToList());
+                if (string.IsNullOrEmpty(searchString) == false)
+                {
+                    products = products
+                        .Where(p => p.IsDeleted == false && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower()) || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())))
+                        .OrderByDescending(p => p.InsertDate).ToList();
+
+                    foreach (var product in products)
+                    {
+                        product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
+                    }
+                }
+            }
+
+            if (carOptionIds != null && carOptionIds.Any())
+            {
+                var productsFilteredByBrand = new List<Product>();
+                foreach (var brand in carOptionIds)
+                    productsFilteredByBrand.AddRange(products.Where(p => p.IsDeleted == false && p.BrandId == brand).OrderByDescending(p => p.InsertDate).ToList());
+                products = productsFilteredByBrand;
+            }
+
+            if (fromPrice != null)
+                products = products.Where(p => GetProductPriceAfterDiscount(p) >= fromPrice).ToList();
+
+            if (toPrice != null)
+                products = products.Where(p => GetProductPriceAfterDiscount(p) <= toPrice).ToList();
+
+            return products;
+        }
+        #endregion
     }
 }

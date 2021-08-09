@@ -5197,7 +5197,7 @@
     <Content Include="Views\Cars\Index.cshtml" />
     <Content Include="Views\Cars\Titlebar.cshtml" />
     <Content Include="Views\Cars\Sidebar.cshtml" />
-    <Content Include="Views\Cars\CarList.cshtml" />
+    <Content Include="Views\Cars\CarListGrid.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Titlebar.cshtml" />
     <Content Include="Views\Blog\BlogList.cshtml" />

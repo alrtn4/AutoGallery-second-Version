@@ -14,7 +14,7 @@
             <!-- Row -->
             <div class="row with-forms">
                 <!-- Type -->
-                <div class="col-md-12">
+                @*<div class="col-md-12">
                     <select data-placeholder="نوع" class="chosen-select-no-single">
                         <option>نوع</option>
                         <option>نو</option>
@@ -23,7 +23,7 @@
                         <option>شاسی بلند</option>
                         <option>آفرود</option>
                     </select>
-                </div>
+                </div>*@
             </div>
             <!-- Row / End -->
             <!-- Row -->
@@ -75,27 +75,7 @@
                 </div>
             </div>
 
-            <!-- Min Area -->
-            <div class="row with-forms">
-                <div class="col-md-6">
-                    <!-- Select Input -->
-                    <div class="select-inpu">
-                        <input type="text" placeholder="از سال" data-unit="چهار رقمی">
-
-                    </div>
-                    <!-- Select Input / End -->
-                </div>
-
-                <!-- Max Area -->
-                <div class="col-md-6">
-                    <!-- Select Input -->
-                    <div class="select-inpu">
-                        <input type="text" placeholder="تا سال" data-unit="چهار رقمی">
-
-                    </div>
-                    <!-- Select Input / End -->
-                </div>
-            </div>
+            
 
 
             <!-- Row / End -->
@@ -193,3 +173,185 @@
     </div>
 </div>
 <!-- Sidebar / End -->
+
+<div class="col-lg-8 col-md-8 dir-rtl">
+
+    <h4 class="headline">لیست خودرو ها</h4>
+
+    <!-- Main Search Input -->
+    <form method="post" action="/Cars/Index">
+        <div class="main-search-input margin-bottom-35">
+            <input type="text" class="ico-01" placeholder="مدل و ... را وارد کنید" value="" name="searchString" />
+            <button class="button" type="submit">جستجو</button>
+        </div>
+    </form>
+
+    <!-- Sorting / Layout Switcher -->
+    <div class="row margin-bottom-15">
+
+        <div class="col-md-6">
+            <!-- Sort by -->
+            <div class="sort-by">
+                <label>مرتب سازی براساس:</label>
+
+                <div class="sort-by-select">
+                    <select data-placeholder="پیش فرض" class="chosen-select-no-single">
+                        <option>پیش فرض</option>
+                        <option>قیمت از کم به زیاد</option>
+                        <option>قیمت از زیاد به کم</option>
+                        <option>جدیدترین</option>
+                        <option>قدیمی ترین</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <!-- Layout Switcher -->
+            <div class="layout-switcher">
+                <a href="#" class="list"><i class="fa fa-th-list"></i></a>
+                <a href="#" class="grid"><i class="fa fa-th-large"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="grid"></div>
+
+</div>
+
+@* ReSharper disable Razor.SectionNotResolved *@
+@section scripts
+{
+    <script>
+        var brandIds = null;
+        var groupIds = null;
+        var productIds = null;
+    </script>
+
+    @if (ViewBag.brandIds != null)
+    {
+        <script>
+            brandIds = "@ViewBag.BrandIds";
+        </script>
+    }
+    @if (ViewBag.groupIds != null)
+    {
+        <script>
+            groupIds = "@ViewBag.GroupIds";
+        </script>
+    }
+    @if (ViewBag.productIds != null)
+    {
+        <script>
+            productIds = "@ViewBag.ProductIds";
+        </script>
+    }
+    <script>
+        var selectedGroupId = @Model.SelectedGroupId;
+
+        function GetGrid(page, groupId) {
+            $("#loading").show();
+            var pageNumber = 1;
+            if (page != null) {
+                pageNumber = page;
+            }
+            var sort = $("#sort").find(":selected").val();
+            var take = $("#take").find(":selected").val();
+            var categoryId = groupId !== undefined ? groupId : null;
+            categoryId = categoryId === null ? selectedGroupId : categoryId;
+            var searchString =  '@ViewBag.SearchString';
+            var brands = [];
+            var priceFrom = null;
+            var priceTo = null;
+            var selectedPriceRange = $("span#filter-price-range").text().replaceAll("تومان", "");
+            if (selectedPriceRange != undefined) {
+                var priceRangeArr = selectedPriceRange.split('-');
+                 console.log(priceRangeArr);
+                if (parseInt(priceRangeArr[0]) > 0) {
+                    priceFrom = parseInt(priceRangeArr[0]);
+                    console.log(priceFrom);
+                }
+                if (parseInt(priceRangeArr[1]) > 0) {
+                    priceTo = parseInt(priceRangeArr[1]);
+                    console.log(priceTo);
+                }
+            }
+
+            $("input[name='brands']").map(function() {
+                if ($(this).prop("checked") === true) {
+                    brands.push(parseInt($(this).val()));
+                }
+            });
+            var subFeatures = [];
+            $("[name='subFeatures']").map(function() {
+                if ($(this).prop("checked") === true) {
+                    subFeatures.push(parseInt($(this).val()));
+                }
+            });
+            var grid = {
+                categoryId: categoryId,
+                searchString: searchString,
+                priceFrom: priceFrom,
+                priceTo: priceTo,
+                brands: brands.join('-'),
+                subFeatures: subFeatures.join('-'),
+                pageNumber: pageNumber,
+                take: take,
+                sort: sort,
+                BrandIds: brandIds,
+                GroupIds: groupIds,
+                ProductIds: productIds,
+            }
+            $.ajax({
+                type: 'GET',
+                url: '/ProductsGrid',
+                data: grid,
+                success: function(data) {
+                    $("#grid").html(data);
+                },
+                error: function(data) {
+                    console.log("error");
+                    console.log(data);
+                },
+                complete: function() {
+                    $("#loading").hide();
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            GetGrid();
+
+            // Update Price Range
+            $('#price-slider').mouseup(function () {
+                GetGrid();
+            });
+
+            document.getElementById("reload").onclick = function() {reload()};
+
+
+        });
+                function reload() {
+                window.location = window.location.href.split("?")[0];
+            }
+
+                    function CheckPriceUpdated() {
+        var newMintxt = $('.from').text();
+        var newMaxtxt = $('.to').text();
+
+        var newMin = newMintxt.substring(1);
+        var newMax = newMaxtxt.substring(1);
+
+        if (newMin != minPrice || newMax != maxPrice) {
+            minPrice = newMin;
+            maxPrice = newMax;
+
+            searchString = "";
+            $('.search-field').val(searchString);
+
+            submitForm();
+        }
+    }
+    </script>
+
+}
