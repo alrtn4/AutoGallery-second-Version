@@ -11,9 +11,320 @@
 <div class="container">
     <div class="row sticky-wrapper">
 
-        @Html.Action("Sidebar", "Cars")
+        <!-- Sidebar -->
+        <div class="col-lg-4 col-md-4">
+            <div class="sidebar sticky right">
+
+                <!-- Widget -->
+                <div class="widget margin-bottom-40">
+                    <h3 class="margin-top-0 margin-bottom-35">یافتن خودروی جدید</h3>
+
+                    <!-- Row -->
+                    <div class="row with-forms">
+                        <!-- Type -->
+                        <div class="col-md-12">
+                            <select data-placeholder="برند" class="chosen-select-no-single">
+                                <option>همه برندها</option>
+                                <option>رنو</option>
+                                <option>تویوتا</option>
+                                <option>بنز</option>
+                                <option>بی ام دبلیو</option>
+                                <option>کیا</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Row / End -->
+                    <!-- Min Area -->
+                    <div class="row with-forms">
+                        <div class="col-md-6">
+                            <!-- Select Input -->
+                            <div class="select-input">
+                                <input type="text" placeholder="حداقل قیمت" data-unit="تومان">
+                                <select>
+                                    <option>100 میلیون</option>
+                                    <option>200 میلیون</option>
+                                    <option>300 میلیون</option>
+                                    <option>400 میلیون</option>
+                                    <option>500 میلیون</option>
+                                </select>
+                            </div>
+                            <!-- Select Input / End -->
+                        </div>
+
+                        <!-- Max Area -->
+                        <div class="col-md-6">
+                            <!-- Select Input -->
+                            <div class="select-input">
+                                <input type="text" placeholder="حداکثر قیمت" data-unit="تومان">
+                                <select>
+                                    <option>100 میلیون</option>
+                                    <option>200 میلیون</option>
+                                    <option>300 میلیون</option>
+                                    <option>400 میلیون</option>
+                                    <option>500 میلیون</option>
+                                </select>
+                            </div>
+                            <!-- Select Input / End -->
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Row / End -->
+
+
+                    <br>
+
+
+                    <!-- More Search Options -->
+                    <a href="#" class="more-search-options-trigger margin-bottom-10 margin-top-30"
+                       data-open-title="گزینه های بیشتر" data-close-title="بستن"></a>
+
+                    <div class="more-search-options relative">
+
+                        <!-- Checkboxes -->
+                        <div class="checkboxes one-in-row margin-bottom-10">
+
+                            <input id="check-2" type="checkbox" name="check">
+                            <label for="check-2">دنده اتوماتیک</label>
+
+                            <input id="check-3" type="checkbox" name="check">
+                            <label for="check-3">سانروف</label>
+
+                            <input id="check-4" type="checkbox" name="check">
+                            <label for="check-4">دودر</label>
+
+                            <input id="check-5" type="checkbox" name="check">
+                            <label for="check-5">نویگیشن</label>
+
+
+
+
+                        </div>
+                        <!-- Checkboxes / End -->
+
+                    </div>
+                    <!-- More Search Options / End -->
+
+                    <button class="button fullwidth margin-top-30">جستجو</button>
+
+
+                    <!-- </div> -->
+                    <!-- Widget / End -->
+                    <!-- Widget -->
+                    <div class="widget margin-top-55">
+                        <h3 class="margin-bottom-35">خودرو های ویژه</h3>
+
+                        <div class="listing-carousel outer">
+                            @foreach (var item in Model)
+                            {
+                                <!-- Item -->
+                                <div class="item">
+                                    <div class="listing-item compact">
+
+                                        <a href="/Cars/singleCar/@item.Id" class="listing-img-container">
+
+                                            <div class="listing-badges">
+                                                @if (item.Special != null)
+                                                {
+                                                    <span class="featured">ویژه</span>
+                                                }
+                                                @*<span>فروشی</span>*@
+                                            </div>
+
+                                            <div class="listing-img-content">
+                                                <span class="listing-compact-title">
+                                                    @item.Brand.Brand
+                                                    <i>
+                                                        @item.Price
+                                                        تومان
+                                                    </i>
+                                                </span>
+
+                                                <ul class="listing-hidden-content">
+                                                    <li>دنده<span>@item.Gear</span></li>
+                                                    <li>نویگشین <span>@item.Navigation</span></li>
+                                                    <li>سانروف <span>@item.Sunroof</span></li>
+                                                </ul>
+                                            </div>
+
+                                            <img src="../../Files/CarsImages/Image/@item.Image" alt="" style="height: 230px">
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <!-- Item / End -->
+                            }
+                        </div>
+
+                    </div>
+                    <!-- Widget / End -->
+
+
+                </div>
+            </div>
+        </div>
+        <!-- Sidebar / End -->
+
+        <div class="col-lg-8 col-md-8 dir-rtl">
+
+            <h4 class="headline">لیست خودرو ها</h4>
+
+            <!-- Main Search Input -->
+            <form method="post" action="/Cars/Index">
+                <div class="main-search-input margin-bottom-35">
+                    <input type="text" class="ico-01" placeholder="مدل و ... را وارد کنید" value="" name="searchString" />
+                    <button class="button" type="submit">جستجو</button>
+                </div>
+            </form>
+
+            <!-- Sorting / Layout Switcher -->
+            <div class="row margin-bottom-15">
+
+                <div class="col-md-6">
+                    <!-- Sort by -->
+                    <div class="sort-by">
+                        <label>مرتب سازی براساس:</label>
+
+                        <div class="sort-by-select">
+                            <select data-placeholder="پیش فرض" class="chosen-select-no-single" id="sort">
+                                <option value="1">پیش فرض</option>
+                                <option value="2">قیمت از کم به زیاد</option>
+                                <option value="3">قیمت از زیاد به کم</option>
+                                <option value="4">جدیدترین</option>
+                                <option value="5">قدیمی ترین</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <!-- Layout Switcher -->
+                    <div class="layout-switcher">
+                        <a href="#" class="list"><i class="fa fa-th-list"></i></a>
+                        <a href="#" class="grid"><i class="fa fa-th-large"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!--CAR GRID LIST-->
+            <div id="grid"></div>
+
+        </div>
 
     </div>
 </div>
 
 <div class="margin-top-55"></div>
+
+@* ReSharper disable Razor.SectionNotResolved *@
+@section scripts
+{
+    <script>
+        function GetGrid(page, groupId) {
+            $("#loading").show();
+            var pageNumber = 1;
+            if (page != null) {
+                pageNumber = page;
+            }
+            var sort = $("#sort").find(":selected").val();
+            var take = $("#take").find(":selected").val();
+            var categoryId = groupId !== undefined ? groupId : null;
+            categoryId = categoryId === null ? selectedGroupId : categoryId;
+            var searchString =  '@ViewBag.SearchString';
+            var brands = [];
+            var priceFrom = null;
+            var priceTo = null;
+            var selectedPriceRange = $("span#filter-price-range").text().replaceAll("تومان", "");
+            if (selectedPriceRange != undefined) {
+                var priceRangeArr = selectedPriceRange.split('-');
+                 console.log(priceRangeArr);
+                if (parseInt(priceRangeArr[0]) > 0) {
+                    priceFrom = parseInt(priceRangeArr[0]);
+                    console.log(priceFrom);
+                }
+                if (parseInt(priceRangeArr[1]) > 0) {
+                    priceTo = parseInt(priceRangeArr[1]);
+                    console.log(priceTo);
+                }
+            }
+
+            $("input[name='brands']").map(function() {
+                if ($(this).prop("checked") === true) {
+                    brands.push(parseInt($(this).val()));
+                }
+            });
+            var subFeatures = [];
+            $("[name='subFeatures']").map(function() {
+                if ($(this).prop("checked") === true) {
+                    subFeatures.push(parseInt($(this).val()));
+                }
+            });
+            var grid = {
+                categoryId: categoryId,
+                searchString: searchString,
+                priceFrom: priceFrom,
+                priceTo: priceTo,
+                brands: brands.join('-'),
+                subFeatures: subFeatures.join('-'),
+                pageNumber: pageNumber,
+                take: take,
+                sort: sort,
+                BrandIds: brandIds,
+                GroupIds: groupIds,
+                ProductIds: productIds,
+            }
+            $.ajax({
+                type: 'GET',
+                url: '/ProductsGrid',
+                data: grid,
+                success: function(data) {
+                    $("#grid").html(data);
+                },
+                error: function(data) {
+                    console.log("error");
+                    console.log(data);
+                },
+                complete: function() {
+                    $("#loading").hide();
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            GetGrid();
+
+            // Update Price Range
+            $('#price-slider').mouseup(function () {
+                GetGrid();
+            });
+
+            document.getElementById("reload").onclick = function() {reload()};
+
+
+        });
+                function reload() {
+                window.location = window.location.href.split("?")[0];
+            }
+
+                    function CheckPriceUpdated() {
+        var newMintxt = $('.from').text();
+        var newMaxtxt = $('.to').text();
+
+        var newMin = newMintxt.substring(1);
+        var newMax = newMaxtxt.substring(1);
+
+        if (newMin != minPrice || newMax != maxPrice) {
+            minPrice = newMin;
+            maxPrice = newMax;
+
+            searchString = "";
+            $('.search-field').val(searchString);
+
+            submitForm();
+        }
+    }
+    </script>
+
+}

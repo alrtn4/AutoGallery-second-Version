@@ -33,7 +33,7 @@ namespace SazeNegar.Web.Controllers
             var take = 3;
             var skip = pageNumber * take - take;
             var count = 0;
-            
+
             vm = _carsRepo.GetCarsList(skip, take, null);
             if (!string.IsNullOrEmpty(null))
             {
@@ -50,14 +50,16 @@ namespace SazeNegar.Web.Controllers
             var pageCount = (int)Math.Ceiling((double)count / take);
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = pageNumber;
-            ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int) StaticContents.Facebook).Link;
+            ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
             ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
             ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
             List<IQueryable<CarModel>> carClassList = null;
-            
+
             return View(vm);
         }
         [HttpPost]
+        [Route("Cars/")]
+        [Route("Cars/{searchString}")]
         public ActionResult Index(int pageNumber = 1, string searchString = null)
         {
             var cars = _carsRepo.GetAll();
@@ -90,11 +92,28 @@ namespace SazeNegar.Web.Controllers
             return View(vm);
         }
 
-        public ActionResult Sidebar()
-        {
-            var sidebarContent = _carsRepo.GetCarsList(0, 3, null);
-            return View(sidebarContent);
-        }
+        //public ActionResult Sidebar()
+        //{
+        //    var sidebarContent = _carsRepo.GetCarsList(0, 3, null);
+        //    return View(sidebarContent);
+        //}
+
+        //[Route("Cars/")]
+        //[Route("Cars/{searchString}")]
+        //public ActionResult Index(string searchString = null)
+        //{
+        //    var vm = new ProductListViewModel();
+        //    vm.Brands = _brandsRepo.GetAll();
+
+        //    ViewBag.Title = "محصولات";
+
+        //    if (searchString != null)
+        //        ViewBag.SearchString = searchString;
+
+        //    ViewBag.SearchString = searchString;
+
+        //    return View(vm);
+        //}
         public ActionResult Titlebar()
         {
             return View();
@@ -112,12 +131,12 @@ namespace SazeNegar.Web.Controllers
                 brandsArr.ForEach(b => brandsIntArr.Add(Convert.ToInt32(b)));
             }
 
-            var subFeaturesIntArr = new List<int>();
-            if (string.IsNullOrEmpty(grid.subFeatures) == false)
-            {
-                var subFeaturesArr = grid.subFeatures.Split('-').ToList();
-                subFeaturesArr.ForEach(b => subFeaturesIntArr.Add(Convert.ToInt32(b)));
-            }
+            //var subFeaturesIntArr = new List<int>();
+            //if (string.IsNullOrEmpty(grid.subFeatures) == false)
+            //{
+            //    var subFeaturesArr = grid.subFeatures.Split('-').ToList();
+            //    subFeaturesArr.ForEach(b => subFeaturesIntArr.Add(Convert.ToInt32(b)));
+            //}
 
             cars = _carsRepo.GetCarsGrid(grid.categoryId, brandsIntArr, grid.priceFrom, grid.priceTo, grid.searchString);
 
@@ -127,37 +146,6 @@ namespace SazeNegar.Web.Controllers
 
             if (grid.GroupIds != null || grid.ProductIds != null || grid.BrandIds != null)
             {
-                //search based on multiple group ids
-                //if (string.IsNullOrEmpty(grid.GroupIds) == false)
-                //{
-                //    var groupIdsIntArr = new List<int>();
-
-                //    var groupIdsArr = grid.GroupIds.Split('-').ToList();
-                //    groupIdsArr.ForEach(g => groupIdsIntArr.Add(Convert.ToInt32(g)));
-
-                //    var allTargetGroups = new List<ProductGroup>();
-
-                //    foreach (var id in groupIdsIntArr)
-                //    {
-                //        var group = _productGroupRepo.GetProductGroup(id);
-
-                //        allTargetGroups.Add(group);
-                //    }
-
-                //    foreach (var group in allTargetGroups)
-                //    {
-                //        if (group != null)
-                //        {
-                //            var allProductsOfOneGroup = _carsRepo.getProductsByGroupId(group.Id);
-
-                //            foreach (var product in allProductsOfOneGroup)
-                //            {
-                //                allSearchedTargetProducts.Add(product);
-                //            }
-                //        }
-                //    }
-                //}
-
                 //search based on multiple brand ids
                 if (string.IsNullOrEmpty(grid.BrandIds) == false)
                 {
@@ -224,13 +212,13 @@ namespace SazeNegar.Web.Controllers
                         cars = cars.OrderBy(p => p.Title).ToList();
                         break;
                     case "sale":
-                        cars = cars.OrderByDescending(p => _productService.GetProductSoldCount(p)).ToList();
+                        cars = cars.OrderByDescending(p => _carsRepo.GetProductSoldCount(p)).ToList();
                         break;
                     case "price-high-to-low":
-                        cars = cars.OrderByDescending(p => _productService.GetProductPriceAfterDiscount(p)).ToList();
+                        cars = cars.OrderByDescending(p => _carsRepo.GetProductPriceAfterDiscount(p)).ToList();
                         break;
                     case "price-low-to-high":
-                        cars = cars.OrderBy(p => _productService.GetProductPriceAfterDiscount(p)).ToList();
+                        cars = cars.OrderBy(p => _carsRepo.GetProductPriceAfterDiscount(p)).ToList();
                         break;
                 }
             }
@@ -248,7 +236,7 @@ namespace SazeNegar.Web.Controllers
 
             var vm = new List<ProductWithPriceDto>();
             foreach (var product in cars)
-                vm.Add(_productService.CreateProductWithPriceDto(product));
+                vm.Add(_carsRepo.CreateProductWithPriceDto(product));
 
             return PartialView(vm);
         }

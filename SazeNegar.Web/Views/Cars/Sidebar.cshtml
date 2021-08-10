@@ -12,9 +12,9 @@
 
 
             <!-- Row -->
-            <div class="row with-forms">
+            @*<div class="row with-forms">
                 <!-- Type -->
-                @*<div class="col-md-12">
+                <div class="col-md-12">
                     <select data-placeholder="نوع" class="chosen-select-no-single">
                         <option>نوع</option>
                         <option>نو</option>
@@ -23,8 +23,8 @@
                         <option>شاسی بلند</option>
                         <option>آفرود</option>
                     </select>
-                </div>*@
-            </div>
+                </div>
+            </div>*@
             <!-- Row / End -->
             <!-- Row -->
             <div class="row with-forms">
@@ -222,30 +222,6 @@
 @* ReSharper disable Razor.SectionNotResolved *@
 @section scripts
 {
-    <script>
-        var brandIds = null;
-        var groupIds = null;
-        var productIds = null;
-    </script>
-
-    @if (ViewBag.brandIds != null)
-    {
-        <script>
-            brandIds = "@ViewBag.BrandIds";
-        </script>
-    }
-    @if (ViewBag.groupIds != null)
-    {
-        <script>
-            groupIds = "@ViewBag.GroupIds";
-        </script>
-    }
-    @if (ViewBag.productIds != null)
-    {
-        <script>
-            productIds = "@ViewBag.ProductIds";
-        </script>
-    }
     <script>
         var selectedGroupId = @Model.SelectedGroupId;
 
