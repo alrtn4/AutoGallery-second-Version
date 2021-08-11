@@ -23,13 +23,18 @@
                     <div class="row with-forms">
                         <!-- Type -->
                         <div class="col-md-12">
-                            <select data-placeholder="برند" class="chosen-select-no-single">
-                                <option>همه برندها</option>
-                                <option>رنو</option>
-                                <option>تویوتا</option>
-                                <option>بنز</option>
-                                <option>بی ام دبلیو</option>
-                                <option>کیا</option>
+                            <select data-placeholder="برند" class="chosen-select-no-single" id="brand">
+                                <option value="0">همه برندها</option>
+                                @foreach (var item in ViewBag.Brands)
+                                {
+                                    <option value="@item.Id">@item.Brand</option>
+                                }
+                                @*<option>همه برندها</option>*@
+                                @*@*<option value="1">رنو</option>
+        <option value="2">تویوتا</option>
+        <option value="3">بنز</option>
+        <option value="4">بی ام دبلیو</option>
+        <option value="5">کیا</option>*@
                             </select>
                         </div>
                     </div>
@@ -39,13 +44,13 @@
                         <div class="col-md-6">
                             <!-- Select Input -->
                             <div class="select-input">
-                                <input type="text" placeholder="حداقل قیمت" data-unit="تومان">
+                                <input type="text" placeholder="حداقل قیمت" data-unit="تومان" id="priceFrom">
                                 <select>
-                                    <option>100 میلیون</option>
-                                    <option>200 میلیون</option>
-                                    <option>300 میلیون</option>
-                                    <option>400 میلیون</option>
-                                    <option>500 میلیون</option>
+                                    <option value="1">100 میلیون</option>
+                                    <option value="2">200 میلیون</option>
+                                    <option value="3">300 میلیون</option>
+                                    <option value="4">400 میلیون</option>
+                                    <option value="5">500 میلیون</option>
                                 </select>
                             </div>
                             <!-- Select Input / End -->
@@ -55,13 +60,13 @@
                         <div class="col-md-6">
                             <!-- Select Input -->
                             <div class="select-input">
-                                <input type="text" placeholder="حداکثر قیمت" data-unit="تومان">
+                                <input type="text" placeholder="حداکثر قیمت" data-unit="تومان" id="priceTo">
                                 <select>
-                                    <option>100 میلیون</option>
-                                    <option>200 میلیون</option>
-                                    <option>300 میلیون</option>
-                                    <option>400 میلیون</option>
-                                    <option>500 میلیون</option>
+                                    <option value="1">100 میلیون</option>
+                                    <option value="2">200 میلیون</option>
+                                    <option value="3">300 میلیون</option>
+                                    <option value="4">400 میلیون</option>
+                                    <option value="5">500 میلیون</option>
                                 </select>
                             </div>
                             <!-- Select Input / End -->
@@ -86,16 +91,28 @@
                         <!-- Checkboxes -->
                         <div class="checkboxes one-in-row margin-bottom-10">
 
-                            <input id="check-2" type="checkbox" name="check">
+                            <input type="checkbox"
+                                   id="check-2"
+                                   value="Gear"
+                                   name="options">
                             <label for="check-2">دنده اتوماتیک</label>
 
-                            <input id="check-3" type="checkbox" name="check">
+                            <input type="checkbox"
+                                   id="check-3"
+                                   value="Sunroof"
+                                   name="options">
                             <label for="check-3">سانروف</label>
 
-                            <input id="check-4" type="checkbox" name="check">
+                            <input type="checkbox"
+                                   id="check-24"
+                                   value="Doors"
+                                   name="options">
                             <label for="check-4">دودر</label>
 
-                            <input id="check-5" type="checkbox" name="check">
+                            <input type="checkbox"
+                                   id="check-5"
+                                   value="Navigation"
+                                   name="options">
                             <label for="check-5">نویگیشن</label>
 
 
@@ -189,11 +206,11 @@
 
                         <div class="sort-by-select">
                             <select data-placeholder="پیش فرض" class="chosen-select-no-single" id="sort">
-                                <option value="1">پیش فرض</option>
-                                <option value="2">قیمت از کم به زیاد</option>
-                                <option value="3">قیمت از زیاد به کم</option>
-                                <option value="4">جدیدترین</option>
-                                <option value="5">قدیمی ترین</option>
+                                <option value="date">پیش فرض</option>
+                                <option value="price-low-to-high">قیمت از کم به زیاد</option>
+                                <option value="price-high-to-low">قیمت از زیاد به کم</option>
+                                <option value="newest">جدیدترین</option>
+                                <option value="oldest">قدیمی ترین</option>
                             </select>
                         </div>
                     </div>
@@ -222,109 +239,65 @@
 @section scripts
 {
     <script>
-        function GetGrid(page, groupId) {
-            $("#loading").show();
+        function GetGrid(page) {
+            console.log("im here");
+            ////$("#loading").show();
             var pageNumber = 1;
             if (page != null) {
                 pageNumber = page;
             }
             var sort = $("#sort").find(":selected").val();
-            var take = $("#take").find(":selected").val();
-            var categoryId = groupId !== undefined ? groupId : null;
-            categoryId = categoryId === null ? selectedGroupId : categoryId;
+            console.log("im here");
             var searchString =  '@ViewBag.SearchString';
-            var brands = [];
+            var brand = null;
             var priceFrom = null;
             var priceTo = null;
-            var selectedPriceRange = $("span#filter-price-range").text().replaceAll("تومان", "");
-            if (selectedPriceRange != undefined) {
-                var priceRangeArr = selectedPriceRange.split('-');
-                 console.log(priceRangeArr);
-                if (parseInt(priceRangeArr[0]) > 0) {
-                    priceFrom = parseInt(priceRangeArr[0]);
-                    console.log(priceFrom);
-                }
-                if (parseInt(priceRangeArr[1]) > 0) {
-                    priceTo = parseInt(priceRangeArr[1]);
-                    console.log(priceTo);
-                }
-            }
+            var options = [];
 
-            $("input[name='brands']").map(function() {
+            priceFrom = $("#priceFrom").find(":selected").val();
+            priceTo = $("#priceTo").find(":selected").val();
+            brand = $("#brand").find(":selected").val();
+
+            $("input[name='options']").map(function() {
                 if ($(this).prop("checked") === true) {
-                    brands.push(parseInt($(this).val()));
+                    options.push(parseInt($(this).val()));
                 }
             });
-            var subFeatures = [];
-            $("[name='subFeatures']").map(function() {
-                if ($(this).prop("checked") === true) {
-                    subFeatures.push(parseInt($(this).val()));
-                }
-            });
+
             var grid = {
-                categoryId: categoryId,
                 searchString: searchString,
                 priceFrom: priceFrom,
                 priceTo: priceTo,
-                brands: brands.join('-'),
-                subFeatures: subFeatures.join('-'),
+                brand: brand,
+                options: options.join('-'),
                 pageNumber: pageNumber,
-                take: take,
-                sort: sort,
-                BrandIds: brandIds,
-                GroupIds: groupIds,
-                ProductIds: productIds,
+                sort: sort
             }
+            console.log("im here");
             $.ajax({
                 type: 'GET',
-                url: '/ProductsGrid',
+                url: '/CarListGrid',
                 data: grid,
                 success: function(data) {
                     $("#grid").html(data);
+                    console.log("success");
+                    console.log(data);
                 },
                 error: function(data) {
                     console.log("error");
                     console.log(data);
                 },
                 complete: function() {
-                    $("#loading").hide();
+                    console.log("complete");
                 }
             });
         }
 
-        $(document).ready(function() {
+        $(document).ready(function () {
+            console.log("im here 2");
             GetGrid();
-
-            // Update Price Range
-            $('#price-slider').mouseup(function () {
-                GetGrid();
-            });
-
-            document.getElementById("reload").onclick = function() {reload()};
-
-
         });
-                function reload() {
-                window.location = window.location.href.split("?")[0];
-            }
 
-                    function CheckPriceUpdated() {
-        var newMintxt = $('.from').text();
-        var newMaxtxt = $('.to').text();
-
-        var newMin = newMintxt.substring(1);
-        var newMax = newMaxtxt.substring(1);
-
-        if (newMin != minPrice || newMax != maxPrice) {
-            minPrice = newMin;
-            maxPrice = newMax;
-
-            searchString = "";
-            $('.search-field').val(searchString);
-
-            submitForm();
-        }
-    }
     </script>
 
 }

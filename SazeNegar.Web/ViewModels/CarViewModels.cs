@@ -25,12 +25,9 @@ namespace SazeNegar.Web.ViewModels
         public long? priceFrom { get; set; }
         public long? priceTo { get; set; }
         public string brand { get; set; }
+        public string options { get; set; }
         public int pageNumber { get; set; }
         public int take { get; set; }
         public string sort { get; set; }
-
-        public string BrandIds { get; set; }
-        public string GroupIds { get; set; }
-        public string ProductIds { get; set; }
     }
 }

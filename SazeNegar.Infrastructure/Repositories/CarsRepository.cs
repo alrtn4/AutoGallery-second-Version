@@ -100,7 +100,7 @@ namespace SazeNegar.Infrastructure.Repositories
 
         #region Get Products Grid
 
-        public List<Cars> GetCarsGrid(int? carBrandId, List<int> carOptionIds = null, long? fromPrice = null, long? toPrice = null, string searchString = null)
+        public List<Cars> GetCarsGrid(int? carBrandId, List<string> carOptions = null, long? fromPrice = null, long? toPrice = null, string searchString = null)
         {
             var cars = new List<Cars>();
             var count = 0;
@@ -108,64 +108,51 @@ namespace SazeNegar.Infrastructure.Repositories
             {
                 if (string.IsNullOrEmpty(searchString))
                 {
-                    cars = _context.Cars.Include(p => p.ProductMainFeatures).Include(p => p.ProductFeatureValues).Where(p => p.IsDeleted == false).OrderByDescending(p => p.InsertDate).ToList();
-
-                    foreach (var car in cars)
-                    {
-                        car.ProductMainFeatures = car.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
-                    }
+                    cars = _context.Cars.Include(p => p.Brand).Include(p => p.CarsInfo).Where(p => p.IsDeleted == false).OrderByDescending(p => p.InsertDate).ToList();
                 }
                 else
                 {
-                    cars = _context.Cars.Include(p => p.ProductMainFeatures)
-                        .Include(p => p.ProductFeatureValues)
-                        .Where(p => p.IsDeleted == false && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower()) || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())))
+                    cars = _context.Cars.Include(p => p.Brand)
+                        .Include(p => p.CarsInfo)
+                        .Where(p => p.IsDeleted == false && (p.Brand.Brand.Trim().ToLower().Contains(searchString.Trim().ToLower()) || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())))
                         .OrderByDescending(p => p.InsertDate).ToList();
-
-                    foreach (var car in cars)
-                    {
-                        car.ProductMainFeatures = car.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
-                    }
                 }
             }
             else
             {
-                cars = _context.Cars.Include(p => p.ProductMainFeatures).Include(p => p.ProductFeatureValues).Where(p => p.IsDeleted == false && p.ProductGroupId == carBrandId).OrderByDescending(p => p.InsertDate).ToList();
+                cars = _context.Cars.Include(p => p.Brand).Include(p => p.CarsInfo).Where(p => p.IsDeleted == false && p.Brand.Id == carBrandId).OrderByDescending(p => p.InsertDate).ToList();
 
-                foreach (var car in cars)
-                {
-                    car.ProductMainFeatures = car.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
-                }
-
-                var allChildrenGroups = GetAllChildrenProductGroupIds(carBrandId.Value);
-                foreach (var groupId in allChildrenGroups)
-                    cars.AddRange(_context.Cars.Where(p => p.IsDeleted == false && p.ProductGroupId == groupId).OrderByDescending(p => p.InsertDate).ToList());
                 if (string.IsNullOrEmpty(searchString) == false)
                 {
                     cars = cars
-                        .Where(p => p.IsDeleted == false && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower()) || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())))
+                        .Where(p => p.IsDeleted == false && (p.Brand.Brand.Trim().ToLower().Contains(searchString.Trim().ToLower()) || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())))
                         .OrderByDescending(p => p.InsertDate).ToList();
-
-                    foreach (var car in cars)
-                    {
-                        car.ProductMainFeatures = car.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
-                    }
                 }
             }
 
-            if (carOptionIds != null && carOptionIds.Any())
+            if (carOptions != null && carOptions.Any())
             {
-                var carsFilteredByBrand = new List<Cars>();
-                foreach (var brand in carOptionIds)
-                    carsFilteredByBrand.AddRange(cars.Where(p => p.IsDeleted == false && p.BrandId == brand).OrderByDescending(p => p.InsertDate).ToList());
-                cars = carsFilteredByBrand;
+                var Gear = carOptions.Contains("Gear");
+                var Sunroof = carOptions.Contains("Sunroof");
+                var Doors = carOptions.Contains("Doors");
+                var Navigation = carOptions.Contains("Navigation");
+                var carsFilteredByOption = new List<Cars>();
+                foreach (var option in carOptions)
+                    carsFilteredByOption.AddRange(
+                        cars.Where(p => p.IsDeleted == false && 
+                                        (((p.Gear == "اتومات" || p.Gear == "اتوماتیک") && Gear) 
+                                         || (p.Sunroof == "دارد" && Sunroof) 
+                                         || (p.CarsInfo.Doors == "دودر" && Doors) 
+                                         || (p.Navigation == "دارد" && Navigation)))
+                            .OrderByDescending(p => p.InsertDate).ToList());
+                cars = carsFilteredByOption;
             }
 
             if (fromPrice != null)
-                cars = cars.Where(p => GetProductPriceAfterDiscount(p) >= fromPrice).ToList();
+                cars = cars.Where(p => Convert.ToInt32(p.Price) >= fromPrice).ToList();
 
             if (toPrice != null)
-                cars = cars.Where(p => GetProductPriceAfterDiscount(p) <= toPrice).ToList();
+                cars = cars.Where(p => Convert.ToInt32(p.Price) <= toPrice).ToList();
 
             return cars;
         }

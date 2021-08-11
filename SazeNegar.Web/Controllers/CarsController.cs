@@ -35,31 +35,33 @@ namespace SazeNegar.Web.Controllers
             var count = 0;
 
             vm = _carsRepo.GetCarsList(skip, take, null);
-            if (!string.IsNullOrEmpty(null))
-            {
-                cars = _carsRepo.GetCarsList(skip, take, null);
-                count = _carsRepo.GetCarsCount();
-                ViewBag.SearchString = null;
-                ViewBag.Title = $"جستجو: {null}";
-                var pageCount2 = (int)Math.Ceiling((double)count / take);
-                ViewBag.PageCount = pageCount2;
-                ViewBag.CurrentPage = pageNumber;
-                return View(cars);
-            }
+            //if (!string.IsNullOrEmpty(null))
+            //{
+            //    cars = _carsRepo.GetCarsList(skip, take, null);
+            //    count = _carsRepo.GetCarsCount();
+            //    ViewBag.SearchString = null;
+            //    ViewBag.Title = $"جستجو: {null}";
+            //    var pageCount2 = (int)Math.Ceiling((double)count / take);
+            //    ViewBag.PageCount = pageCount2;
+            //    ViewBag.CurrentPage = pageNumber;
+            //    return View(cars);
+            //}
             count = _carsRepo.GetCarsCount();
             var pageCount = (int)Math.Ceiling((double)count / take);
+            ViewBag.SearchString = "";
+            ViewBag.Brands = _brandsRepo.GetAll();
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = pageNumber;
             ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
             ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
             ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
-            List<IQueryable<CarModel>> carClassList = null;
+            //List<IQueryable<CarModel>> carClassList = null;
 
             return View(vm);
         }
         [HttpPost]
-        [Route("Cars/")]
-        [Route("Cars/{searchString}")]
+        //[Route("Cars/")]
+        //[Route("Cars/{searchString}")]
         public ActionResult Index(int pageNumber = 1, string searchString = null)
         {
             var cars = _carsRepo.GetAll();
@@ -123,108 +125,45 @@ namespace SazeNegar.Web.Controllers
         {
             var cars = new List<Cars>();
 
-            var brandsIntArr = new List<int>();
+            var brand = Convert.ToInt32(grid.brand);
 
-            if (string.IsNullOrEmpty(grid.brands) == false)
+            var optionsArr = new List<string>();
+            var optionsIntArr = new List<int>();
+
+            if (string.IsNullOrEmpty(grid.options) == false)
             {
-                var brandsArr = grid.brands.Split('-').ToList();
-                brandsArr.ForEach(b => brandsIntArr.Add(Convert.ToInt32(b)));
+                optionsArr = grid.options.Split('-').ToList();
+                //optionsArr.ForEach(op => optionsIntArr.Add(Convert.ToInt32(op)));
             }
 
-            //var subFeaturesIntArr = new List<int>();
-            //if (string.IsNullOrEmpty(grid.subFeatures) == false)
-            //{
-            //    var subFeaturesArr = grid.subFeatures.Split('-').ToList();
-            //    subFeaturesArr.ForEach(b => subFeaturesIntArr.Add(Convert.ToInt32(b)));
-            //}
+            if (String.IsNullOrEmpty(grid.searchString))
+                grid.searchString = null;
 
-            cars = _carsRepo.GetCarsGrid(grid.categoryId, brandsIntArr, grid.priceFrom, grid.priceTo, grid.searchString);
+            cars = _carsRepo.GetCarsGrid(brand, optionsArr, grid.priceFrom, grid.priceTo, grid.searchString);
 
-            #region Get Products Base on Group, Brand and Products of "offer"
-
-            var allSearchedTargetProducts = new List<Cars>();
-
-            if (grid.GroupIds != null || grid.ProductIds != null || grid.BrandIds != null)
-            {
-                //search based on multiple brand ids
-                if (string.IsNullOrEmpty(grid.BrandIds) == false)
-                {
-                    var brandIdsIntArr = new List<int>();
-
-                    var brandIdsArr = grid.BrandIds.Split('-').ToList();
-                    brandIdsArr.ForEach(b => brandIdsIntArr.Add(Convert.ToInt32(b)));
-
-                    var allTargetBrands = new List<Brands>();
-
-                    foreach (var id in brandIdsIntArr)
-                    {
-                        var brand = _brandsRepo.GetBrand(id);
-
-                        allTargetBrands.Add(brand);
-                    }
-
-                    foreach (var brand in allTargetBrands)
-                    {
-                        if (brand != null)
-                        {
-                            var allProductsOfOneBrand = _carsRepo.getProductsByBrandId(brand.Id);
-
-                            foreach (var product in allProductsOfOneBrand)
-                            {
-                                allSearchedTargetProducts.Add(product);
-                            }
-                        }
-                    }
-                }
-
-                //search based on multiple product ids
-                if (string.IsNullOrEmpty(grid.ProductIds) == false)
-                {
-                    var productIdsIntArr = new List<int>();
-
-                    var productIdsArr = grid.ProductIds.Split('-').ToList();
-                    productIdsArr.ForEach(b => productIdsIntArr.Add(Convert.ToInt32(b)));
-
-                    foreach (var id in productIdsIntArr)
-                    {
-                        var product = _carsRepo.GetCar(id);
-
-                        //if product not found in allSearchedTargetProducts
-                        if (!allSearchedTargetProducts.Contains(product))
-                        {
-                            allSearchedTargetProducts.Add(product);
-                        }
-                    }
-                }
-
-                cars = allSearchedTargetProducts;
-            }
-
-            #endregion
-
+            
             #region Sorting
 
             if (grid.sort != "date")
             {
                 switch (grid.sort)
                 {
-                    case "name":
-                        cars = cars.OrderBy(p => p.Title).ToList();
+                    case "newest":
+                        cars = cars.OrderByDescending(p => p.InsertDate).ToList();
                         break;
-                    case "sale":
-                        cars = cars.OrderByDescending(p => _carsRepo.GetProductSoldCount(p)).ToList();
+                    case "oldest":
+                        cars = cars.OrderBy(p => p.InsertDate).ToList();
                         break;
                     case "price-high-to-low":
-                        cars = cars.OrderByDescending(p => _carsRepo.GetProductPriceAfterDiscount(p)).ToList();
+                        cars = cars.OrderByDescending(c => c.Price).ToList();
                         break;
                     case "price-low-to-high":
-                        cars = cars.OrderBy(p => _carsRepo.GetProductPriceAfterDiscount(p)).ToList();
+                        cars = cars.OrderBy(c => c.Price).ToList();
                         break;
                 }
             }
             #endregion
-
-
+            
 
             var count = cars.Count;
             var skip = grid.pageNumber * grid.take - grid.take;
@@ -234,11 +173,7 @@ namespace SazeNegar.Web.Controllers
 
             cars = cars.Skip(skip).Take(grid.take).ToList();
 
-            var vm = new List<ProductWithPriceDto>();
-            foreach (var product in cars)
-                vm.Add(_carsRepo.CreateProductWithPriceDto(product));
-
-            return PartialView(vm);
+            return PartialView(cars);
         }
     }
 }

@@ -1,107 +1,107 @@
 ﻿@model List<SazeNegar.Core.Models.Cars>
 
-    <!-- Listings -->
-    <div class="listings-container list-layout">
+<!-- Listings -->
+<div class="listings-container list-layout">
 
 
-        @foreach (var item in Model)
-        {
+    @foreach (var item in Model)
+    {
 
-            <!-- Listing Item -->
+        <!-- Listing Item -->
 
-            <a href="/SingleCar/Index/@item.Id">
-                <div class="listing-item">
+        <a href="/SingleCar/Index/@item.Id">
+            <div class="listing-item">
 
-                    <div class="listing-img-container">
+                <div class="listing-img-container">
 
-                        <div class="listing-badges">
-                            @if (item.Special != null)
-                            {
-                                <span class="featured">ویژه</span>
-                            }
-                        </div>
+                    <div class="listing-badges">
+                        @if (item.Special != null)
+                        {
+                            <span class="featured">ویژه</span>
+                        }
+                    </div>
 
-                        <div class="listing-img-content">
-                            <span class="listing-price"> @item.Price تومان</span>
-                            <span class="like-icon tooltip"></span>
-                        </div>
+                    <div class="listing-img-content">
+                        <span class="listing-price"> @item.Price تومان</span>
+                        <span class="like-icon tooltip"></span>
+                    </div>
 
-                        <div class="listing-carousel">
-                            <div><img src="../../Files/CarsImages/Image/@item.Image" alt=""></div>
+                    <div class="listing-carousel">
+                        <div><img src="../../Files/CarsImages/Image/@item.Image" alt=""></div>
+                    </div>
+                </div>
+
+                <div class="listing-content">
+
+                    <div class="listing-title">
+                        <h4>
+                            <div>@item.Brand.Brand</div>
+                        </h4>
+
+
+                        <div class="details button border">
+                            جزئیات
                         </div>
                     </div>
 
-                    <div class="listing-content">
+                    <ul class="listing-details">
+                        @if (item.Gear != null)
+                        {
+                            <li>دنده: @item.Gear</li>
+                        }
+                        @if (item.Navigation != null)
+                        {
+                            <li>نویگیشن: @item.Navigation</li>
+                        }
+                        @if (item.Sunroof != null)
+                        {
+                            <li>سانروف: @item.Sunroof</li>
+                        }
+                    </ul>
 
-                        <div class="listing-title">
-                            <h4>
-                                <div>@item.Brand.Brand</div>
-                            </h4>
+                    <div class="listing-footer">
 
-
-                            <div class="details button border">
-                                جزئیات
-                            </div>
-                        </div>
-
-                        <ul class="listing-details">
-                            @if (item.Gear != null)
-                            {
-                                <li>دنده: @item.Gear</li>
-                            }
-                            @if (item.Navigation != null)
-                            {
-                                <li>نویگیشن: @item.Navigation</li>
-                            }
-                            @if (item.Sunroof != null)
-                            {
-                                <li>سانروف: @item.Sunroof</li>
-                            }
-                        </ul>
-
-                        <div class="listing-footer">
-
-                            <span><i class="fa fa-calendar-o"></i>@item.PersianDateTime </span>
-                        </div>
-
+                        <span><i class="fa fa-calendar-o"></i>@item.PersianDateTime </span>
                     </div>
 
                 </div>
-            </a>
 
-            <!-- Listing Item / End -->
-        }
+            </div>
+        </a>
+
+        <!-- Listing Item / End -->
+    }
 
 
-    </div>
-    <!-- Listings Container / End -->
-    <!-- Pagination -->
-    <div class="clearfix"></div>
-    <div class="pagination-container">
-        <nav class="pagination">
-            <ul>
-                @{
-                    if (ViewBag.CurrentPage > 1)
-                    {
-                        <li>
-                            <a href="/Cars?pageNumber=@(ViewBag.CurrentPage - 1)@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)" class="prev">
-                                قبلی
-                            </a>
-                        </li>
-                    }
-                    for (int i = 1; i <= ViewBag.PageCount; i++)
-                    {
-                        <li class="@(i == ViewBag.CurrentPage ? "active" : null)"><a href="/Cars?pageNumber=@i@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">@i</a></li>
-                    }
-                    if (ViewBag.CurrentPage < ViewBag.PageCount)
-                    {
-                        <li><a href="/Cars?pageNumber=@(ViewBag.CurrentPage+1)@(ViewBag.CategoryId != null? $"&category={ViewBag.CategoryId}":null)@(ViewBag.SearchString != null? $"&searchString={ViewBag.SearchString}":null)" class="next">بعدی</a></li>
-                    }
+</div>
+<!-- Listings Container / End -->
+<!-- Pagination -->
+<div class="clearfix"></div>
+<div class="pagination-container">
+    <nav class="pagination">
+        <ul>
+            @{
+                if (ViewBag.CurrentPage > 1)
+                {
+                    <li>
+                        <a href="/Cars?pageNumber=@(ViewBag.CurrentPage - 1)@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)" class="prev">
+                            قبلی
+                        </a>
+                    </li>
                 }
-            </ul>
-        </nav>
+                for (int i = 1; i <= ViewBag.PageCount; i++)
+                {
+                    <li class="@(i == ViewBag.CurrentPage ? "active" : null)"><a href="/Cars?pageNumber=@i@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">@i</a></li>
+                }
+                if (ViewBag.CurrentPage < ViewBag.PageCount)
+                {
+                    <li><a href="/Cars?pageNumber=@(ViewBag.CurrentPage+1)@(ViewBag.CategoryId != null? $"&category={ViewBag.CategoryId}":null)@(ViewBag.SearchString != null? $"&searchString={ViewBag.SearchString}":null)" class="next">بعدی</a></li>
+                }
+            }
+        </ul>
+    </nav>
 
 
-    </div>
-    <div class="clearfix"></div>
-    <!-- Pagination / End -->
+</div>
+<div class="clearfix"></div>
+<!-- Pagination / End -->
