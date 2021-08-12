@@ -100,7 +100,7 @@ namespace SazeNegar.Infrastructure.Repositories
 
         #region Get Products Grid
 
-        public List<Cars> GetCarsGrid(int? carBrandId, List<string> carOptions = null, long? fromPrice = null, long? toPrice = null, string searchString = null)
+        public List<Cars> GetCarsGrid(int? carBrandId, List<string> carOptions = null, string fromPrice = null, string toPrice = null, string searchString = null)
         {
             var cars = new List<Cars>();
             var count = 0;
@@ -149,10 +149,10 @@ namespace SazeNegar.Infrastructure.Repositories
             }
 
             if (fromPrice != null)
-                cars = cars.Where(p => Convert.ToInt32(p.Price) >= fromPrice).ToList();
+                cars = cars.Where(p => Convert.ToInt32(p.Price) >= Convert.ToInt32(fromPrice)).ToList();
 
             if (toPrice != null)
-                cars = cars.Where(p => Convert.ToInt32(p.Price) <= toPrice).ToList();
+                cars = cars.Where(p => Convert.ToInt32(p.Price) <= Convert.ToInt32(toPrice)).ToList();
 
             return cars;
         }

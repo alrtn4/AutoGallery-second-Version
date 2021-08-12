@@ -84,18 +84,18 @@
                 if (ViewBag.CurrentPage > 1)
                 {
                     <li>
-                        <a href="/Cars?pageNumber=@(ViewBag.CurrentPage - 1)@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)" class="prev">
+                        <a href="#" onclick="GetGrid(@(ViewBag.CurrentPage-1))" class="prev">
                             قبلی
                         </a>
                     </li>
                 }
                 for (int i = 1; i <= ViewBag.PageCount; i++)
                 {
-                    <li class="@(i == ViewBag.CurrentPage ? "active" : null)"><a href="/Cars?pageNumber=@i@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">@i</a></li>
+                    <li class="@(i == ViewBag.CurrentPage ? "active" : null)"><a href="#" onclick="GetGrid(@i)">@i</a></li>
                 }
                 if (ViewBag.CurrentPage < ViewBag.PageCount)
                 {
-                    <li><a href="/Cars?pageNumber=@(ViewBag.CurrentPage+1)@(ViewBag.CategoryId != null? $"&category={ViewBag.CategoryId}":null)@(ViewBag.SearchString != null? $"&searchString={ViewBag.SearchString}":null)" class="next">بعدی</a></li>
+                    <li><a href="#" onclick="GetGrid(@(ViewBag.CurrentPage+1))" class="next">بعدی</a></li>
                 }
             }
         </ul>

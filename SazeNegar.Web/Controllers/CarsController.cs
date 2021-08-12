@@ -76,16 +76,17 @@ namespace SazeNegar.Web.Controllers
                 cars = _carsRepo.GetCarsList(skip, take, searchString);
                 count = _carsRepo.GetCarsCount();
                 ViewBag.SearchString = searchString;
+                ViewBag.Brands = _brandsRepo.GetAll();
                 ViewBag.Title = $"جستجو: {searchString}";
                 var pageCount2 = (int)Math.Ceiling((double)count / take);
                 ViewBag.PageCount = pageCount2;
-                ViewBag.CurrentPage = pageNumber;
                 return View(cars);
             }
             count = _carsRepo.GetCarsCount();
             var pageCount = (int)Math.Ceiling((double)count / take);
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = pageNumber;
+            ViewBag.Brands = _brandsRepo.GetAll();
             ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
             ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
             ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
@@ -133,7 +134,6 @@ namespace SazeNegar.Web.Controllers
             if (string.IsNullOrEmpty(grid.options) == false)
             {
                 optionsArr = grid.options.Split('-').ToList();
-                //optionsArr.ForEach(op => optionsIntArr.Add(Convert.ToInt32(op)));
             }
 
             if (String.IsNullOrEmpty(grid.searchString))
@@ -166,12 +166,14 @@ namespace SazeNegar.Web.Controllers
             
 
             var count = cars.Count;
-            var skip = grid.pageNumber * grid.take - grid.take;
-            int pageCount = (int)Math.Ceiling((double)count / grid.take);
+            //var skip = grid.pageNumber * grid.take - grid.take;
+            var take = 3;
+            var skip = grid.pageNumber * take - take;
+            int pageCount = (int)Math.Ceiling((double)count / take);
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = grid.pageNumber;
 
-            cars = cars.Skip(skip).Take(grid.take).ToList();
+            cars = cars.Skip(skip).Take(take).ToList();
 
             return PartialView(cars);
         }

@@ -19,112 +19,113 @@
                 <div class="widget margin-bottom-40">
                     <h3 class="margin-top-0 margin-bottom-35">یافتن خودروی جدید</h3>
 
-                    <!-- Row -->
-                    <div class="row with-forms">
-                        <!-- Type -->
-                        <div class="col-md-12">
-                            <select data-placeholder="برند" class="chosen-select-no-single" id="brand">
-                                <option value="0">همه برندها</option>
-                                @foreach (var item in ViewBag.Brands)
-                                {
-                                    <option value="@item.Id">@item.Brand</option>
-                                }
-                                @*<option>همه برندها</option>*@
-                                @*@*<option value="1">رنو</option>
-        <option value="2">تویوتا</option>
-        <option value="3">بنز</option>
-        <option value="4">بی ام دبلیو</option>
-        <option value="5">کیا</option>*@
-                            </select>
-                        </div>
-                    </div>
-                    <!-- Row / End -->
-                    <!-- Min Area -->
-                    <div class="row with-forms">
-                        <div class="col-md-6">
-                            <!-- Select Input -->
-                            <div class="select-input">
-                                <input type="text" placeholder="حداقل قیمت" data-unit="تومان" id="priceFrom">
-                                <select>
-                                    <option value="1">100 میلیون</option>
-                                    <option value="2">200 میلیون</option>
-                                    <option value="3">300 میلیون</option>
-                                    <option value="4">400 میلیون</option>
-                                    <option value="5">500 میلیون</option>
+                    @*@using (Html.BeginForm("Index", "Cars", FormMethod.Post))
+                    {*@
+
+                        <!--Row-->
+                        <div class="row with-forms">
+                            <!-- Type -->
+                            <div class="col-md-12">
+                                <select data-placeholder="برند" class="chosen-select-no-single" id="brand">
+                                    <option value="0">همه برندها</option>
+                                    @foreach (var item in ViewBag.Brands)
+                                    {
+                                        <option value="@item.Id">@item.Brand</option>
+                                    }
                                 </select>
                             </div>
-                            <!-- Select Input / End -->
                         </div>
-
-                        <!-- Max Area -->
-                        <div class="col-md-6">
-                            <!-- Select Input -->
-                            <div class="select-input">
-                                <input type="text" placeholder="حداکثر قیمت" data-unit="تومان" id="priceTo">
-                                <select>
-                                    <option value="1">100 میلیون</option>
-                                    <option value="2">200 میلیون</option>
-                                    <option value="3">300 میلیون</option>
-                                    <option value="4">400 میلیون</option>
-                                    <option value="5">500 میلیون</option>
-                                </select>
+                        <!-- Row / End -->
+                        <!-- Min Area -->
+                        <div class="row with-forms">
+                            <div class="col-md-6">
+                                <!-- Select Input -->
+                                <div class="select-input">
+                                    @*<input type="text" placeholder="حداقل قیمت" data-unit="تومان" id="priceFrom">*@
+                                    <select class="chosen-select-no-single" data-placeholder="حداقل قیمت" data-unit="تومان" id="priceFrom">
+                                        <option></option>
+                                        <option value="100000000">100 میلیون</option>
+                                        <option value="200000000">200 میلیون</option>
+                                        <option value="300000000">300 میلیون</option>
+                                        <option value="400000000">400 میلیون</option>
+                                        <option value="500000000">500 میلیون</option>
+                                    </select>
+                                </div>
+                                <!-- Select Input / End -->
                             </div>
-                            <!-- Select Input / End -->
+
+                            <!-- Max Area -->
+                            <div class="col-md-6">
+                                <!-- Select Input -->
+                                <div class="select-input">
+                                    @*<input type="text" placeholder="حداکثر قیمت" data-unit="تومان" id="priceTo">*@
+                                    <select class="chosen-select-no-single" data-placeholder="حداکثر قیمت" data-unit="تومان" id="priceTo">
+
+                                        <option value="100000000">100 میلیون</option>
+                                        <option value="200000000">200 میلیون</option>
+                                        <option value="300000000">300 میلیون</option>
+                                        <option value="400000000">400 میلیون</option>
+                                        <option value="500000000">500 میلیون</option>
+                                    </select>
+                                </div>
+                                <!-- Select Input / End -->
+                            </div>
                         </div>
-                    </div>
 
 
 
 
-                    <!-- Row / End -->
+                        <!-- Row / End -->
 
 
-                    <br>
+                        <br>
 
 
-                    <!-- More Search Options -->
-                    <a href="#" class="more-search-options-trigger margin-bottom-10 margin-top-30"
-                       data-open-title="گزینه های بیشتر" data-close-title="بستن"></a>
+                        <!-- More Search Options -->
+                        <a href="#" class="more-search-options-trigger margin-bottom-10 margin-top-30"
+                           data-open-title="گزینه های بیشتر" data-close-title="بستن"></a>
 
-                    <div class="more-search-options relative">
+                        <div class="more-search-options relative">
 
-                        <!-- Checkboxes -->
-                        <div class="checkboxes one-in-row margin-bottom-10">
+                            <!-- Checkboxes -->
+                            <div class="checkboxes one-in-row margin-bottom-10">
 
-                            <input type="checkbox"
-                                   id="check-2"
-                                   value="Gear"
-                                   name="options">
-                            <label for="check-2">دنده اتوماتیک</label>
+                                <input type="checkbox"
+                                       id="check-2"
+                                       value="Gear"
+                                       name="options">
+                                <label for="check-2">دنده اتوماتیک</label>
 
-                            <input type="checkbox"
-                                   id="check-3"
-                                   value="Sunroof"
-                                   name="options">
-                            <label for="check-3">سانروف</label>
+                                <input type="checkbox"
+                                       id="check-3"
+                                       value="Sunroof"
+                                       name="options">
+                                <label for="check-3">سانروف</label>
 
-                            <input type="checkbox"
-                                   id="check-24"
-                                   value="Doors"
-                                   name="options">
-                            <label for="check-4">دودر</label>
+                                <input type="checkbox"
+                                       id="check-4"
+                                       value="Doors"
+                                       name="options">
+                                <label for="check-4">دودر</label>
 
-                            <input type="checkbox"
-                                   id="check-5"
-                                   value="Navigation"
-                                   name="options">
-                            <label for="check-5">نویگیشن</label>
+                                <input type="checkbox"
+                                       id="check-5"
+                                       value="Navigation"
+                                       name="options">
+                                <label for="check-5">نویگیشن</label>
 
 
 
+
+                            </div>
+                            <!-- Checkboxes / End -->
 
                         </div>
-                        <!-- Checkboxes / End -->
+                        <!-- More Search Options / End -->
 
-                    </div>
-                    <!-- More Search Options / End -->
+                        <button class="button fullwidth margin-top-30" onclick="GetGrid()">جستجو</button>
 
-                    <button class="button fullwidth margin-top-30">جستجو</button>
+                      @*}*@
 
 
                     <!-- </div> -->
@@ -240,14 +241,12 @@
 {
     <script>
         function GetGrid(page) {
-            console.log("im here");
             ////$("#loading").show();
             var pageNumber = 1;
             if (page != null) {
                 pageNumber = page;
             }
             var sort = $("#sort").find(":selected").val();
-            console.log("im here");
             var searchString =  '@ViewBag.SearchString';
             var brand = null;
             var priceFrom = null;
@@ -257,10 +256,11 @@
             priceFrom = $("#priceFrom").find(":selected").val();
             priceTo = $("#priceTo").find(":selected").val();
             brand = $("#brand").find(":selected").val();
+            console.log("pricefrom: ",priceFrom);
 
             $("input[name='options']").map(function() {
                 if ($(this).prop("checked") === true) {
-                    options.push(parseInt($(this).val()));
+                    options.push($(this).val());
                 }
             });
 
@@ -273,7 +273,6 @@
                 pageNumber: pageNumber,
                 sort: sort
             }
-            console.log("im here");
             $.ajax({
                 type: 'GET',
                 url: '/CarListGrid',
@@ -294,7 +293,6 @@
         }
 
         $(document).ready(function () {
-            console.log("im here 2");
             GetGrid();
         });
 

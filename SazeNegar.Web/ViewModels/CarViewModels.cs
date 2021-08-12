@@ -22,8 +22,8 @@ namespace SazeNegar.Web.ViewModels
     public class GridViewModel
     {
         public string searchString { get; set; }
-        public long? priceFrom { get; set; }
-        public long? priceTo { get; set; }
+        public string priceFrom { get; set; }
+        public string priceTo { get; set; }
         public string brand { get; set; }
         public string options { get; set; }
         public int pageNumber { get; set; }

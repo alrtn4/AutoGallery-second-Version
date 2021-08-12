@@ -69,13 +69,9 @@
     <Compile Include="Helpers\ImageResizer.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\PersianCulture.cs" />
-    <Compile Include="Migrations\202108070910002_init1.cs" />
-    <Compile Include="Migrations\202108070910002_init1.designer.cs">
-      <DependentUpon>202108070910002_init1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108071105229_init2.cs" />
-    <Compile Include="Migrations\202108071105229_init2.designer.cs">
-      <DependentUpon>202108071105229_init2.cs</DependentUpon>
+    <Compile Include="Migrations\202108120902592_init1.cs" />
+    <Compile Include="Migrations\202108120902592_init1.designer.cs">
+      <DependentUpon>202108120902592_init1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
@@ -125,11 +121,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202108070910002_init1.resx">
-      <DependentUpon>202108070910002_init1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108071105229_init2.resx">
-      <DependentUpon>202108071105229_init2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108120902592_init1.resx">
+      <DependentUpon>202108120902592_init1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
