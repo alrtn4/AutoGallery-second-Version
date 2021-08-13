@@ -52,7 +52,7 @@
             <select class="form-control" id="selectedCar" name="selectedCar">
                 @foreach (var item in ViewBag.CarsList)
                 {
-                    <option @(@Model.CarsId == @item.Id ? "selected" : "") value="@item.Id">@item</option>
+                    <option @(@Model.CarsId == @item.Id ? "selected" : "") value="@item.Id">@item.Title</option>
                 }
             </select>
         </div>

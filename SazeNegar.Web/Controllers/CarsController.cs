@@ -35,26 +35,16 @@ namespace SazeNegar.Web.Controllers
             var count = 0;
 
             vm = _carsRepo.GetCarsList(skip, take, null);
-            //if (!string.IsNullOrEmpty(null))
-            //{
-            //    cars = _carsRepo.GetCarsList(skip, take, null);
-            //    count = _carsRepo.GetCarsCount();
-            //    ViewBag.SearchString = null;
-            //    ViewBag.Title = $"جستجو: {null}";
-            //    var pageCount2 = (int)Math.Ceiling((double)count / take);
-            //    ViewBag.PageCount = pageCount2;
-            //    ViewBag.CurrentPage = pageNumber;
-            //    return View(cars);
-            //}
+            
             count = _carsRepo.GetCarsCount();
             var pageCount = (int)Math.Ceiling((double)count / take);
             ViewBag.SearchString = "";
             ViewBag.Brands = _brandsRepo.GetAll();
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = pageNumber;
-            ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
-            ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
-            ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
+            //ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
+            //ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
+            //ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
             //List<IQueryable<CarModel>> carClassList = null;
 
             return View(vm);
@@ -87,36 +77,15 @@ namespace SazeNegar.Web.Controllers
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = pageNumber;
             ViewBag.Brands = _brandsRepo.GetAll();
-            ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
-            ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
-            ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
+            //ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
+            //ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
+            //ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
             List<IQueryable<CarModel>> carClassList = null;
 
             return View(vm);
         }
 
-        //public ActionResult Sidebar()
-        //{
-        //    var sidebarContent = _carsRepo.GetCarsList(0, 3, null);
-        //    return View(sidebarContent);
-        //}
-
-        //[Route("Cars/")]
-        //[Route("Cars/{searchString}")]
-        //public ActionResult Index(string searchString = null)
-        //{
-        //    var vm = new ProductListViewModel();
-        //    vm.Brands = _brandsRepo.GetAll();
-
-        //    ViewBag.Title = "محصولات";
-
-        //    if (searchString != null)
-        //        ViewBag.SearchString = searchString;
-
-        //    ViewBag.SearchString = searchString;
-
-        //    return View(vm);
-        //}
+        
         public ActionResult Titlebar()
         {
             return View();
@@ -166,7 +135,6 @@ namespace SazeNegar.Web.Controllers
             
 
             var count = cars.Count;
-            //var skip = grid.pageNumber * grid.take - grid.take;
             var take = 3;
             var skip = grid.pageNumber * take - take;
             int pageCount = (int)Math.Ceiling((double)count / take);

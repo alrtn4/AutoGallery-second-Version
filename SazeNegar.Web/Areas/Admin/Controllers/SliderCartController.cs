@@ -64,7 +64,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.cart = new SelectList(_repo.GetStaticContentTypes(), "Id", "Name", staticContentDetail.StaticContentTypeId);
+            ViewBag.CarsId = new SelectList(_repo.GetCars(), "Id", "Title");
             return View(cart);
         }
 
@@ -101,7 +101,7 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                 _repo.Update(cart);
                 return RedirectToAction("Index");
             }
-            //ViewBag.StaticContentTypeId = new SelectList(_repo.GetStaticContentTypes(), "Id", "Name", staticContentDetail.StaticContentTypeId);
+            ViewBag.CarsId = new SelectList(_repo.GetCars(), "Id", "Title", cart.CarsId);
             return View(cart);
         }
         // get: admin/SliderCart/delete/5
