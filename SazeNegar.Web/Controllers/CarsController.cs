@@ -42,6 +42,7 @@ namespace SazeNegar.Web.Controllers
             ViewBag.Brands = _brandsRepo.GetAll();
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = pageNumber;
+            ViewBag.SpecialCars = _carsRepo.GetCarsList(0, 3);
             //ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
             //ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
             //ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
@@ -77,15 +78,16 @@ namespace SazeNegar.Web.Controllers
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = pageNumber;
             ViewBag.Brands = _brandsRepo.GetAll();
+            ViewBag.SpecialCars = _carsRepo.GetCarsList(0, 3);
             //ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
             //ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
             //ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
-            List<IQueryable<CarModel>> carClassList = null;
+            //List<IQueryable<CarModel>> carClassList = null;
 
             return View(vm);
         }
 
-        
+
         public ActionResult Titlebar()
         {
             return View();
@@ -118,10 +120,10 @@ namespace SazeNegar.Web.Controllers
                 switch (grid.sort)
                 {
                     case "newest":
-                        cars = cars.OrderByDescending(p => p.InsertDate).ToList();
+                        cars = cars.OrderByDescending(p => p.Id).ToList();
                         break;
                     case "oldest":
-                        cars = cars.OrderBy(p => p.InsertDate).ToList();
+                        cars = cars.OrderBy(p => p.Id).ToList();
                         break;
                     case "price-high-to-low":
                         cars = cars.OrderByDescending(c => c.Price).ToList();
@@ -143,7 +145,14 @@ namespace SazeNegar.Web.Controllers
 
             cars = cars.Skip(skip).Take(take).ToList();
 
-            return PartialView(cars);
+            var carListVm = new List<CarAndDateViewModel>();
+            foreach (var car in cars)
+            {
+                var carsVm = new CarAndDateViewModel(car);
+                carListVm.Add(carsVm);
+            }
+
+            return PartialView(carListVm);
         }
     }
 }

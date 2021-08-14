@@ -46,6 +46,9 @@
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="PersianDateTime, Version=1.1.5082.36395, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PersianDateTime.1.1.5082.36395\lib\net40\PersianDateTime.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -72,6 +75,22 @@
     <Compile Include="Migrations\202108120902592_init1.cs" />
     <Compile Include="Migrations\202108120902592_init1.designer.cs">
       <DependentUpon>202108120902592_init1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108141024029_init2.cs" />
+    <Compile Include="Migrations\202108141024029_init2.designer.cs">
+      <DependentUpon>202108141024029_init2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108141053237_init3.cs" />
+    <Compile Include="Migrations\202108141053237_init3.designer.cs">
+      <DependentUpon>202108141053237_init3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108141105518_init4.cs" />
+    <Compile Include="Migrations\202108141105518_init4.designer.cs">
+      <DependentUpon>202108141105518_init4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108141208001_init5.cs" />
+    <Compile Include="Migrations\202108141208001_init5.designer.cs">
+      <DependentUpon>202108141208001_init5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
@@ -123,6 +142,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202108120902592_init1.resx">
       <DependentUpon>202108120902592_init1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108141024029_init2.resx">
+      <DependentUpon>202108141024029_init2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108141053237_init3.resx">
+      <DependentUpon>202108141053237_init3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108141105518_init4.resx">
+      <DependentUpon>202108141105518_init4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108141208001_init5.resx">
+      <DependentUpon>202108141208001_init5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

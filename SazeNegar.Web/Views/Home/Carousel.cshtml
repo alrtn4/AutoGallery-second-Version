@@ -1,4 +1,6 @@
-﻿<div class="container">
+﻿@model List<SazeNegar.Web.ViewModels.CarouselViewModel>
+
+<div class="container">
 
     <div class="row">
 
@@ -17,20 +19,20 @@
                         <div class="carousel-item">
                             <div class="listing-item">
                                 
-                                <a href="/SingleCar/Index/@item.Cars.Id" class="listing-img-container">
+                                <a href="/SingleCar/Index/@item.Cart.Cars.Id" class="listing-img-container">
 
                                     <div class="listing-badges">
-                                        <span class="featured">@item.Cars.Special</span>
+                                        <span class="featured">@item.Cart.Cars.Special</span>
                                         @*<span>@item.Cars.Tag</span>*@
                                     </div>
 
                                     <div class="listing-img-content">
-                                        <span class="listing-price">@item.Cars.Price تومان </span>
+                                        <span class="listing-price">@item.Cart.Cars.Price تومان </span>
 
                                     </div>
 
                                     <div>
-                                        <img src="~/Files/CarsImages/image/@item.Cars.Image" alt="" style="height: 230px">
+                                        <img src="~/Files/CarsImages/image/@item.Cart.Cars.Image" alt="" style="height: 230px">
                                     </div>
 
                                 </a>
@@ -39,20 +41,29 @@
 
                                     <div class="listing-title">
                                         <h4>
-                                            <a href="@item.Link">@item.Cars.Brand.Brand</a>
+                                            <a href="/SingleCars/Index/@item.Cart.Cars.Id">@item.Cart.Cars.Brand.Brand</a>
                                         </h4>
 
                                     </div>
 
-                                    <ul class="listing-features">
-                                        <li>دنده <span>@item.Cars.Gear</span></li>
-                                        <li>سانروف <span>@item.Cars.Sunroof</span></li>
-                                        <li>نویگیشن <span>@item.Cars.Navigation</span></li>
+                                    <ul class="listing-features" style="height: 101px">
+                                        @if (!String.IsNullOrEmpty(item.Cart.Cars.Gear))
+                                        {
+                                            <li>دنده <span>@item.Cart.Cars.Gear</span></li>
+                                        }
+                                        @if (!String.IsNullOrEmpty(item.Cart.Cars.Sunroof))
+                                        {
+                                            <li>سانروف <span>@item.Cart.Cars.Sunroof</span></li>
+                                        }
+                                        @if (!String.IsNullOrEmpty(item.Cart.Cars.Navigation))
+                                        {
+                                            <li>نویگیشن <span>@item.Cart.Cars.Navigation</span></li>
+                                        }
                                     </ul>
 
                                     <div class="listing-footer">
 
-                                        <span><i class="fa fa-calendar-o"></i> @item.Date</span>
+                                        <span><i class="fa fa-calendar-o"></i> @item.PersianAddedDate</span>
                                         <div class="clearfix"></div>
                                     </div>
 

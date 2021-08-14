@@ -30,4 +30,16 @@ namespace SazeNegar.Web.ViewModels
         public int take { get; set; }
         public string sort { get; set; }
     }
+    public class CarAndDateViewModel
+    {
+        public CarAndDateViewModel(Cars cars)
+        {
+            this.PersianAddedDate = cars.InsertDate != null ? new PersianDateTime(cars.InsertDate.Value).ToString() : "-";
+            this.Cars = cars;
+        }
+        [Display(Name = "تاریخ ثبت")]
+        public string PersianAddedDate { get; set; }
+        public Cars Cars { get; set; }
+        public string PersianAddedTime { get; set; }
+    }
 }

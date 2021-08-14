@@ -57,7 +57,6 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
 
                 carBrandsViewModel.Cars.BrandsId = selectedBrand;
                 carBrandsViewModel.Cars.CarsInfoId = selectedCarInfo;
-                carBrandsViewModel.Cars.PersianDateTime = carBrandsViewModel.Cars.InsertDate != null ? new PersianDateTime(carBrandsViewModel.Cars.InsertDate.Value).ToString() : "-";
                 _repo.Add(carBrandsViewModel.Cars);
                 return RedirectToAction("Index");
             }
@@ -68,20 +67,20 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
         // GET: Admin/ArticleCategories/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
             CarBrandsInfoViewModel carBrandsViewModel = new CarBrandsInfoViewModel();
             carBrandsViewModel.Cars = _repo.Get(id);
             carBrandsViewModel.BrandsList = _repo.GetBrandsList();
             carBrandsViewModel.CarsInfoList = _repo.GetCarInfoList();
             ViewBag.brandId = _repo.Get(id).BrandsId;
             ViewBag.CarInfoId = _repo.Get(id).CarsInfoId;
-            if (carBrandsViewModel == null)
-            {
-                return HttpNotFound();
-            }
+            //if (carBrandsViewModel == null)
+            //{
+            //    return HttpNotFound();
+            //}
             return View(carBrandsViewModel);
         }
 

@@ -21,6 +21,10 @@ namespace SazeNegar.Infrastructure.Repositories
             _carClassRepository = carClassRepository;
         }
 
+        //public void AddCar(Cars cars)
+        //{
+        //    cars.PersianAddedDate = cars.InsertDate != null ? new PersianDateTime(cars.InsertDate.Value).ToString() : "-";
+        //}
         public Cars GetCar(int id)
         {
             return _context.Cars.FirstOrDefault(c => c.Id == id);
@@ -149,10 +153,10 @@ namespace SazeNegar.Infrastructure.Repositories
             }
 
             if (fromPrice != null)
-                cars = cars.Where(p => Convert.ToInt32(p.Price) >= Convert.ToInt32(fromPrice)).ToList();
+                cars = cars.Where(p => Convert.ToInt64(p.Price) >= Convert.ToInt64(fromPrice)).ToList();
 
             if (toPrice != null)
-                cars = cars.Where(p => Convert.ToInt32(p.Price) <= Convert.ToInt32(toPrice)).ToList();
+                cars = cars.Where(p => Convert.ToInt64(p.Price) <= Convert.ToInt64(toPrice)).ToList();
 
             return cars;
         }

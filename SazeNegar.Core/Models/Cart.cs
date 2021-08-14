@@ -14,8 +14,6 @@ namespace SazeNegar.Core.Models
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(600, ErrorMessage = "{0} باید از 600 کارکتر کمتر باشد")]
         public string Title { get; set; }
-        [Display(Name = "تاریخ")]
-        public int Date { get; set; }
         [Display(Name = "لینک")]
         public string Link { get; set; }
         public string Special { get; set; }

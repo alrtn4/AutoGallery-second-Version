@@ -30,6 +30,8 @@
 
     <div class="card-body">
         @Html.HiddenFor(x => x.Cars.Id, new { value = @Model.Cars.Id })
+        @Html.HiddenFor(x => x.Cars.Image, new { value = @Model.Cars.Image })
+        @Html.HiddenFor(x => x.Cars.InsertDate, new { value = @Model.Cars.InsertDate })
         <div class="form-group">
             @Html.LabelFor(model => model.Cars.Title, new { })
             <div class="col-md-5">

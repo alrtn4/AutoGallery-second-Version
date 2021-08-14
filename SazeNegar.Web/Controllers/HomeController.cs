@@ -75,9 +75,15 @@ namespace SazeNegar.Web.Controllers
         }
         public ActionResult Carousel()
         {
-            var carouselContent = _cartRepository.GetCarts().OrderByDescending(e => e.Id);
-            ViewBag.cars = _cartRepository.GetCars();
-            return PartialView(carouselContent);
+            var carousels = _cartRepository.GetCarts().OrderByDescending(e => e.Id);
+            var carouselListVm = new List<CarouselViewModel>();
+            foreach (var carousel in carousels)
+            {
+                var carouselVm = new CarouselViewModel(carousel);
+                carouselListVm.Add(carouselVm);
+            }
+            //ViewBag.cars = _cartRepository.GetCars();
+            return View(carouselListVm);
         }
 
         public ActionResult Looking_For()

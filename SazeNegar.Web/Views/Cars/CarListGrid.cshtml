@@ -1,4 +1,4 @@
-﻿@model List<SazeNegar.Core.Models.Cars>
+﻿@model List<SazeNegar.Web.ViewModels.CarAndDateViewModel>
 
 <!-- Listings -->
 <div class="listings-container list-layout">
@@ -9,25 +9,25 @@
 
         <!-- Listing Item -->
 
-        <a href="/SingleCar/Index/@item.Id">
+        <a href="/SingleCar/Index/@item.Cars.Id">
             <div class="listing-item">
 
                 <div class="listing-img-container">
 
                     <div class="listing-badges">
-                        @if (item.Special != null)
+                        @if (item.Cars.Special != null)
                         {
                             <span class="featured">ویژه</span>
                         }
                     </div>
 
                     <div class="listing-img-content">
-                        <span class="listing-price"> @item.Price تومان</span>
+                        <span class="listing-price"> @item.Cars.Price تومان</span>
                         <span class="like-icon tooltip"></span>
                     </div>
 
                     <div class="listing-carousel">
-                        <div><img src="../../Files/CarsImages/Image/@item.Image" alt=""></div>
+                        <div><img src="../../Files/CarsImages/Image/@item.Cars.Image" alt=""></div>
                     </div>
                 </div>
 
@@ -35,7 +35,7 @@
 
                     <div class="listing-title">
                         <h4>
-                            <div>@item.Brand.Brand</div>
+                            <div>@item.Cars.Brand.Brand</div>
                         </h4>
 
 
@@ -45,23 +45,23 @@
                     </div>
 
                     <ul class="listing-details">
-                        @if (item.Gear != null)
+                        @if (item.Cars.Gear != null)
                         {
-                            <li>دنده: @item.Gear</li>
+                            <li>دنده: @item.Cars.Gear</li>
                         }
-                        @if (item.Navigation != null)
+                        @if (item.Cars.Navigation != null)
                         {
-                            <li>نویگیشن: @item.Navigation</li>
+                            <li>نویگیشن: @item.Cars.Navigation</li>
                         }
-                        @if (item.Sunroof != null)
+                        @if (item.Cars.Sunroof != null)
                         {
-                            <li>سانروف: @item.Sunroof</li>
+                            <li>سانروف: @item.Cars.Sunroof</li>
                         }
                     </ul>
 
                     <div class="listing-footer">
 
-                        <span><i class="fa fa-calendar-o"></i>@item.PersianDateTime </span>
+                        <span><i class="fa fa-calendar-o"></i>@item.PersianAddedDate </span>
                     </div>
 
                 </div>
