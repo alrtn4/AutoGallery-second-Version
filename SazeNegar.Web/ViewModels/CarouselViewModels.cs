@@ -18,6 +18,5 @@ namespace SazeNegar.Web.ViewModels
         [Display(Name = "تاریخ ثبت")]
         public string PersianAddedDate { get; set; }
         public Cart Cart { get; set; }
-        public string PersianAddedTime { get; set; }
     }
 }

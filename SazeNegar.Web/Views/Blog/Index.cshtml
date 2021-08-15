@@ -55,7 +55,16 @@
                             <ul class="post-meta">
                                 <li>@item.PersianDate</li>
                                 <li>
-                                    @{ var x = (item.Article.ArticleComments != null) ? item.Article.ArticleComments.Count : 0;}
+                                    @{
+                                        if (item.Article.ArticleComments != null)
+                                        {
+                                            <span>@item.Article.ArticleComments.Count</span>
+                                        }
+                                        else
+                                        {
+                                            <span>0</span>
+                                        }
+                                    }
                                     دیدگاه
                                 </li>
                             </ul>
@@ -127,7 +136,7 @@
                         <h3>سوالی دارید؟</h3>
                         <div class="info-box margin-bottom-10">
                             <p>اگر سوالی دارید از ما بپرسید :)</p>
-                            <a href="contact.html" class="button fullwidth margin-top-20">
+                            <a href="/Home/Contact" class="button fullwidth margin-top-20">
                                 <i class="fa fa-envelope-o"></i> تماس با ما
                             </a>
                         </div>

@@ -9,7 +9,7 @@
             <div class="col-md-5 col-sm-6">
                 <img class="footer-logo" src="~/Content/AutoGallery/images/logo.png" alt="">
                 <br><br>
-                <p>
+                <p class="col-sm-8 text-justify">
                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
                     چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
                     تکنولوژی
@@ -18,22 +18,24 @@
             </div>
 
             <div class="col-md-4 col-sm-6 ">
-                <h4>پیوندهای مفید</h4>
-                <ul class="footer-links">
-                    <li><a href="/Home/Index">صفحه اصلی</a></li>
-                    <li><a href="/Cars/Index">خودرو ها</a></li>
-                    <li><a href="/Blog/Index">مقالات</a></li>
-                    <li><a href="/Home/About_us">درباره ما</a></li>
-                    <li><a href="/Home/Contact">تماس با ما</a></li>
-                </ul>
+                <div>
+                    <h4>پیوندهای مفید</h4>
+                    <ul class="footer-links" style="float: right">
+                        <li><a href="/Home/Index">صفحه اصلی</a></li>
+                        <li><a href="/Cars/Index">خودرو ها</a></li>
+                        <li><a href="/Blog/Index">مقالات</a></li>
+                        <li><a href="/Home/About_us">درباره ما</a></li>
+                        <li><a href="/Home/Contact">تماس با ما</a></li>
+                    </ul>
+                </div>
 
-                <ul class="footer-links">
-                    <li><a href="/Home/Index">صفحه اصلی</a></li>
-                    <li><a href="/Cars/Index">خودرو ها</a></li>
-                    <li><a href="/Blog/Index">مقالات</a></li>
-                    <li><a href="/Home/About_us">درباره ما</a></li>
-                    <li><a href="/Home/Contact">تماس با ما</a></li>
-                </ul>
+                @*<ul class="footer-links">
+                        <li><a href="/Home/Index">صفحه اصلی</a></li>
+                        <li><a href="/Cars/Index">خودرو ها</a></li>
+                        <li><a href="/Blog/Index">مقالات</a></li>
+                        <li><a href="/Home/About_us">درباره ما</a></li>
+                        <li><a href="/Home/Contact">تماس با ما</a></li>
+                    </ul>*@
                 <div class="clearfix"></div>
             </div>
 
@@ -42,7 +44,7 @@
                 <div class="text-widget">
                     <span>@Model.Address.ShortDescription</span> <br>
                     تلفن: <span>@Model.Phone.ShortDescription </span><br>
-                    ایمیل:<span> <a href="#">@Model.Email.ShortDescription</a> </span><br>
+                    ایمیل:<span> <a href="mailTo: @Model.Email.ShortDescription">@Model.Email.ShortDescription</a> </span><br>
                 </div>
 
                 <ul class="social-icons margin-top-20">

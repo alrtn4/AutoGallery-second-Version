@@ -1,4 +1,4 @@
-﻿@model SazeNegar.Web.ViewModels.CarGalleryViewModel
+﻿@model SazeNegar.Web.ViewModels.SingleCarViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,7 +17,7 @@
                 <!-- Breadcrumbs -->
                 <nav id="breadcrumbs">
                     <ul>
-                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="/Home/Index">خانه</a></li>
                         <li>خودرو</li>
                     </ul>
                 </nav>
@@ -34,15 +34,14 @@
         <div class="row">
             <div class="col-md-12">
 
-                <a href="cars.html" class="back-to-listings"></a>
+                <a href="/Cars/Index" class="back-to-listings"></a>
                 <div class="property-title">
-                    <h2>@Model.Cars.Brand.Brand @*<span class="property-badge">فروشی</span>*@</h2>
+                    <h2>@Model.Cars.Brand.Brand </h2>
 
                 </div>
 
                 <div class="property-pricing">
                     <div>@Model.Cars.Price تومان</div>
-                    <!-- <div class="sub-price">770 تومان / متر مربع</div> -->
                 </div>
 
 
@@ -64,14 +63,9 @@
                 {
                     if (item.CarsId == Model.Cars.Id && item.Type == "Top")
                     {
-                        <a href="../../Files/GalleryImages/Image/@item.Image" data-background-image="../../Files/GalleryImages/@item.Image" class="item mfp-gallery"></a>
+                        <a href="../../Files/GalleryImages/@item.Image" data-background-image="../../Files/GalleryImages/@item.Image" class="item mfp-gallery"></a>
                     }
                 }
-                @*<a href="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageTop2" data-background-image="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageTop2" class="item mfp-gallery"></a>
-                    <a href="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageTop3" data-background-image="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageTop3" class="item mfp-gallery"></a>
-                    <a href="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageTop4" data-background-image="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageTop4" class="item mfp-gallery"></a>
-                    <a href="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageTop5" data-background-image="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageTop5" class="item mfp-gallery"></a>
-                    <a href="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageTop6" data-background-image="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageTop6" class="item mfp-gallery"></a>*@
             </div>
 
             <!-- Slider Thumbs -->
@@ -83,11 +77,6 @@
                         <div class="item"><img src="../../Files/GalleryImages/@item.Image" alt=""></div>
                     }
                 }
-                @*<div class="item"><img src="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageNav2" alt=""></div>
-                    <div class="item"><img src="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageNav3" alt=""></div>
-                    <div class="item"><img src="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageNav4" alt=""></div>
-                    <div class="item"><img src="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageNav5" alt=""></div>
-                    <div class="item"><img src="../../Files/CarsInfoImages/Image/@Model.Cars.CarsInfo.ImageNav6" alt=""></div>*@
             </div>
 
         </div>
@@ -104,10 +93,22 @@
 
                 <!-- Main Features -->
                 <ul class="property-main-features">
-                    <li>دنده <span>@Model.Cars.Gear</span></li>
-                    <li>درها <span>@Model.Cars.CarsInfo.Doors</span></li>
-                    <li>ترمز <span>@Model.Cars.CarsInfo.Break</span></li>
-                    <li>نویگشین <span>@Model.Cars.Navigation</span></li>
+                    @if (!String.IsNullOrEmpty(@Model.Cars.Gear))
+                    {
+                        <li>دنده <span>@Model.Cars.Gear</span></li>
+                    }
+                    @if (!String.IsNullOrEmpty(@Model.Cars.CarsInfo.Doors))
+                    {
+                        <li>درها <span>@Model.Cars.CarsInfo.Doors</span></li>
+                    }
+                    @if (!String.IsNullOrEmpty(@Model.Cars.CarsInfo.Break))
+                    {
+                        <li>ترمز <span>@Model.Cars.CarsInfo.Break</span></li>
+                    }
+                    @if (!String.IsNullOrEmpty(@Model.Cars.Navigation))
+                    {
+                        <li>نویگشین <span>@Model.Cars.Navigation</span></li>
+                    }
                 </ul>
 
 
@@ -192,45 +193,8 @@
                 <div class="layout-switcher hidden"><a href="#" class="list"><i class="fa fa-th-list"></i></a></div>
                 <div class="listings-container list-layout">
 
-                    @foreach (var item in ViewBag.CarList)
+                    @foreach (var item in @Model.CarDateList)
                     {
-                        <!-- Item -->
-                        @*<div class="item">
-                                <div class="listing-item compact">
-
-                                    <a href="single-car.html" class="listing-img-container">
-
-                                        <div class="listing-badges">
-                                            @if (item.Cars.Special != null)
-                                            {
-                                                <span class="featured">ویژه</span>
-                                            }
-
-                                        </div>
-
-                                        <div class="listing-img-content">
-                                            <span class="listing-compact-title">
-                                                @item.Cars.Brand.Brand
-                                                <i>
-                                                    @item.Cars.Price
-                                                    تومان
-                                                </i>
-                                            </span>
-
-                                            <ul class="listing-hidden-content">
-                                                <li>دنده<span>@item..Cars.Gear</span></li>
-                                                <li>نویگشین <span>@item.Cars.Navigation</span></li>
-                                                <li>سانروف <span>@item.Cars.Sunroof</span></li>
-                                            </ul>
-                                        </div>
-
-                                        <img src="../../Files/CarsImages/Image/@item.Cars.Image" alt="" style="width: 40%">
-                                    </a>
-
-                                </div>
-                            </div>*@
-                        <!-- Item / End -->
-
                         <!-- Listing Item -->
                         <div class="listing-item">
 
@@ -279,7 +243,7 @@
 
                                 <div class="listing-footer">
 
-                                    <span><i class="fa fa-calendar-o"></i>@item.Cars.PersianDateTime</span>
+                                    <span><i class="fa fa-calendar-o"></i>@item.PersianAddedDate</span>
                                     <div class="clearfix"></div>
                                 </div>
 
@@ -298,49 +262,23 @@
         <!-- Sidebar -->
         <div class="col-lg-4 col-md-5 sp-sidebar">
             <div class="sidebar sticky right">
-
-
-
-
-
-
-
-                @*<!-- Widget -->
-                    <div class="widget">
-
-                        <!-- Agent Widget -->
-                        <div class="agent-widget">
-
-
-                            <input type="text" placeholder="ایمیل"
-                                   pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$">
-                            <input type="text" placeholder="شماره تماس">
-                            <textarea>سلام. من از این ملک خوشم اومد . می خوام اطلاعات بیشتری رو دربارش بدونم.</textarea>
-                            <button class="button fullwidth margin-top-5">ارسال پیام</button>
-                        </div>
-                        <!-- Agent Widget / End -->
-
-                    </div>
-                    <!-- Widget / End -->*@
-                <!-- Widget -->
                 <div class="widget">
                     <h3 class="margin-bottom-35">خودروهای ویژه</h3>
 
                     <div class="listing-carousel outer">
-                        @foreach (var item in ViewBag.CarList)
+                        @foreach (var item in @Model.CarDateList)
                         {
                             <!-- Item -->
                             <div class="item">
                                 <div class="listing-item compact">
 
-                                    <a href="single-car.html" class="listing-img-container">
+                                    <a href="/SingleCar/Index/@item.Cars.Id" class="listing-img-container">
 
                                         <div class="listing-badges">
                                             @if (item.Cars.Special != null)
                                             {
                                                 <span class="featured">ویژه</span>
                                             }
-                                            @*<span>فروشی</span>*@
                                         </div>
 
                                         <div class="listing-img-content">
@@ -359,7 +297,7 @@
                                             </ul>
                                         </div>
 
-                                        <img src="../../Files/CarsImages/Image/@item.Cars.Image" alt="" style="height: 230px; width: ">
+                                        <img src="../../Files/CarsImages/Image/@item.Cars.Image" alt="" style="height: 230px;">
                                     </a>
 
                                 </div>

@@ -187,25 +187,22 @@ namespace SazeNegar.Web.Areas.Admin.Controllers
                 #region Upload Image
                 if (StaticContentDetailImage != null)
                 {
-                    if (System.IO.File.Exists(Server.MapPath("/Files/StaticContentImages/Image/" + staticContentDetail.Image)))
-                        System.IO.File.Delete(Server.MapPath("/Files/StaticContentImages/Image/" + staticContentDetail.Image));
-
                     // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(StaticContentDetailImage.FileName);
-                    StaticContentDetailImage.SaveAs(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName));
+                    StaticContentDetailImage.SaveAs(Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
 
-                    // Resizing Image
-                    ImageResizer image = new ImageResizer();
-                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.Slider || staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.BlogImage)
-                        image = new ImageResizer(1020, 700, true);
-                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.CompanyHistory)
-                        image = new ImageResizer(1000, 1000, true);
+                    //// Resizing Image
+                    //ImageResizer image = new ImageResizer();
+                    //if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.Slider || staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.BlogImage)
+                    //    image = new ImageResizer(1020, 700, true);
+                    //if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.CompanyHistory)
+                    //    image = new ImageResizer(1000, 1000, true);
 
-                    image.Resize(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName),
-                        Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
+                    //image.Resize(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName),
+                    //    Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
 
-                    // Deleting Temp Image
-                    System.IO.File.Delete(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName));
+                    //// Deleting Temp Image
+                    //System.IO.File.Delete(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName));
 
                     staticContentDetail.Image = newFileName;
                 }

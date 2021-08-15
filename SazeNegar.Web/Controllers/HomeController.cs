@@ -82,7 +82,6 @@ namespace SazeNegar.Web.Controllers
                 var carouselVm = new CarouselViewModel(carousel);
                 carouselListVm.Add(carouselVm);
             }
-            //ViewBag.cars = _cartRepository.GetCars();
             return View(carouselListVm);
         }
 

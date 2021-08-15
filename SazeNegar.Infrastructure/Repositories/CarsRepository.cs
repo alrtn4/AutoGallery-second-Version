@@ -21,10 +21,6 @@ namespace SazeNegar.Infrastructure.Repositories
             _carClassRepository = carClassRepository;
         }
 
-        //public void AddCar(Cars cars)
-        //{
-        //    cars.PersianAddedDate = cars.InsertDate != null ? new PersianDateTime(cars.InsertDate.Value).ToString() : "-";
-        //}
         public Cars GetCar(int id)
         {
             return _context.Cars.FirstOrDefault(c => c.Id == id);
@@ -51,7 +47,6 @@ namespace SazeNegar.Infrastructure.Repositories
             var cars = GetCar(CarId);
             var brands = cars.Brand;
             brands.Brand = brand;
-            //brands.CarId = CarId;
             cars.Brand = brands;
             Update(cars);
         }
@@ -77,7 +72,6 @@ namespace SazeNegar.Infrastructure.Repositories
         }
         public List<CarListViewModel> GetCarsList(int skip, int take)
         {
-
             List<CarListViewModel> carList = new List<CarListViewModel>();
             var selectedCars = _context.Cars.Where(a => a.IsDeleted == false)
                 .OrderByDescending(a => a.Id).Skip(skip).Take(take).ToList();
@@ -86,7 +80,6 @@ namespace SazeNegar.Infrastructure.Repositories
             {
                 carList.Add(new CarListViewModel());
                 carList[i].Cars = item;
-                //carList[i].CarClasses = _carClassRepository.GetCarClassById(item.Id);
                 i++;
             }
 

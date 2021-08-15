@@ -26,27 +26,27 @@ namespace SazeNegar.Web.Controllers
         //[Route("Blog/{id}/{title}")]
         public ActionResult Index(int pageNumber = 1)
         {
-            var articles = _articlesRepo.GetAll();
             var vm = new List<ArticleListViewModel>();
             var take = 3;
             var skip = pageNumber * take - take;
             var count = 0;
+            var articles = _articlesRepo.GetArticlesList(skip, take);
             foreach (var item in articles)
             {
                 vm.Add(new ArticleListViewModel(item));
             }
-            if (!string.IsNullOrEmpty(null))
-            {
-                articles = _articlesRepo.GetArticlesList(skip, take, null);
-                count = _articlesRepo.GetArticlesCount();
-                ViewBag.SearchString = null;
-                ViewBag.Title = $"جستجو: {null}";
-            }
+            //if (!string.IsNullOrEmpty(null))
+            //{
+            //    articles = _articlesRepo.GetArticlesList(skip, take, null);
+            //    count = _articlesRepo.GetArticlesCount();
+            //    ViewBag.SearchString = null;
+            //    ViewBag.Title = $"جستجو: {null}";
+            //}
             count = _articlesRepo.GetArticlesCount();
             var pageCount = (int)Math.Ceiling((double)count / take);
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = pageNumber;
-            ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int) StaticContents.Facebook).Link;
+            ViewBag.Facebook = _contentRepo.GetStaticContentDetail((int)StaticContents.Facebook).Link;
             ViewBag.Instagram = _contentRepo.GetStaticContentDetail((int)StaticContents.Instagram).Link;
             ViewBag.Twitter = _contentRepo.GetStaticContentDetail((int)StaticContents.Twitter).Link;
             return View(vm);
@@ -91,7 +91,7 @@ namespace SazeNegar.Web.Controllers
 
         public ActionResult TopArticlesSection(int? take = null)
         {
-            var getCount = 4;
+            var getCount = 3;
             if (take != null)
                 getCount = take.Value;
 
