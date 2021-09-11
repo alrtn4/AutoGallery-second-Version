@@ -47,6 +47,6 @@ namespace SazeNegar.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
         }
-
+        public DbSet<Core.Controllers.CarsController> enums { get; set; }
     }
 }

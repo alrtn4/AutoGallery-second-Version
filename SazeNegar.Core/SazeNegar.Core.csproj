@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="CarsController.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\ArticleCategory.cs" />
     <Compile Include="Models\ArticleComment.cs" />
